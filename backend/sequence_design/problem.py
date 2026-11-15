@@ -82,24 +82,39 @@ def binary_polynomial(energies):
 
 def build_problem(request):
     domains = request.domains()
-    variable_positions = [index for index, choices in enumerate(domains) if len(choices) == 2]
-    variable_lookup = {position: bit for bit, position in enumerate(variable_positions)}
+    variable_positions = [index for index, choices in enumerate(domains) if len(choices) > 1]
+    blocks, variables = [], []
+    for position in variable_positions:
+        width = (len(domains[position]) - 1).bit_length()
+        offset = len(variables)
+        blocks.append({"position": position + 1, "qubits": list(range(offset, offset + width)),
+                       "choices": domains[position], "unused_codes": 2 ** width - len(domains[position])})
+        variables.extend({"qubit": offset + bit, "position": position + 1, "choices": domains[position],
+                          "code_bit": bit} for bit in range(width))
     rows = []
-    for state in range(2 ** len(variable_positions)):
-        sequence = ''.join(choices[(state >> variable_lookup[position]) & 1] if position in variable_lookup else choices[0]
-                           for position, choices in enumerate(domains))
-        rows.append({"bitstring": format(state, f"0{len(variable_positions)}b") if variable_positions else "",
-                     **score_sequence(sequence, request)})
+    for state in range(2 ** len(variables)):
+        sequence = [choices[0] for choices in domains]
+        valid = True
+        for block in blocks:
+            code = (state >> block["qubits"][0]) & ((1 << len(block["qubits"])) - 1)
+            if code >= len(block["choices"]):
+                valid = False
+                break
+            sequence[block["position"] - 1] = block["choices"][code]
+        row = score_sequence(''.join(sequence), request) if valid else {
+            "sequence": None, "objective": None, "feasible": False, "constraint_violation": 1}
+        rows.append({"bitstring": format(state, f"0{len(variables)}b") if variables else "",
+                     "valid_encoding": valid, **row})
     if not any(row["feasible"] for row in rows):
         raise ValueError("No sequence satisfies all required amino acids and the mutation budget in this space. Relax those constraints or change position choices.")
-    raw = np.array([row["objective"] for row in rows])
+    raw = np.array([row["objective"] for row in rows if row["valid_encoding"]])
     penalty = float(np.ptp(raw) + 1)
-    energies = np.array([row["objective"] + penalty * row["constraint_violation"] for row in rows])
+    energies = np.array([row["objective"] + penalty * row["constraint_violation"] if row["valid_encoding"] else float(raw.max()) + penalty for row in rows])
     for row, energy in zip(rows, energies):
         row["penalized_objective"] = float(energy)
     feasible = np.array([row["feasible"] for row in rows])
     if np.any(~feasible) and not energies[~feasible].min() > energies[feasible].max():
         raise ValueError("Cardinality/required-residue penalty separation failed.")
-    return {"domains": domains, "variables": [{"qubit": bit, "position": position + 1, "choices": domains[position]} for bit, position in enumerate(variable_positions)],
+    return {"domains": domains, "variables": variables, "encoding_blocks": blocks,
             "rows": rows, "energies": energies, "feasible": feasible, "penalty": penalty,
             "polynomial": binary_polynomial(energies)}

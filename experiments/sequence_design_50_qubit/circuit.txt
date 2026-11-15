@@ -1,0 +1,1 @@
+Circuit summary only: 50 qubits, 1 QAOA layer(s). H preparation, RZ/RZZ cost, RX mixing. Download QASM for every gate and fitted angle.

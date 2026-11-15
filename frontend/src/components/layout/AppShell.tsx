@@ -20,6 +20,7 @@ import { StatusPill } from '../ui'
 import { cn } from '../../lib/cn'
 
 const routeIcons: Record<string, LucideIcon> = {
+  '/sequence-qpu': Cpu,
   '/sequence-design': Dna,
   '/': LayoutDashboard,
   '/designer': Dna,

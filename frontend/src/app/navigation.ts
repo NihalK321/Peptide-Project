@@ -7,6 +7,12 @@ export type NavigationItem = {
 
 export const navigationItems: NavigationItem[] = [
   {
+    to: '/sequence-qpu',
+    label: 'Scalable QPU Lab',
+    shortLabel: 'QPU Lab',
+    description: 'Large sequence costs and IBM hardware',
+  },
+  {
     to: '/sequence-design',
     label: 'Sequence Design',
     shortLabel: 'Sequence Design',

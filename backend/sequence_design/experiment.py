@@ -5,7 +5,7 @@ from importlib.metadata import version
 import json
 from pathlib import Path
 
-from .models import SequenceDesignRequest
+from .models import SequenceDesignRequest, LargeSequenceRequest
 from .problem import build_problem
 from .quantum import build_sequence_circuit
 from .solver import optimize
@@ -21,9 +21,30 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, help="Optional SequenceDesignRequest JSON")
     parser.add_argument("--output", type=Path, default=Path("experiments/sequence_design_verified"))
+    parser.add_argument("--large", action="store_true", help="Analytical large-circuit model and bounded MPS simulation")
+    parser.add_argument("--prepare-only", action="store_true", help="With --large, export an unoptimized starting circuit without execution")
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Choose a new output directory; previous experiments are never overwritten.")
+    if args.prepare_only and not args.large:
+        parser.error("--prepare-only requires --large")
+    if args.large:
+        from .large_solver import run_large
+        request = LargeSequenceRequest.model_validate_json(args.input.read_text(encoding="utf-8")) if args.input else LargeSequenceRequest(
+            length=50, allowed_amino_acids=["A", "K"], goals={"hydropathy_min": 0, "hydropathy_max": 0}, shots=256)
+        result = run_large(request, export_only=args.prepare_only)
+        args.output.mkdir(parents=True)
+        (args.output / "input.json").write_text(request.model_dump_json(indent=2), encoding="utf-8")
+        (args.output / "result.json").write_text(json.dumps(result, indent=2, allow_nan=False), encoding="utf-8")
+        (args.output / "circuit.qasm").write_text(result["circuit"]["qasm"], encoding="utf-8")
+        (args.output / "circuit.txt").write_text(result["circuit"]["text"], encoding="utf-8")
+        summary = {"qubits": result["qubits"], "status": result["status"], "execution_backend": result["execution_backend"],
+                   "timings": result["timings"], "sampled_minus_heuristic_objective": result["sampled_minus_heuristic_objective"],
+                   "exact_optimum_available": False, "shots": result["shots"]}
+        (args.output / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+        print(json.dumps(summary, indent=2))
+        print(f"Large-mode JSON and QASM/text artifacts: {args.output.resolve()}. No oversized PNG is generated.")
+        return
     request = SequenceDesignRequest.model_validate_json(args.input.read_text(encoding="utf-8")) if args.input else demonstration_request()
     result = optimize(request)
     result["software_versions"] = {name: version(name) for name in ("qiskit", "numpy", "scipy", "biopython")}

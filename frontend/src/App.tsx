@@ -13,6 +13,7 @@ import {
   SequenceDesign,
 } from './features'
 import { NotFoundPage } from './pages/NotFoundPage'
+import { ScalableQPULab } from './features/sequenceDesign/ScalableQPULab'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route element={<AppShell />}>
           <Route index element={<ResearchDashboard />} />
           <Route path="sequence-design" element={<SequenceDesign />} />
+          <Route path="sequence-qpu" element={<ScalableQPULab />} />
           <Route path="designer" element={<PeptideDesigner />} />
           <Route path="optimization" element={<QuantumOptimizationEngine />} />
           <Route path="quantum-chemistry" element={<HeHQuantumChemistry />} />

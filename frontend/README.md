@@ -9,6 +9,11 @@ Use an existing template and choose which positions can vary, or select a length
 and specify fixed/variable residues. Apply changed templates/lengths before using
 the position editor. Each variable position has two distinct choices; this
 prototype supports up to eight variable positions within a 2-50-residue chain.
+For 9-50 variable positions, select the new bounded MPS or circuit-preparation
+execution mode, or click **Load 50-qubit example**. Large mode has stricter
+quadratic-objective constraints and shows a classical heuristic rather than a
+claimed exact optimum. Its CPU simulation timings are not QPU speedup figures;
+see [large-circuit documentation](../backend/sequence_design/LARGE_CIRCUITS.md).
 Allowed residues are not required to appear; list required residues separately.
 
 Set solution pH, target estimated charge, hydropathy range, and optional mutation
@@ -128,3 +133,19 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+
+
+Sequence Design also offers **Multi-choice sequence design** (the default for a
+new browser). Click **Load 20-amino-acid example**, or select that execution method,
+then check up to two editable positions. Choose each position's allowed amino
+acids using its checkboxes; **Select all globally allowed** applies the current
+global allowed/excluded alphabet to that position. Fixed positions retain their
+fixed residue. Two positions with all 20 choices use 10 qubits and represent 400
+valid sequences in 1,024 binary states. Unused codes receive a cost penalty and
+cannot become proposed peptides. Validate, then run QAOA; results include an exact
+classical reference and the circuit download. Existing binary and 50-qubit modes
+are still available through the execution-method selector. This mode uses local
+ideal simulation, not IBM hardware, and does not claim a quantum speedup.
+
+
+The Sequence Design page links to **Scalable QPU Lab** at `/sequence-qpu`. It supports ten editable sites, up to twenty amino acids each, an algebraic cost compiler, categorical classical search, bounded local MPS fitting, and explicit IBM Runtime preparation/submission/status/recovery. See [backend setup and limits](../backend/sequence_design/SCALABLE_QPU.md). Nothing submits automatically or consumes hardware runtime during local fitting.

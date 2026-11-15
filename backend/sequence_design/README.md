@@ -1,5 +1,11 @@
 # PepperQ sequence design (new workflow, contract 1.0)
 
+**Large-circuit addition:** opt-in analytical construction and bounded MPS
+simulation/circuit preparation now support up to **50 variable positions**.
+See [LARGE_CIRCUITS.md](LARGE_CIRCUITS.md) for objective restrictions, approximation,
+honest timing comparisons and reproduction. The documentation below describes
+the preserved small exact mode, whose limit remains eight variable positions.
+
 This module designs **one sequence** by choosing amino acids at positions.
 It does not select a blend. The old library, blend designer/optimizer, molecular
 analysis, and HeH+ VQE pages and APIs remain accessible and unchanged in meaning.
@@ -211,3 +217,37 @@ no-feasible-sample behavior, QASM round trip, and actual molecular SVG output.
 
 References: [Biopython ProtParam](https://biopython.org/docs/latest/api/Bio.SeqUtils.ProtParam.html),
 [Biopython charge model](https://biopython.org/docs/latest/api/Bio.SeqUtils.IsoelectricPoint.html).
+# Multi-choice sequence design
+
+The website's **Multi-choice sequence design** execution method supports up to
+two editable positions, each with 2–20 independently selected standard amino
+acids. Other positions remain fixed. Use **Load 20-amino-acid example** for an
+eight-residue template with two editable sites. Existing binary and large-circuit
+modes remain available.
+
+API endpoints: `POST /api/v1/sequence-design/multi/preview` and
+`POST /api/v1/sequence-design/multi/optimize`. Requests use the existing sequence
+request fields, with up to 20 unique entries in each position's `choices` array.
+The ordinary `/preview` and `/optimize` endpoints retain their binary limits.
+
+Each editable site uses `ceil(log2(number_of_choices))` qubits. Bits are assigned
+in ascending position order; within a block the first qubit is least significant.
+The decoded integer indexes that position's ordered choices. Twenty choices use
+five qubits; two sites use ten qubits, 1,024 encoded states and 400 valid sequences.
+The remaining 624 codes are invalid, never wrapped to an amino acid. They receive
+energy `max(valid_raw_objectives) + lambda`, where `lambda = range(valid_raw_objectives)+1`.
+Required residues and mutation budgets retain their existing dominating penalties.
+The implementation verifies that every infeasible energy exceeds every feasible energy.
+
+QAOA applies the complete diagonal cost and RX mixing. Parameter fitting applies
+the diagonal phases directly to Qiskit statevector amplitudes to avoid repeatedly
+synthesizing elementary gates; tests compare this evolution against the exported
+circuit. The cost may have higher-order terms and is not assumed to be a QUBO.
+The circuit remains downloadable as OpenQASM for IBM Composer. No hardware job is
+submitted. Exact classical references, unconditional success probabilities and
+infeasible shot counts include unused codes. Only feasible sequences actually
+observed in the simulated shots are proposed. This small enumerated experiment
+does not demonstrate quantum speedup.
+
+
+For up to ten editable multi-choice sites without global enumeration and an explicit IBM Runtime workflow, see [Scalable QPU Lab](SCALABLE_QPU.md).

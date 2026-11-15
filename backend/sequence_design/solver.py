@@ -31,12 +31,13 @@ def preview(request):
     problem = build_problem(request)
     return {"contract_version": "1.0", "provenance": "calculated", "request": request.model_dump(),
             "variables": problem["variables"], "domains": problem["domains"],
+            **encoding_metadata(problem, request),
             "qubits": len(problem["variables"]), "state_count": len(problem["rows"]),
             "feasible_state_count": int(problem["feasible"].sum()),
             "cost_representation": problem["polynomial"]["representation"],
             "cost_polynomial_degree": problem["polynomial"]["degree"],
             "template_properties": chemical_properties(request.template_sequence, request.goals.ph) if request.template_sequence else None,
-            "methods": METHOD, "limitations": LIMITATIONS}
+            "methods": methods_for(request), "limitations": limitations_for(request)}
 
 
 def optimize(request):
@@ -71,7 +72,7 @@ def optimize(request):
     reference = rows[exact_index]
     observed = sorted(np.flatnonzero(feasible & (samples > 0)), key=lambda index: (rows[index]["objective"], -samples[index], index))
     best = rows[observed[0]] if observed else None
-    optimal = feasible & np.array([np.isclose(row["objective"], reference["objective"], rtol=0, atol=1e-8) for row in rows])
+    optimal = feasible & np.array([row["objective"] is not None and np.isclose(row["objective"], reference["objective"], rtol=0, atol=1e-8) for row in rows])
     circuit = build_sequence_circuit(problem, fitted.x)
     artifacts = circuit_artifacts(circuit)
     return {"contract_version": "1.0", "experiment_id": str(uuid4()),
@@ -79,6 +80,7 @@ def optimize(request):
             "provenance": "simulated", "execution_backend": "qiskit_statevector",
             "status": "completed" if best else "no_feasible_sample",
             "request": request.model_dump(), "variables": problem["variables"], "domains": problem["domains"],
+            **encoding_metadata(problem, request),
             "best_sampled": best, "candidate_sequences": [rows[i] for i in observed[:10]],
             "classical_reference": reference,
             "template_properties": chemical_properties(request.template_sequence, request.goals.ph) if request.template_sequence else None,
@@ -98,4 +100,27 @@ def optimize(request):
             "optimizer": {"method": "COBYLA", "evaluations": int(fitted.nfev),
                           "converged": bool(fitted.success), "message": str(fitted.message)},
             "states": rows, "elapsed_seconds": perf_counter() - started,
-            "methods": METHOD, "limitations": LIMITATIONS}
+            "methods": methods_for(request), "limitations": limitations_for(request)}
+
+
+def encoding_metadata(problem, request):
+    if request.MAX_CHOICES == 2:
+        return {}
+    return {"encoding": {"kind": "compact_binary_blocks", "blocks": problem["encoding_blocks"],
+                         "valid_sequence_count": sum(row["valid_encoding"] for row in problem["rows"]),
+                         "invalid_code_count": sum(not row["valid_encoding"] for row in problem["rows"])}}
+
+
+def methods_for(request):
+    if request.MAX_CHOICES == 2:
+        return METHOD
+    return {**METHOD,
+            "bit_order": "Rightmost bit is qubit 0. Each position uses a little-endian block; its integer code indexes that position's choices. Unused codes are invalid, never wrapped or mapped to a residue.",
+            "penalty": "lambda = range(valid-sequence raw objectives)+1. Valid codes use objective+lambda*hard-constraint violation; unused codes use max(valid-sequence objective)+lambda. Every infeasible energy exceeds every feasible energy."}
+
+
+def limitations_for(request):
+    if request.MAX_CHOICES == 2:
+        return LIMITATIONS
+    return [line for line in LIMITATIONS if "eight binary" not in line] + [
+        "Multi-choice mode allows two editable positions with up to 20 residues each: at most 10 qubits, 1024 binary states, and 400 valid sequences. Unused codes reduce valid-sample probability; this is a bounded demonstration, not quantum advantage."]

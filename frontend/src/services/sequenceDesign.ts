@@ -25,6 +25,10 @@ export interface SequenceRequest {
   max_iterations: number
   shots: number
   seed: number
+  mps_bond_dimension?: number
+  training_shots?: number
+  initial_gamma?: number
+  initial_beta?: number
 }
 export interface SequenceProperties {
   length: number
@@ -53,7 +57,14 @@ export interface SequenceCandidate {
   count: number
   observed_frequency: number
 }
+export interface SequenceEncoding {
+  kind: string
+  valid_sequence_count: number
+  invalid_code_count: number
+  blocks: { position: number; qubits: number[]; choices: string[]; unused_codes: number }[]
+}
 export interface SequencePreview {
+  encoding?: SequenceEncoding
   contract_version: string
   provenance: string
   request: SequenceRequest
@@ -69,6 +80,7 @@ export interface SequencePreview {
   limitations: string[]
 }
 export interface SequenceResult {
+  encoding?: SequenceEncoding
   contract_version: string
   experiment_id: string
   created_at: string
@@ -89,10 +101,40 @@ export interface SequenceResult {
   parameters: number[]
   circuit: { qasm: string; text: string; depth: number; gate_counts: Record<string, number> }
   optimizer: { method: string; evaluations: number; converged: boolean; message: string }
-  states: SequenceCandidate[]
+  states: (SequenceCandidate | { bitstring: string; valid_encoding: false; sequence: null; objective: null; feasible: false; constraint_violation: number; penalized_objective: number; probability: number; count: number; observed_frequency: number })[]
   elapsed_seconds: number
   methods: Record<string, string>
   limitations: string[]
+}
+
+export interface LargeSequenceResult {
+  contract_version: '1.1'
+  experiment_id: string
+  status: 'circuit_prepared' | 'completed'
+  provenance: 'prepared' | 'simulated_approximate'
+  execution_backend: string
+  request: SequenceRequest
+  variables: SequencePreview['variables']
+  qubits: number
+  state_space_size: number
+  best_sampled: Omit<SequenceCandidate, 'probability' | 'observed_frequency' | 'penalized_objective'> & { observed_frequency: number } | null
+  candidate_sequences: NonNullable<LargeSequenceResult['best_sampled']>[]
+  classical_baseline: { sequence: string; objective: number; method: string; evaluations: number }
+  exact_optimum_available: false
+  optimality_gap: null
+  sampled_minus_heuristic_objective: number | null
+  counts: Record<string, number>
+  shots: number
+  history: { evaluation: number; sampled_expected_objective: number }[]
+  parameters: number[]
+  circuit: SequenceResult['circuit']
+  qubo: { constant: number; matrix_upper_triangle: number[][]; convention: string }
+  validation: { method: string; checked_assignments: number; maximum_error: number }
+  optimizer: { evaluations: number; converged: boolean; message: string } | null
+  simulator: { version: string; method: string; max_bond_dimension: number; truncation_threshold: number; training_shots: number; certified_error_bound: null } | null
+  elapsed_seconds: number
+  limitations: string[]
+  timings: { formulation_seconds: number; qaoa_simulation_fit_and_sampling_seconds: number | null; classical_heuristic_seconds: number; circuit_export_seconds: number; comparison_context: string }
 }
 
 const client = new ApiClient()
@@ -106,9 +148,14 @@ async function post<T>(path: string, body: unknown): Promise<T> {
   }
 }
 export const sequenceDesign = {
+  previewMulti: (request: SequenceRequest) => post<SequencePreview>('multi/preview', request),
+  optimizeMulti: (request: SequenceRequest) => post<SequenceResult>('multi/optimize', request),
   preview: (request: SequenceRequest) => post<SequencePreview>('preview', request),
   optimize: (request: SequenceRequest) => post<SequenceResult>('optimize', request),
   structure: (sequence: string) => post<{ sequence: string; svg: string; provenance: string; model: string }>('structure', { sequence }),
+  previewLarge: (request: SequenceRequest) => post<SequencePreview>('large/preview', request),
+  optimizeLarge: (request: SequenceRequest) => post<LargeSequenceResult>('large/optimize', request),
+  exportLarge: (request: SequenceRequest) => post<LargeSequenceResult>('large/export', request),
 }
 
 export function requestSignature(value: unknown): string {

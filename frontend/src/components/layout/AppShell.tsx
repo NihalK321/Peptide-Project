@@ -33,7 +33,7 @@ const routeIcons: Record<string, LucideIcon> = {
 
 type ApiConnection = {
   label: string
-  tone: 'teal' | 'amber' | 'slate'
+  tone: 'blue' | 'amber' | 'slate'
 }
 
 const checkingApiConnection: ApiConnection = { label: 'API checking', tone: 'slate' }
@@ -48,7 +48,7 @@ function useApiConnection(): ApiConnection {
       .then((response) => {
         if (!controller.signal.aborted) {
           setConnection(response.status === 'ok'
-            ? { label: 'API connected', tone: 'teal' }
+            ? { label: 'API connected', tone: 'blue' }
             : { label: 'API unavailable', tone: 'amber' })
         }
       })

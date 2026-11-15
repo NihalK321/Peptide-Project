@@ -1,5 +1,8 @@
 # Whole-peptide blend research, contract 1.0
 
+For the validated matrix derivation, descriptor handoff, response contract,
+presentation exports, and reproduction commands, see [QUBO_CONTRACT.md](QUBO_CONTRACT.md).
+
 This module is independent of the existing bond-angle optimizer. Here each bit
 selects a **whole peptide**, with the rightmost bit selecting candidate 0.
 The initial experiment is 8 candidates, select 3: 256 bitstrings, 56 feasible

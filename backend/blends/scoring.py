@@ -42,11 +42,15 @@ def descriptors(sequence, ph):
 
 def score_candidate(record, goals: ChemicalGoals):
     values = descriptors(record["sequence"], goals.ph)
+    return {**record, **values, **score_descriptors(values, goals), "provenance": "calculated", "ph": goals.ph}
+
+
+def score_descriptors(values, goals: ChemicalGoals):
+    """The same normalized research score for calculated or supplied descriptors."""
     charge_score = 1 / (1 + abs(values["charge"] - goals.target_charge) / 2)
     hydropathy_score = 1 / (1 + abs(values["hydropathy"] - goals.target_hydropathy))
     score = (goals.charge_weight * charge_score + goals.hydropathy_weight * hydropathy_score) / (goals.charge_weight + goals.hydropathy_weight)
-    return {**record, **values, "charge_score": charge_score, "hydropathy_score": hydropathy_score,
-            "score": score, "provenance": "calculated", "ph": goals.ph}
+    return {"charge_score": charge_score, "hydropathy_score": hydropathy_score, "score": score}
 
 
 def pair_overlap(first, second):

@@ -1,0 +1,313 @@
+{
+  "catalog_request": {
+    "ph": 7.4,
+    "target_charge": 0,
+    "target_hydropathy": 0,
+    "charge_weight": 0.5,
+    "hydropathy_weight": 0.5,
+    "diversity_weight": 0.3,
+    "candidate_ids": [
+      "dbaasp:11246",
+      "dbaasp:15524",
+      "dbaasp:19458",
+      "dbaasp:3225",
+      "dbaasp:5994",
+      "dbaasp:4338",
+      "dbaasp:21999",
+      "dbaasp:15642"
+    ],
+    "blend_size": 3,
+    "layers": 1,
+    "max_iterations": 60,
+    "shots": 2048,
+    "seed": 42
+  },
+  "candidate_snapshot": [
+    {
+      "id": "dbaasp:11246",
+      "name": "Stylisin 2",
+      "sequence": "PIPFPPY",
+      "source": "DBAASP",
+      "accession": "dbaasp:11246",
+      "source_url": "https://dbaasp.org/peptide-card?id=11246",
+      "retrieved_at": null,
+      "source_version": null,
+      "charge": -0.10117752974096095,
+      "hydropathy": -0.057142857142857224,
+      "mass_da": 829.9807,
+      "charge_score": 0.9518472245639165,
+      "hydropathy_score": 0.9459459459459459,
+      "score": 0.9488965852549311,
+      "provenance": "calculated",
+      "ph": 7.4
+    },
+    {
+      "id": "dbaasp:15524",
+      "name": "JEV Ep (401\u2013428)",
+      "sequence": "STLGKAFSTTLKGAQRLAALGDTAWDFG",
+      "source": "DBAASP",
+      "accession": "dbaasp:15524",
+      "source_url": "https://dbaasp.org/peptide-card?id=15524",
+      "retrieved_at": null,
+      "source_version": null,
+      "charge": 0.24908497711777855,
+      "hydropathy": 0.003571428571428547,
+      "mass_da": 2884.2024,
+      "charge_score": 0.8892505264798918,
+      "hydropathy_score": 0.99644128113879,
+      "score": 0.9428459038093409,
+      "provenance": "calculated",
+      "ph": 7.4
+    },
+    {
+      "id": "dbaasp:19458",
+      "name": "SARS-CoV S (668\u2013679), SP-10",
+      "sequence": "STSQKSIVAYTM",
+      "source": "DBAASP",
+      "accession": "dbaasp:19458",
+      "source_url": "https://dbaasp.org/peptide-card?id=19458",
+      "retrieved_at": null,
+      "source_version": null,
+      "charge": 0.24821712704114218,
+      "hydropathy": -0.008333333333333323,
+      "mass_da": 1315.4922,
+      "charge_score": 0.8895937923185299,
+      "hydropathy_score": 0.9917355371900827,
+      "score": 0.9406646647543062,
+      "provenance": "calculated",
+      "ph": 7.4
+    },
+    {
+      "id": "dbaasp:3225",
+      "name": "Antimicrobial peptide 1, Cn-AMP1",
+      "sequence": "SVAGRAQGM",
+      "source": "DBAASP",
+      "accession": "dbaasp:3225",
+      "source_url": "https://dbaasp.org/peptide-card?id=3225",
+      "retrieved_at": null,
+      "source_version": null,
+      "charge": 0.25320319414234005,
+      "hydropathy": 0.01111111111111112,
+      "mass_da": 875.9929,
+      "charge_score": 0.8876252284744699,
+      "hydropathy_score": 0.989010989010989,
+      "score": 0.9383181087427295,
+      "provenance": "calculated",
+      "ph": 7.4
+    },
+    {
+      "id": "dbaasp:5994",
+      "name": "HIV-1 RT (516-535)",
+      "sequence": "ELVNQIIEQLIKKEKVYLAW",
+      "source": "DBAASP",
+      "accession": "dbaasp:5994",
+      "source_url": "https://dbaasp.org/peptide-card?id=5994",
+      "retrieved_at": null,
+      "source_version": null,
+      "charge": -0.34037942946183053,
+      "hydropathy": 0.010000000000000004,
+      "mass_da": 2457.9038,
+      "charge_score": 0.8545622879875933,
+      "hydropathy_score": 0.9900990099009901,
+      "score": 0.9223306489442917,
+      "provenance": "calculated",
+      "ph": 7.4
+    },
+    {
+      "id": "dbaasp:4338",
+      "name": "Hemoglobin-beta (116-148), HbbetaP-1",
+      "sequence": "AANFGPSVFTPEVHETWQKFLNVVVAALGKQYH",
+      "source": "DBAASP",
+      "accession": "dbaasp:4338",
+      "source_url": "https://dbaasp.org/peptide-card?id=4338",
+      "retrieved_at": null,
+      "source_version": null,
+      "charge": -0.324220075838598,
+      "hydropathy": 0.018181818181818174,
+      "mass_da": 3686.1345,
+      "charge_score": 0.8605037108107688,
+      "hydropathy_score": 0.9821428571428572,
+      "score": 0.9213232839768131,
+      "provenance": "calculated",
+      "ph": 7.4
+    },
+    {
+      "id": "dbaasp:21999",
+      "name": "DBAASPS_21999",
+      "sequence": "MRQEMASVRLVSW",
+      "source": "DBAASP",
+      "accession": "dbaasp:21999",
+      "source_url": "https://dbaasp.org/peptide-card?id=21999",
+      "retrieved_at": null,
+      "source_version": null,
+      "charge": 0.28595900722855605,
+      "hydropathy": -0.05384615384615385,
+      "mass_da": 1592.8838999999998,
+      "charge_score": 0.8749063275744187,
+      "hydropathy_score": 0.948905109489051,
+      "score": 0.9119057185317349,
+      "provenance": "calculated",
+      "ph": 7.4
+    },
+    {
+      "id": "dbaasp:15642",
+      "name": "SARS-CoV Sgp (470\u2013489)[N479K]",
+      "sequence": "PALNCYWPLKDYGFYTTSGI",
+      "source": "DBAASP",
+      "accession": "dbaasp:15642",
+      "source_url": "https://dbaasp.org/peptide-card?id=15642",
+      "retrieved_at": null,
+      "source_version": null,
+      "charge": -0.1327511911381496,
+      "hydropathy": -0.13500000000000004,
+      "mass_da": 2309.5926,
+      "charge_score": 0.9377558940350157,
+      "hydropathy_score": 0.8810572687224669,
+      "score": 0.9094065813787413,
+      "provenance": "calculated",
+      "ph": 7.4
+    }
+  ],
+  "shortlist_method": "Classical ranking by individual chemical-property score; may exclude the best diverse blend outside this pool.",
+  "descriptor_replay": {
+    "candidates": [
+      {
+        "id": "dbaasp:11246",
+        "name": "Stylisin 2",
+        "sequence": "PIPFPPY",
+        "chemical_form": "linear_free_termini",
+        "source": "DBAASP",
+        "source_url": "https://dbaasp.org/peptide-card?id=11246",
+        "descriptors": {
+          "charge": -0.10117752974096095,
+          "hydropathy": -0.057142857142857224,
+          "mass_da": 829.9807,
+          "ph": 7.4,
+          "method": "Biopython 1.88",
+          "provenance": "calculated"
+        }
+      },
+      {
+        "id": "dbaasp:15524",
+        "name": "JEV Ep (401\u2013428)",
+        "sequence": "STLGKAFSTTLKGAQRLAALGDTAWDFG",
+        "chemical_form": "linear_free_termini",
+        "source": "DBAASP",
+        "source_url": "https://dbaasp.org/peptide-card?id=15524",
+        "descriptors": {
+          "charge": 0.24908497711777855,
+          "hydropathy": 0.003571428571428547,
+          "mass_da": 2884.2024,
+          "ph": 7.4,
+          "method": "Biopython 1.88",
+          "provenance": "calculated"
+        }
+      },
+      {
+        "id": "dbaasp:19458",
+        "name": "SARS-CoV S (668\u2013679), SP-10",
+        "sequence": "STSQKSIVAYTM",
+        "chemical_form": "linear_free_termini",
+        "source": "DBAASP",
+        "source_url": "https://dbaasp.org/peptide-card?id=19458",
+        "descriptors": {
+          "charge": 0.24821712704114218,
+          "hydropathy": -0.008333333333333323,
+          "mass_da": 1315.4922,
+          "ph": 7.4,
+          "method": "Biopython 1.88",
+          "provenance": "calculated"
+        }
+      },
+      {
+        "id": "dbaasp:3225",
+        "name": "Antimicrobial peptide 1, Cn-AMP1",
+        "sequence": "SVAGRAQGM",
+        "chemical_form": "linear_free_termini",
+        "source": "DBAASP",
+        "source_url": "https://dbaasp.org/peptide-card?id=3225",
+        "descriptors": {
+          "charge": 0.25320319414234005,
+          "hydropathy": 0.01111111111111112,
+          "mass_da": 875.9929,
+          "ph": 7.4,
+          "method": "Biopython 1.88",
+          "provenance": "calculated"
+        }
+      },
+      {
+        "id": "dbaasp:5994",
+        "name": "HIV-1 RT (516-535)",
+        "sequence": "ELVNQIIEQLIKKEKVYLAW",
+        "chemical_form": "linear_free_termini",
+        "source": "DBAASP",
+        "source_url": "https://dbaasp.org/peptide-card?id=5994",
+        "descriptors": {
+          "charge": -0.34037942946183053,
+          "hydropathy": 0.010000000000000004,
+          "mass_da": 2457.9038,
+          "ph": 7.4,
+          "method": "Biopython 1.88",
+          "provenance": "calculated"
+        }
+      },
+      {
+        "id": "dbaasp:4338",
+        "name": "Hemoglobin-beta (116-148), HbbetaP-1",
+        "sequence": "AANFGPSVFTPEVHETWQKFLNVVVAALGKQYH",
+        "chemical_form": "linear_free_termini",
+        "source": "DBAASP",
+        "source_url": "https://dbaasp.org/peptide-card?id=4338",
+        "descriptors": {
+          "charge": -0.324220075838598,
+          "hydropathy": 0.018181818181818174,
+          "mass_da": 3686.1345,
+          "ph": 7.4,
+          "method": "Biopython 1.88",
+          "provenance": "calculated"
+        }
+      },
+      {
+        "id": "dbaasp:21999",
+        "name": "DBAASPS_21999",
+        "sequence": "MRQEMASVRLVSW",
+        "chemical_form": "linear_free_termini",
+        "source": "DBAASP",
+        "source_url": "https://dbaasp.org/peptide-card?id=21999",
+        "descriptors": {
+          "charge": 0.28595900722855605,
+          "hydropathy": -0.05384615384615385,
+          "mass_da": 1592.8838999999998,
+          "ph": 7.4,
+          "method": "Biopython 1.88",
+          "provenance": "calculated"
+        }
+      },
+      {
+        "id": "dbaasp:15642",
+        "name": "SARS-CoV Sgp (470\u2013489)[N479K]",
+        "sequence": "PALNCYWPLKDYGFYTTSGI",
+        "chemical_form": "linear_free_termini",
+        "source": "DBAASP",
+        "source_url": "https://dbaasp.org/peptide-card?id=15642",
+        "descriptors": {
+          "charge": -0.1327511911381496,
+          "hydropathy": -0.13500000000000004,
+          "mass_da": 2309.5926,
+          "ph": 7.4,
+          "method": "Biopython 1.88",
+          "provenance": "calculated"
+        }
+      }
+    ],
+    "goals": {
+      "ph": 7.4,
+      "target_charge": 0,
+      "target_hydropathy": 0,
+      "charge_weight": 0.5,
+      "hydropathy_weight": 0.5,
+      "diversity_weight": 0.3
+    },
+    "selection_count": 3
+  }
+}

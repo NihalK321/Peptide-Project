@@ -2,6 +2,8 @@
 
 from math import comb
 from time import perf_counter
+from datetime import datetime, timezone
+from uuid import uuid4
 
 import numpy as np
 from qiskit import qasm2
@@ -9,7 +11,9 @@ from scipy.optimize import minimize
 
 from .models import BlendRequest, ShortlistRequest
 from .quantum import build_blend_circuit, probabilities, qubo_to_ising
-from .scoring import LIMITATIONS, METHOD, pair_overlap, score_candidate
+from .scoring import LIMITATIONS, METHOD, score_candidate
+from .qubo import build_qubo, DescriptorExperiment
+from .validation import verify_qubo
 
 
 def shortlist(catalog, request: ShortlistRequest):
@@ -32,28 +36,8 @@ def shortlist(catalog, request: ShortlistRequest):
 
 
 def make_qubo(candidates, blend_size, diversity_weight):
-    size = len(candidates)
-    scores = np.array([candidate["score"] for candidate in candidates])
-    overlap = np.zeros((size, size))
-    for first in range(size):
-        for second in range(first + 1, size):
-            overlap[first, second] = pair_overlap(candidates[first]["sequence"], candidates[second]["sequence"])
-
-    # Larger than the full possible range of the unpenalized objective:
-    # even the best infeasible state is worse than any feasible state.
-    penalty = float(scores.sum() + diversity_weight * overlap.sum() + 1)
-    constant = penalty * blend_size ** 2
-    linear = -scores + penalty * (1 - 2 * blend_size)
-    quadratic = np.zeros_like(overlap)
-    for first in range(size):
-        for second in range(first + 1, size):
-            quadratic[first, second] = diversity_weight * overlap[first, second] + 2 * penalty
-    states = ((np.arange(2 ** size)[:, None] >> np.arange(size)) & 1).astype(float)
-    raw_cost = -states @ scores + diversity_weight * np.einsum("bi,ij,bj->b", states, overlap, states)
-    energies = constant + states @ linear + np.einsum("bi,ij,bj->b", states, quadratic, states)
-    return {"constant": float(constant), "linear": linear, "quadratic": quadratic,
-            "penalty": penalty, "overlap": overlap, "states": states,
-            "raw_cost": raw_cost, "energies": energies}
+    """Keep the existing public helper; delegate its math to validated inputs."""
+    return build_qubo(candidates, blend_size, diversity_weight)
 
 
 def optimize_blend(catalog, request: BlendRequest):
@@ -63,10 +47,32 @@ def optimize_blend(catalog, request: BlendRequest):
     missing = [identifier for identifier in request.candidate_ids if identifier not in by_id]
     if missing:
         raise ValueError("Some candidate IDs are unavailable or require unsupported chemical modifications; refresh the pool.")
-    candidates = [score_candidate(by_id[identifier], request) for identifier in request.candidate_ids]
-    if any(len(candidate["sequence"]) > 60 for candidate in candidates):
+    if any(len(by_id[identifier]["sequence"]) > 60 for identifier in request.candidate_ids):
         raise ValueError("Blend descriptor calculations support sequences of at most 60 residues.")
-    model = make_qubo(candidates, request.blend_size, request.diversity_weight)
+    candidates = [score_candidate(by_id[identifier], request) for identifier in request.candidate_ids]
+    return solve_scored_candidates(candidates, request, stats, started=started)
+
+
+def optimize_descriptor_input(experiment: DescriptorExperiment):
+    """Backend-only handoff; supplied descriptors retain their own provenance."""
+    result = solve_scored_candidates(experiment.scored_candidates(), experiment.request(),
+        {"input_source": "explicit_descriptor_contract", "descriptors_independently_verified": False},
+        pair_terms=experiment.pair_terms)
+    result["scoring_method"] = {**result["scoring_method"],
+        "library": "Caller-supplied descriptors; original methods and provenance are retained per candidate",
+        "charge": "Supplied net charge in e at the requested pH; not independently verified",
+        "hydropathy": "Supplied dimensionless Kyte-Doolittle GRAVY; not independently verified",
+        "mass": "Optional supplied average molecular mass in Da; not used in scoring"}
+    return result
+
+
+def solve_scored_candidates(candidates, request: BlendRequest, stats, pair_terms=None, started=None):
+    """Reuse the existing QAOA circuit, COBYLA fitting and simulated shot sampling."""
+    started = perf_counter() if started is None else started
+    if [candidate["id"] for candidate in candidates] != request.candidate_ids:
+        raise ValueError("Candidate order must match request IDs exactly.")
+    model = build_qubo(candidates, request.blend_size, request.diversity_weight, pair_terms)
+    validation, exact_subsets = verify_qubo(model, candidates, request.blend_size, request.diversity_weight)
     energies = model["energies"]
     feasible = model["states"].sum(axis=1) == request.blend_size
     feasible_indices = np.flatnonzero(feasible)
@@ -123,6 +129,8 @@ def optimize_blend(catalog, request: BlendRequest):
             expanded.append(instruction.operation, qubits)
 
     return {"contract_version": "1.0", "provenance": "simulated", "execution_backend": "qiskit_statevector",
+        "experiment_id": str(uuid4()), "created_at": datetime.now(timezone.utc).isoformat(),
+        "candidate_ids": request.candidate_ids, "validation": validation,
         "catalog": stats, "goals": request.model_dump(), "candidates": candidates,
         "selected_blend": selection(best_index), "classical_reference": selection(exact_index),
         "benchmark": {"pool_size": size, "qubits": size, "bitstring_count": 2 ** size,
@@ -134,15 +142,34 @@ def optimize_blend(catalog, request: BlendRequest):
             "uniform_feasible_probability": comb(size, request.blend_size) / 2 ** size,
             "sampled_objective_gap": None if best_index is None else float(model["raw_cost"][best_index] - exact_cost)},
         "counts": {format(i, f"0{size}b"): int(count) for i, count in enumerate(samples) if count},
+        "sampling": {"method": "seeded multinomial sampling of the ideal Qiskit statevector distribution",
+            "feasible_counts": {format(i, f"0{size}b"): int(samples[i]) for i in np.flatnonzero(feasible & (samples > 0))},
+            "infeasible_counts": {format(i, f"0{size}b"): int(samples[i]) for i in np.flatnonzero(~feasible & (samples > 0))},
+            "feasible_shots": int(samples[feasible].sum()), "infeasible_shots": int(samples[~feasible].sum()),
+            "observed_frequencies": {format(i, f"0{size}b"): int(samples[i]) / request.shots for i in np.flatnonzero(samples)}},
         "probabilities": {format(i, f"0{size}b"): float(value) for i, value in enumerate(distribution)},
         "qubo": {"constant": model["constant"], "linear": model["linear"].tolist(),
+            "matrix_upper_triangle": model["matrix_upper_triangle"].tolist(),
+            "evaluation_convention": "constant + x.T @ matrix_upper_triangle @ x; each i<j pair occurs once",
+            "candidate_ids_in_qubit_order": request.candidate_ids,
+            "pair_method": "sequence_bigram_jaccard" if pair_terms is None else "explicit_redundancy_terms",
+            "explicit_pair_terms": None if pair_terms is None else [term.model_dump() for term in pair_terms],
             "quadratic_upper_triangle": model["quadratic"].tolist(), "cardinality_penalty": model["penalty"],
             "pair_overlap_upper_triangle": model["overlap"].tolist()},
         "ising": {"offset": offset, "fields": fields.tolist(), "couplings_upper_triangle": couplings.tolist()},
+        "classical_feasible_selections": exact_subsets,
+        "circuit_metadata": {"implementation": "backend.blends.quantum.build_blend_circuit",
+            "qubits": size, "layers": request.layers, "parameter_count": len(fitted.x),
+            "gate_counts": dict(circuit.count_ops()), "energy_scale": energy_scale,
+            "phase_convention": "exp(-i*gamma*(H-offset*I)/energy_scale); offset omitted as a global phase",
+            "optimizer_objective": "expectation of (QUBO_energy-min(QUBO_energy))/energy_scale",
+            "classical_optimizer": "scipy.optimize.minimize COBYLA",
+            "parameter_order": "gamma_0,beta_0,gamma_1,beta_1,...",
+            "probability_provenance": "ideal_statevector", "counts_provenance": "simulated_shots"},
         "circuit_qasm": qasm2.dumps(expanded), "parameters": fitted.x.tolist(),
         "circuit_depth": circuit.depth(), "history": history,
         "converged": bool(fitted.success), "optimizer_message": str(fitted.message),
         "evaluations": int(fitted.nfev), "shots": request.shots, "elapsed_seconds": perf_counter() - started,
         "bit_order": "Rightmost bit selects candidate 0; 1 means include the whole peptide.",
-        "scoring_method": METHOD, "limitations": LIMITATIONS,
+        "scoring_method": {**METHOD, **({"pair_penalty": "Explicit normalized sequence-redundancy penalties; see qubo.explicit_pair_terms"} if pair_terms is not None else {})}, "limitations": LIMITATIONS,
         "status": "completed" if best_index is not None else "no_feasible_sample"}

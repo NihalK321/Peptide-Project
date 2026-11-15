@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import type { LucideIcon } from 'lucide-react'
 import {
   Atom,
-  Beaker,
   Cpu,
   Dna,
   LayoutDashboard,
@@ -17,11 +16,9 @@ import { cn } from '../../lib/cn'
 
 const routeIcons: Record<string, LucideIcon> = {
   '/sequence-qpu': Cpu,
-  '/sequence-design': Dna,
   '/': LayoutDashboard,
   '/designer': Dna,
   '/optimization': Atom,
-  '/chemistry': Beaker,
 }
 
 type ApiConnection = {

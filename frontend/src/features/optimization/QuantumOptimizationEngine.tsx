@@ -62,9 +62,9 @@ export function QuantumOptimizationEngine() {
       <SectionHeading eyebrow="Step 2 · Whole-peptide QAOA" title="Blend Optimization"
         description="Run the existing Qiskit optimizer on the candidate pool and chemical goals selected in Peptide Designer. Compare the sampled blend with the exact optimum under the same objective."
         action={<StatusPill tone={busy ? 'amber' : pool.length ? 'blue' : 'slate'}>{busy ? 'Simulation running' : pool.length ? 'Candidate draft loaded' : 'Choose candidates first'}</StatusPill>} />
-      <Link className="inline-flex items-center gap-2 text-sm font-semibold text-blue-800 underline" to="/designer"><ArrowLeft size={15} /> Edit candidates and chemical goals</Link>
+      <Link className="inline-flex items-center gap-2 text-sm font-semibold text-blue-800 underline" to="/designer?tab=library"><ArrowLeft size={15} /> Edit candidates and chemical goals</Link>
       <HardwareExecutionControl execution={hardware} disabled={busy} />
-      {!pool.length ? <EmptyState title="No candidate pool yet" detail="Open Peptide Designer, set chemical targets, and choose eight supported peptides manually or with Auto-shortlist 8. Then continue here to run QAOA." action={<Link className="font-semibold text-blue-800 underline" to="/designer">Choose peptides in Designer</Link>} /> : (
+      {!pool.length ? <EmptyState title="No candidate pool yet" detail="Open Peptide Designer, set chemical targets, and choose eight supported peptides manually or with Auto-shortlist 8. Then continue here to run QAOA." action={<Link className="font-semibold text-blue-800 underline" to="/designer?tab=library">Choose peptides in Designer</Link>} /> : (
         <>
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             <MetricCard label="Whole-peptide variables" value={`${pool.length} qubits`} detail="One bit selects one whole peptide" />

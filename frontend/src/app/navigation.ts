@@ -13,12 +13,6 @@ export const navigationItems: NavigationItem[] = [
     description: 'Large sequence costs and IBM hardware',
   },
   {
-    to: '/sequence-design',
-    label: 'Sequence Design',
-    shortLabel: 'Sequence Design',
-    description: 'Design residue choices with QAOA',
-  },
-  {
     to: '/',
     label: 'Research Dashboard',
     shortLabel: 'Dashboard',
@@ -28,18 +22,12 @@ export const navigationItems: NavigationItem[] = [
     to: '/designer',
     label: 'Peptide Designer',
     shortLabel: 'Designer',
-    description: 'Candidate pools and sequence variants',
+    description: 'Design sequences or browse known peptides',
   },
   {
     to: '/optimization',
     label: 'Blend Optimization',
     shortLabel: 'Optimization',
     description: 'QAOA subset-selection workspace',
-  },
-  {
-    to: '/chemistry',
-    label: 'Molecular Analysis',
-    shortLabel: 'Chemistry',
-    description: 'Descriptors, proxies, and structures',
   },
 ]

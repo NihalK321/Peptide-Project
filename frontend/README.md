@@ -152,3 +152,16 @@ The Sequence Design page links to **Scalable QPU Lab** at `/sequence-qpu`. It su
 
 
 Active quantum workflows share a **Use IBM quantum computer (QPU)** checkbox. After one-time server account setup, enter a backend name, check the box and press the page Run button. Settings are reused across pages. Supported routes are sequence, scalable sequence, blend, torsion-grid and selected-geometry HeH+ energy estimation. Existing small solvers use local parameter fitting followed by hardware verification; this is not all-hardware adaptive training. Checking the box alone never submits. Quick jobs use `/api/v1/hardware/run`; recoverable UUIDs are saved before networking. Demo-only comparison/noise pages remain fixtures. See [setup and execution boundaries](../backend/sequence_design/SCALABLE_QPU.md).
+
+
+### Unified Peptide Designer
+
+`/designer` now combines the sequence editor (default **Design a Sequence** tab)
+and the known-peptide catalog (**Browse Known Peptides**, `/designer?tab=library`).
+**Use as template** opens a supported 2-50 residue catalog sequence in the editor,
+locks every position, preserves chemical goals and clears previous residue
+restrictions/mutation budgets. It never truncates a sequence or runs QAOA.
+Both tabs stay mounted so unsent edits and catalog state survive tab changes.
+Blend selection remains in the library tab and runs on the separate Blend
+Optimization page. Additional library controls and demo previews remain in a
+collapsed disclosure. Older `/sequence-design` links redirect to `/designer`.

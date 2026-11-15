@@ -74,7 +74,7 @@ export function ScalableQPULab() {
   ]
   return <div className="space-y-5">
     <SectionHeading eyebrow="Scalable sequence experiment" title="Scalable QPU Lab" description="Compile position-based costs without enumerating every peptide. Run a bounded local experiment, or explicitly submit a parameter sweep to IBM hardware." />
-    <Link to="/sequence-design" className="text-sm text-blue-800 underline">Return to the exact sequence designer and existing modes</Link>
+    <Link to="/designer" className="text-sm text-blue-800 underline">Return to Peptide Designer</Link>
     <Panel className="p-4 text-sm leading-6">Ten editable positions can each offer up to 20 amino acids, using up to 50 qubits. Search-space size alone is not a speedup. The full alphabet creates a long circuit; inspect gates and device routing before committing QPU runtime. Objectives remain estimated charge, hydropathy and an optional adjacent-repeat preference.</Panel>
     <HardwareExecutionControl execution={hardware} disabled={!!busy} />
     <fieldset disabled={!!busy} className="min-w-0 space-y-5">

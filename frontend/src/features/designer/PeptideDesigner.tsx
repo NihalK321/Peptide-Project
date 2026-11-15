@@ -7,6 +7,7 @@ import { MockDataNotice } from '../shared/MockDataNotice'
 import { CandidatePoolTable } from './CandidatePoolTable'
 import { PeptideLibraryPanel } from './PeptideLibraryPanel'
 import { PeptideBlendResearch } from './PeptideBlendResearch'
+import type { BlendCandidate } from '../../services/blendResearch'
 
 const aminoAcids = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
 
@@ -24,7 +25,7 @@ function replaceResidue(sequence: string, position: number, residue: string): st
   return `${sequence.slice(0, position - 1)}${residue}${sequence.slice(position)}`
 }
 
-export function PeptideDesigner() {
+export function PeptideDesigner({ embedded = false, onUseTemplate }: { embedded?: boolean; onUseTemplate?: (candidate: BlendCandidate) => void }) {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(
     () => new Set(demoCandidates.filter((candidate) => candidate.selected).map((candidate) => candidate.id)),
   )
@@ -81,15 +82,17 @@ export function PeptideDesigner() {
 
   return (
     <div className="space-y-6">
-      <SectionHeading
+      {!embedded && <SectionHeading
         eyebrow="Candidate configuration"
         title="Peptide Designer"
         description="Choose known peptide candidates and chemical goals, then continue to Blend Optimization to run QAOA on the selected pool."
         action={<StatusPill tone="blue">Database + quantum research</StatusPill>}
-      />
+      />}
 
-      <PeptideBlendResearch />
+      <PeptideBlendResearch onUseTemplate={onUseTemplate} />
 
+      <details className="space-y-4 rounded-lg border border-slate-200 p-4">
+      <summary className="cursor-pointer text-sm font-semibold">Additional library controls and legacy previews</summary>
       <MockDataNotice detail="The older configuration controls, weights, and candidate previews BELOW this notice remain display fixtures. Use the live candidate pool ABOVE, then Continue to Blend Optimization for an actual QAOA run." />
 
       <div className="grid gap-5 xl:grid-cols-[1.2fr_0.8fr]">
@@ -268,6 +271,7 @@ export function PeptideDesigner() {
       {selectedCandidates.length > 0 && (
         <p className="text-xs text-[#6B818B]">Current local blend preview: {selectedCandidates.map((candidate) => candidate.id).join(', ')}.</p>
       )}
+      </details>
     </div>
   )
 }

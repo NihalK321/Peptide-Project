@@ -1,6 +1,7 @@
 import { HardwareExecutionControl } from '../shared/HardwareExecution'
 import { useHardwareExecution } from '../shared/useHardwareExecution'
-import { useState } from 'react'
+import { useImperativeHandle, useState } from 'react'
+import type { Ref } from 'react'
 import { Link } from 'react-router-dom'
 import { Dna, LoaderCircle, Play, ScanSearch } from 'lucide-react'
 import { Button, MetricCard, Panel, SectionHeading, StatusPill } from '../../components/ui'
@@ -83,7 +84,9 @@ function makeRequest(draft: Draft, templateInput: string): SequenceRequest {
     training_shots: draft.trainingShots, initial_gamma: 1, initial_beta: .5 }
 }
 
-export function SequenceDesign() {
+export interface SequenceDesignHandle { loadTemplate: (selection: { sequence: string; name: string }) => void }
+
+export function SequenceDesign({ embedded = false, editorRef }: { embedded?: boolean; editorRef?: Ref<SequenceDesignHandle> }) {
   const hardware = useHardwareExecution('sequence-design')
   const [draft, setDraft] = useState(() => draftFrom(loadInput(), loadMode()))
   const [templateInput, setTemplateInput] = useState(() => draft.template)
@@ -92,6 +95,18 @@ export function SequenceDesign() {
   const [busy, setBusy] = useState<'preview' | 'optimize' | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [note, setNote] = useState('')
+  useImperativeHandle(editorRef, () => ({ loadTemplate(templateSelection) {
+    const sequence = templateSelection.sequence
+    if (!/^[ACDEFGHIKLMNPQRSTVWY]{2,50}$/.test(sequence)) {
+      setError('This database sequence cannot be used as a standard 2–50 residue template.')
+      return
+    }
+    setDraft((previous) => ({ ...previous, mode: 'redesign', template: sequence, length: sequence.length,
+      allowed: residueCodes, excluded: '', required: '', maxMutations: '',
+      positions: [...sequence].map((letter) => ({ first: letter, second: letter === 'K' ? 'A' : 'K', variable: false, choices: [...residueCodes] })) }))
+    setTemplateInput(sequence); setPreview(null); setError(null)
+    setNote(`Loaded ${templateSelection.name} from the database. All positions are fixed. Select positions to edit; chemical goals are preserved. Previous residue restrictions and the mutation budget were cleared for the new template.`)
+  } }), [])
   const variableCount = draft.positions.filter((row) => row.variable).length
   const isSmall = draft.executionMode === 'exact' || draft.executionMode === 'multi'
   const isMulti = draft.executionMode === 'multi'
@@ -157,8 +172,8 @@ export function SequenceDesign() {
   ]
   return <div className="space-y-5">
     <Link className="block rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm font-semibold text-blue-900 underline" to="/sequence-qpu">Open Scalable QPU Lab: up to 10 editable positions, 20 choices per position, classical comparison and explicit IBM hardware submission</Link>
-    <SectionHeading eyebrow="New research workflow" title="Peptide Sequence Design" description="Design a single peptide by choosing residues at selected positions. Compare QAOA with an exact classical reference for small instances, or a classical heuristic for large circuits." action={<StatusPill tone="blue">Position-based sequence optimization</StatusPill>} />
-    <div className="flex flex-wrap gap-4 text-xs text-[#65717D]"><Link className="text-blue-800 underline" to="/designer">Existing peptide library and blend designer</Link><Link className="text-blue-800 underline" to="/optimization">Existing blend optimization</Link></div>
+    {!embedded && <SectionHeading eyebrow="New research workflow" title="Peptide Sequence Design" description="Design a single peptide by choosing residues at selected positions. Compare QAOA with an exact classical reference for small instances, or a classical heuristic for large circuits." action={<StatusPill tone="blue">Position-based sequence optimization</StatusPill>} />}
+    {!embedded && <div className="flex flex-wrap gap-4 text-xs text-[#65717D]"><Link className="text-blue-800 underline" to="/designer?tab=library">Browse known peptides</Link><Link className="text-blue-800 underline" to="/optimization">Existing blend optimization</Link></div>}
     <Panel className="border-blue-200 bg-blue-50/40 p-4 text-sm leading-6">Choose multi-choice design (up to 20 amino acids at each of two editable positions, up to 10 qubits), binary exact small-instance simulation (up to 8 qubits) or analytical large circuits (up to 50 qubits). Large local runs use bounded approximate MPS simulation; circuit preparation alone does not execute a quantum job. Larger circuits are not proof of quantum advantage. Local modes consume no IBM QPU allowance. The IBM QPU checkbox below sends circuit measurements to hardware when you click Run.</Panel>
     <HardwareExecutionControl execution={hardware} disabled={busy !== null} />
     <form onSubmit={(event) => { event.preventDefault(); void submit('optimize') }} className="space-y-5">

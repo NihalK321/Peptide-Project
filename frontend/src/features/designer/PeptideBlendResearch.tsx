@@ -7,7 +7,7 @@ import type { BlendCandidate, CatalogPage, ChemicalGoals } from '../../services/
 import { isWorkspacePersisted, updateBlendWorkspace, validateBlendWorkspace } from '../../services/blendWorkspace'
 import { useBlendWorkspace } from '../shared/useBlendWorkspace'
 
-export function PeptideBlendResearch() {
+export function PeptideBlendResearch({ onUseTemplate }: { onUseTemplate?: (candidate: BlendCandidate) => void }) {
   const draft = useBlendWorkspace()
   const { goals, pool, blendSize } = draft
   const navigate = useNavigate()
@@ -74,10 +74,10 @@ export function PeptideBlendResearch() {
     <div className="space-y-5" aria-label="Database-backed quantum blend research">
       <Panel className="min-w-0 space-y-5 p-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3"><Database className="h-5 w-5 text-teal-700" /><div><p className="research-eyebrow">Live local database + QAOA</p><h2 className="mt-1 text-lg font-semibold">Find a chemical-property research blend</h2></div></div>
+          <div className="flex items-center gap-3"><Database className="h-5 w-5 text-teal-700" /><div><p className="research-eyebrow">Live local database + QAOA</p><h2 className="mt-1 text-lg font-semibold">{onUseTemplate ? 'Browse known peptides' : 'Find a chemical-property research blend'}</h2></div></div>
           <StatusPill tone={catalog ? 'blue' : 'amber'}>{catalog ? `${catalog.catalog.imported_source_records.toLocaleString()} imported source records` : 'Connecting to catalog'}</StatusPill>
         </div>
-        <p className="text-sm leading-6 text-[#526A75]">Step 1: set chemical goals and choose up to eight known peptide sequences. Step 2: continue to Blend Optimization to configure and run Qiskit QAOA. Classical shortlisting searches the large catalog; quantum simulation optimizes only your small pool.</p>
+        <p className="text-sm leading-6 text-[#526A75]">{onUseTemplate && 'Choose Use as template to design a single sequence from a database peptide. Imported templates start with all positions locked; the sequence editor supports 2–50 standard residues. '}For a blend, set chemical goals and choose up to eight known sequences, then continue to the separate Blend Optimization page. Classical shortlisting searches the catalog; QAOA selects only from the small pool.</p>
         <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs leading-6 text-amber-900">This selects research candidates by estimated charge, hydropathy, and motif diversity. It does not predict appetite effects, muscle growth, physical compatibility, or efficacy of a mixture. Scores assume linear free-termini sequences; chemical forms are not verified.</div>
         <fieldset className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3" disabled={busy !== null}>
           <legend className="sr-only">Chemical goals</legend>
@@ -93,10 +93,10 @@ export function PeptideBlendResearch() {
           <>
             <p className="text-xs text-[#607883]">{catalog.total.toLocaleString()} matching eligible sequences. Explicit modifications and unsupported residues are excluded; duplicate sequences are collapsed.</p>
             <div className="max-h-80 overflow-auto rounded-lg border border-[#DCE7EC]">
-              <table className="research-table min-w-[38rem]"><thead><tr><th>Pool</th><th>Known peptide</th><th>Sequence / source</th></tr></thead><tbody>
+              <table className="research-table min-w-[38rem]"><thead><tr><th>Pool</th><th>Known peptide</th><th>Sequence / source</th>{onUseTemplate && <th>Sequence design</th>}</tr></thead><tbody>
                 {catalog.items.map((candidate) => {
                   const selected = pool.some((item) => item.id === candidate.id)
-                  return <tr key={candidate.id}><td><input aria-label={`Include ${candidate.name}`} type="checkbox" checked={selected} disabled={busy !== null || (!selected && (pool.length >= 8 || candidate.sequence.length > 60))} onChange={() => toggle(candidate)} /></td><td className="font-semibold">{candidate.name}<p className="mt-1 text-xs font-normal">{candidate.sequence.length} residues</p></td><td><p className="max-w-md break-all font-mono text-xs">{candidate.sequence}</p><a className="mt-1 inline-block text-xs text-teal-800 underline" href={candidate.source_url} rel="noreferrer" target="_blank">{candidate.source}: {candidate.accession}</a></td></tr>
+                  return <tr key={candidate.id}><td><input aria-label={`Include ${candidate.name}`} type="checkbox" checked={selected} disabled={busy !== null || (!selected && (pool.length >= 8 || candidate.sequence.length > 60))} onChange={() => toggle(candidate)} /></td><td className="font-semibold">{candidate.name}<p className="mt-1 text-xs font-normal">{candidate.sequence.length} residues</p></td><td><p className="max-w-md break-all font-mono text-xs">{candidate.sequence}</p><a className="mt-1 inline-block text-xs text-teal-800 underline" href={candidate.source_url} rel="noreferrer" target="_blank">{candidate.source}: {candidate.accession}</a></td>{onUseTemplate && <td><Button variant="secondary" aria-label={`Use ${candidate.name} as template`} disabled={busy !== null || !/^[ACDEFGHIKLMNPQRSTVWY]{2,50}$/.test(candidate.sequence)} onClick={() => onUseTemplate(candidate)}>Use as template</Button>{candidate.sequence.length > 50 && <p className="mt-1 text-xs text-slate-500">Exceeds the 50-residue editor limit</p>}</td>}</tr>
                 })}
               </tbody></table>
               {!catalog.items.length && <p className="p-4 text-sm">No eligible records match. Import source data or clear the search; no example records are substituted.</p>}

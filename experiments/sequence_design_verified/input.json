@@ -1,0 +1,74 @@
+{
+  "length": 8,
+  "template_sequence": "GAGAGAGA",
+  "allowed_amino_acids": [
+    "A",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "K",
+    "L",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "V",
+    "W",
+    "Y"
+  ],
+  "excluded_amino_acids": [],
+  "required_amino_acids": [
+    "K"
+  ],
+  "positions": [
+    {
+      "position": 2,
+      "choices": [
+        "A",
+        "K"
+      ]
+    },
+    {
+      "position": 4,
+      "choices": [
+        "A",
+        "K"
+      ]
+    },
+    {
+      "position": 6,
+      "choices": [
+        "A",
+        "K"
+      ]
+    },
+    {
+      "position": 8,
+      "choices": [
+        "A",
+        "K"
+      ]
+    }
+  ],
+  "max_mutations": 2,
+  "goals": {
+    "ph": 7.4,
+    "target_charge": 2.0,
+    "charge_weight": 1.0,
+    "hydropathy_min": -1.5,
+    "hydropathy_max": 0.5,
+    "hydropathy_weight": 0.5,
+    "adjacent_repeat_weight": 0.0
+  },
+  "layers": 1,
+  "max_iterations": 60,
+  "shots": 2048,
+  "seed": 42
+}

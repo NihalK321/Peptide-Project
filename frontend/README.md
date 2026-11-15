@@ -1,5 +1,32 @@
 # React + TypeScript + Vite
 
+## New peptide sequence-design workflow
+
+Open **Sequence Design** (`/sequence-design`), the first navigation item.
+All existing library, blend, chemistry, results, and VQE pages remain available.
+
+Use an existing template and choose which positions can vary, or select a length
+and specify fixed/variable residues. Apply changed templates/lengths before using
+the position editor. Each variable position has two distinct choices; this
+prototype supports up to eight variable positions within a 2-50-residue chain.
+Allowed residues are not required to appear; list required residues separately.
+
+Set solution pH, target estimated charge, hydropathy range, and optional mutation
+budget and adjacent-repeat design preference. **Validate and preview** calculates
+the restricted space and template descriptors without executing QAOA. **Run
+Sequence QAOA** performs actual local Qiskit simulation through the new versioned
+backend endpoints. The page shows observed feasible candidate sequences, raw
+scores, exact reference, gap, counts, fitted circuit and history, model limits,
+and JSON/QASM exports. It can request an RDKit 2D connectivity drawing of the
+proposed sequence; this is not a 3D fold. Original 3D tools remain on Molecular
+Analysis. Valid submitted inputs and results are saved in this browser when
+storage is available. Changed inputs mark prior results as snapshots.
+
+Start the same FastAPI and Vite servers as below; no new dependency is required.
+No IBM QPU is contacted. See
+[`backend/sequence_design/README.md`](../backend/sequence_design/README.md)
+for the exact cost, constraints, encoding and scientific limits.
+
 ## Live blend optimization
 
 Start FastAPI from the repository root with

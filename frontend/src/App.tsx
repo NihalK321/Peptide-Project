@@ -10,6 +10,7 @@ import {
   HeHQuantumChemistry,
   QuantumOptimizationEngine,
   ResearchDashboard,
+  SequenceDesign,
 } from './features'
 import { NotFoundPage } from './pages/NotFoundPage'
 
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route element={<AppShell />}>
           <Route index element={<ResearchDashboard />} />
+          <Route path="sequence-design" element={<SequenceDesign />} />
           <Route path="designer" element={<PeptideDesigner />} />
           <Route path="optimization" element={<QuantumOptimizationEngine />} />
           <Route path="quantum-chemistry" element={<HeHQuantumChemistry />} />

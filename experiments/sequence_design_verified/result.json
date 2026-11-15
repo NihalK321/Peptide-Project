@@ -1,0 +1,1369 @@
+{
+  "contract_version": "1.0",
+  "experiment_id": "12c0eb3d-0917-438f-845f-753db3855559",
+  "created_at": "2026-11-15T03:31:17.095682+00:00",
+  "provenance": "simulated",
+  "execution_backend": "qiskit_statevector",
+  "status": "completed",
+  "request": {
+    "length": 8,
+    "template_sequence": "GAGAGAGA",
+    "allowed_amino_acids": [
+      "A",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "K",
+      "L",
+      "M",
+      "N",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "V",
+      "W",
+      "Y"
+    ],
+    "excluded_amino_acids": [],
+    "required_amino_acids": [
+      "K"
+    ],
+    "positions": [
+      {
+        "position": 2,
+        "choices": [
+          "A",
+          "K"
+        ]
+      },
+      {
+        "position": 4,
+        "choices": [
+          "A",
+          "K"
+        ]
+      },
+      {
+        "position": 6,
+        "choices": [
+          "A",
+          "K"
+        ]
+      },
+      {
+        "position": 8,
+        "choices": [
+          "A",
+          "K"
+        ]
+      }
+    ],
+    "max_mutations": 2,
+    "goals": {
+      "ph": 7.4,
+      "target_charge": 2,
+      "charge_weight": 1,
+      "hydropathy_min": -1.5,
+      "hydropathy_max": 0.5,
+      "hydropathy_weight": 0.5,
+      "adjacent_repeat_weight": 0
+    },
+    "layers": 1,
+    "max_iterations": 60,
+    "shots": 2048,
+    "seed": 42
+  },
+  "variables": [
+    {
+      "qubit": 0,
+      "position": 2,
+      "choices": [
+        "A",
+        "K"
+      ]
+    },
+    {
+      "qubit": 1,
+      "position": 4,
+      "choices": [
+        "A",
+        "K"
+      ]
+    },
+    {
+      "qubit": 2,
+      "position": 6,
+      "choices": [
+        "A",
+        "K"
+      ]
+    },
+    {
+      "qubit": 3,
+      "position": 8,
+      "choices": [
+        "A",
+        "K"
+      ]
+    }
+  ],
+  "domains": [
+    [
+      "G"
+    ],
+    [
+      "A",
+      "K"
+    ],
+    [
+      "G"
+    ],
+    [
+      "A",
+      "K"
+    ],
+    [
+      "G"
+    ],
+    [
+      "A",
+      "K"
+    ],
+    [
+      "G"
+    ],
+    [
+      "A",
+      "K"
+    ]
+  ],
+  "best_sampled": {
+    "bitstring": "0011",
+    "sequence": "GKGKGAGA",
+    "properties": {
+      "length": 8,
+      "charge": 1.552441682232378,
+      "hydropathy": -0.725,
+      "mass_da": 644.7209,
+      "isoelectric_point": 10.002737236022949
+    },
+    "objective": 0.03338474130049727,
+    "components": {
+      "charge": 0.050077111950745906,
+      "hydropathy": 0.0,
+      "adjacent_repeats": 0.0
+    },
+    "component_weight_sum": 1.5,
+    "charge_error_e": -0.4475583177676219,
+    "hydropathy_distance": 0,
+    "adjacent_repeat_count": 0,
+    "mutation_count": 2,
+    "missing_required_amino_acids": [],
+    "mutation_budget_excess": 0,
+    "constraint_violation": 0,
+    "feasible": true,
+    "penalized_objective": 0.03338474130049727,
+    "probability": 0.09927781475589412,
+    "count": 216,
+    "observed_frequency": 0.10546875
+  },
+  "candidate_sequences": [
+    {
+      "bitstring": "0011",
+      "sequence": "GKGKGAGA",
+      "properties": {
+        "length": 8,
+        "charge": 1.552441682232378,
+        "hydropathy": -0.725,
+        "mass_da": 644.7209,
+        "isoelectric_point": 10.002737236022949
+      },
+      "objective": 0.03338474130049727,
+      "components": {
+        "charge": 0.050077111950745906,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.4475583177676219,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 2,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.03338474130049727,
+      "probability": 0.09927781475589412,
+      "count": 216,
+      "observed_frequency": 0.10546875
+    },
+    {
+      "bitstring": "1001",
+      "sequence": "GKGAGAGK",
+      "properties": {
+        "length": 8,
+        "charge": 1.552441682232378,
+        "hydropathy": -0.725,
+        "mass_da": 644.7209,
+        "isoelectric_point": 10.002737236022949
+      },
+      "objective": 0.03338474130049727,
+      "components": {
+        "charge": 0.050077111950745906,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.4475583177676219,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 2,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.03338474130049727,
+      "probability": 0.09927781475589412,
+      "count": 214,
+      "observed_frequency": 0.1044921875
+    },
+    {
+      "bitstring": "0101",
+      "sequence": "GKGAGKGA",
+      "properties": {
+        "length": 8,
+        "charge": 1.552441682232378,
+        "hydropathy": -0.725,
+        "mass_da": 644.7209,
+        "isoelectric_point": 10.002737236022949
+      },
+      "objective": 0.03338474130049727,
+      "components": {
+        "charge": 0.050077111950745906,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.4475583177676219,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 2,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.03338474130049727,
+      "probability": 0.09927781475589414,
+      "count": 212,
+      "observed_frequency": 0.103515625
+    },
+    {
+      "bitstring": "1100",
+      "sequence": "GAGAGKGK",
+      "properties": {
+        "length": 8,
+        "charge": 1.552441682232378,
+        "hydropathy": -0.725,
+        "mass_da": 644.7209,
+        "isoelectric_point": 10.002737236022949
+      },
+      "objective": 0.03338474130049727,
+      "components": {
+        "charge": 0.050077111950745906,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.4475583177676219,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 2,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.03338474130049727,
+      "probability": 0.09927781475589419,
+      "count": 207,
+      "observed_frequency": 0.10107421875
+    },
+    {
+      "bitstring": "0110",
+      "sequence": "GAGKGKGA",
+      "properties": {
+        "length": 8,
+        "charge": 1.552441682232378,
+        "hydropathy": -0.725,
+        "mass_da": 644.7209,
+        "isoelectric_point": 10.002737236022949
+      },
+      "objective": 0.03338474130049727,
+      "components": {
+        "charge": 0.050077111950745906,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.4475583177676219,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 2,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.03338474130049727,
+      "probability": 0.09927781475589412,
+      "count": 199,
+      "observed_frequency": 0.09716796875
+    },
+    {
+      "bitstring": "1010",
+      "sequence": "GAGKGAGK",
+      "properties": {
+        "length": 8,
+        "charge": 1.552441682232378,
+        "hydropathy": -0.725,
+        "mass_da": 644.7209,
+        "isoelectric_point": 10.002737236022949
+      },
+      "objective": 0.03338474130049727,
+      "components": {
+        "charge": 0.050077111950745906,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.4475583177676219,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 2,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.03338474130049727,
+      "probability": 0.09927781475589412,
+      "count": 183,
+      "observed_frequency": 0.08935546875
+    },
+    {
+      "bitstring": "1000",
+      "sequence": "GAGAGAGK",
+      "properties": {
+        "length": 8,
+        "charge": 0.5549472748996638,
+        "hydropathy": -0.012499999999999983,
+        "mass_da": 587.6265000000001,
+        "isoelectric_point": 8.750052070617677
+      },
+      "objective": 0.34802956305331795,
+      "components": {
+        "charge": 0.522044344579977,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -1.4450527251003362,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 1,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.34802956305331795,
+      "probability": 0.020214415781408788,
+      "count": 48,
+      "observed_frequency": 0.0234375
+    },
+    {
+      "bitstring": "0010",
+      "sequence": "GAGKGAGA",
+      "properties": {
+        "length": 8,
+        "charge": 0.5549472748996638,
+        "hydropathy": -0.012499999999999983,
+        "mass_da": 587.6265000000001,
+        "isoelectric_point": 8.750052070617677
+      },
+      "objective": 0.34802956305331795,
+      "components": {
+        "charge": 0.522044344579977,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -1.4450527251003362,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 1,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.34802956305331795,
+      "probability": 0.02021441578140878,
+      "count": 41,
+      "observed_frequency": 0.02001953125
+    },
+    {
+      "bitstring": "0001",
+      "sequence": "GKGAGAGA",
+      "properties": {
+        "length": 8,
+        "charge": 0.5549472748996638,
+        "hydropathy": -0.012499999999999983,
+        "mass_da": 587.6265000000001,
+        "isoelectric_point": 8.750052070617677
+      },
+      "objective": 0.34802956305331795,
+      "components": {
+        "charge": 0.522044344579977,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -1.4450527251003362,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 1,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.34802956305331795,
+      "probability": 0.02021441578140878,
+      "count": 40,
+      "observed_frequency": 0.01953125
+    },
+    {
+      "bitstring": "0100",
+      "sequence": "GAGAGKGA",
+      "properties": {
+        "length": 8,
+        "charge": 0.5549472748996638,
+        "hydropathy": -0.012499999999999983,
+        "mass_da": 587.6265000000001,
+        "isoelectric_point": 8.750052070617677
+      },
+      "objective": 0.34802956305331795,
+      "components": {
+        "charge": 0.522044344579977,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -1.4450527251003362,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 1,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.34802956305331795,
+      "probability": 0.02021441578140878,
+      "count": 38,
+      "observed_frequency": 0.0185546875
+    }
+  ],
+  "classical_reference": {
+    "bitstring": "0011",
+    "sequence": "GKGKGAGA",
+    "properties": {
+      "length": 8,
+      "charge": 1.552441682232378,
+      "hydropathy": -0.725,
+      "mass_da": 644.7209,
+      "isoelectric_point": 10.002737236022949
+    },
+    "objective": 0.03338474130049727,
+    "components": {
+      "charge": 0.050077111950745906,
+      "hydropathy": 0.0,
+      "adjacent_repeats": 0.0
+    },
+    "component_weight_sum": 1.5,
+    "charge_error_e": -0.4475583177676219,
+    "hydropathy_distance": 0,
+    "adjacent_repeat_count": 0,
+    "mutation_count": 2,
+    "missing_required_amino_acids": [],
+    "mutation_budget_excess": 0,
+    "constraint_violation": 0,
+    "feasible": true,
+    "penalized_objective": 0.03338474130049727,
+    "probability": 0.09927781475589412,
+    "count": 216,
+    "observed_frequency": 0.10546875
+  },
+  "template_properties": {
+    "length": 8,
+    "charge": -0.4425471324330503,
+    "hydropathy": 0.7,
+    "mass_da": 530.5320999999999,
+    "isoelectric_point": 5.525000190734862
+  },
+  "benchmark": {
+    "state_count": 16,
+    "feasible_state_count": 10,
+    "qubits": 4,
+    "sampled_objective_gap": 0.0,
+    "optimum_probability": 0.5956668885353648,
+    "uniform_optimum_probability": 0.375,
+    "feasible_probability": 0.6765245516609999,
+    "feasible_shots": 1398,
+    "infeasible_shots": 650,
+    "uniform_feasible_probability": 0.625,
+    "optimal_sequences_count": 6
+  },
+  "cost": {
+    "degree": 4,
+    "terms": [
+      {
+        "mask": 0,
+        "variables": [],
+        "coefficient": 2.9819607567518087
+      },
+      {
+        "mask": 1,
+        "variables": [
+          0
+        ],
+        "coefficient": -2.6339311936984906
+      },
+      {
+        "mask": 2,
+        "variables": [
+          1
+        ],
+        "coefficient": -2.6339311936984906
+      },
+      {
+        "mask": 3,
+        "variables": [
+          0,
+          1
+        ],
+        "coefficient": 2.31928637194567
+      },
+      {
+        "mask": 4,
+        "variables": [
+          2
+        ],
+        "coefficient": -2.6339311936984906
+      },
+      {
+        "mask": 5,
+        "variables": [
+          0,
+          2
+        ],
+        "coefficient": 2.31928637194567
+      },
+      {
+        "mask": 6,
+        "variables": [
+          1,
+          2
+        ],
+        "coefficient": 2.31928637194567
+      },
+      {
+        "mask": 7,
+        "variables": [
+          0,
+          1,
+          2
+        ],
+        "coefficient": -0.013333333333332753
+      },
+      {
+        "mask": 8,
+        "variables": [
+          3
+        ],
+        "coefficient": -2.6339311936984906
+      },
+      {
+        "mask": 9,
+        "variables": [
+          0,
+          3
+        ],
+        "coefficient": 2.31928637194567
+      },
+      {
+        "mask": 10,
+        "variables": [
+          1,
+          3
+        ],
+        "coefficient": 2.31928637194567
+      },
+      {
+        "mask": 11,
+        "variables": [
+          0,
+          1,
+          3
+        ],
+        "coefficient": -0.013333333333332753
+      },
+      {
+        "mask": 12,
+        "variables": [
+          2,
+          3
+        ],
+        "coefficient": 2.31928637194567
+      },
+      {
+        "mask": 13,
+        "variables": [
+          0,
+          2,
+          3
+        ],
+        "coefficient": -0.013333333333332753
+      },
+      {
+        "mask": 14,
+        "variables": [
+          1,
+          2,
+          3
+        ],
+        "coefficient": -0.013333333333332753
+      },
+      {
+        "mask": 15,
+        "variables": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "coefficient": 2.128454674392321
+      }
+    ],
+    "reconstruction_max_error": 1.6653345369377348e-16,
+    "qubo": null,
+    "representation": "higher_order_diagonal",
+    "penalty": 1.9742880077256557,
+    "energies_in_bitstring_order": [
+      2.9819607567518087,
+      0.34802956305331795,
+      0.34802956305331795,
+      0.03338474130049727,
+      0.34802956305331795,
+      0.03338474130049727,
+      0.03338474130049727,
+      2.0246929581600135,
+      0.34802956305331795,
+      0.03338474130049727,
+      0.03338474130049727,
+      2.0246929581600135,
+      0.03338474130049727,
+      2.0246929581600135,
+      2.0246929581600135,
+      8.437075554690855
+    ]
+  },
+  "validation": {
+    "checked_states": 16,
+    "cost_reconstruction_max_error": 1.6653345369377348e-16,
+    "all_feasible_energies_below_all_infeasible": true
+  },
+  "history": [
+    {
+      "evaluation": 1,
+      "expected_penalized_objective": 0.8873745085915918,
+      "feasible_probability": 0.6809202402278752
+    },
+    {
+      "evaluation": 2,
+      "expected_penalized_objective": 0.894236061277105,
+      "feasible_probability": 0.6567224595956228
+    },
+    {
+      "evaluation": 3,
+      "expected_penalized_objective": 1.6916087609037473,
+      "feasible_probability": 0.5487567959859858
+    },
+    {
+      "evaluation": 4,
+      "expected_penalized_objective": 3.7704196875870126,
+      "feasible_probability": 0.37521007560187053
+    },
+    {
+      "evaluation": 5,
+      "expected_penalized_objective": 2.743472552464527,
+      "feasible_probability": 0.3399608269537411
+    },
+    {
+      "evaluation": 6,
+      "expected_penalized_objective": 0.9670591606434131,
+      "feasible_probability": 0.6069820714421632
+    },
+    {
+      "evaluation": 7,
+      "expected_penalized_objective": 0.8896771097192804,
+      "feasible_probability": 0.6816134025325584
+    },
+    {
+      "evaluation": 8,
+      "expected_penalized_objective": 1.1774554001246142,
+      "feasible_probability": 0.6458914674850695
+    },
+    {
+      "evaluation": 9,
+      "expected_penalized_objective": 0.7663829639791974,
+      "feasible_probability": 0.6790620573549767
+    },
+    {
+      "evaluation": 10,
+      "expected_penalized_objective": 0.8487278309632873,
+      "feasible_probability": 0.6387471961737852
+    },
+    {
+      "evaluation": 11,
+      "expected_penalized_objective": 0.7696197149532702,
+      "feasible_probability": 0.6797065637969336
+    },
+    {
+      "evaluation": 12,
+      "expected_penalized_objective": 0.7706221994085037,
+      "feasible_probability": 0.6814915565533102
+    },
+    {
+      "evaluation": 13,
+      "expected_penalized_objective": 0.7673517627449298,
+      "feasible_probability": 0.6724095573000265
+    },
+    {
+      "evaluation": 14,
+      "expected_penalized_objective": 0.7676248461621715,
+      "feasible_probability": 0.6802534058228631
+    },
+    {
+      "evaluation": 15,
+      "expected_penalized_objective": 0.7675601846247626,
+      "feasible_probability": 0.6799268939803144
+    },
+    {
+      "evaluation": 16,
+      "expected_penalized_objective": 0.7652150023035592,
+      "feasible_probability": 0.67669206996504
+    },
+    {
+      "evaluation": 17,
+      "expected_penalized_objective": 0.7658158312673948,
+      "feasible_probability": 0.6742852354246225
+    },
+    {
+      "evaluation": 18,
+      "expected_penalized_objective": 0.7652298001915602,
+      "feasible_probability": 0.6763114633869091
+    },
+    {
+      "evaluation": 19,
+      "expected_penalized_objective": 0.7652442974869009,
+      "feasible_probability": 0.6769978470727978
+    },
+    {
+      "evaluation": 20,
+      "expected_penalized_objective": 0.7652344760784817,
+      "feasible_probability": 0.6760942310255471
+    },
+    {
+      "evaluation": 21,
+      "expected_penalized_objective": 0.7652189554584817,
+      "feasible_probability": 0.6767445009193611
+    },
+    {
+      "evaluation": 22,
+      "expected_penalized_objective": 0.7652192249612839,
+      "feasible_probability": 0.6767822771412404
+    },
+    {
+      "evaluation": 23,
+      "expected_penalized_objective": 0.765211946417814,
+      "feasible_probability": 0.6764334378964252
+    },
+    {
+      "evaluation": 24,
+      "expected_penalized_objective": 0.7652296074786242,
+      "feasible_probability": 0.6761704600732003
+    },
+    {
+      "evaluation": 25,
+      "expected_penalized_objective": 0.7652107067287897,
+      "feasible_probability": 0.676488488536312
+    },
+    {
+      "evaluation": 26,
+      "expected_penalized_objective": 0.7652110903227556,
+      "feasible_probability": 0.6764509468732486
+    },
+    {
+      "evaluation": 27,
+      "expected_penalized_objective": 0.7652106371008529,
+      "feasible_probability": 0.676499145595536
+    },
+    {
+      "evaluation": 28,
+      "expected_penalized_objective": 0.7652106289426619,
+      "feasible_probability": 0.6765245516609997
+    },
+    {
+      "evaluation": 29,
+      "expected_penalized_objective": 0.7652106661910998,
+      "feasible_probability": 0.6765313775977416
+    }
+  ],
+  "parameters": [
+    2.4562339662321837,
+    1.324312969369784
+  ],
+  "circuit": {
+    "qasm": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[4];\nh q[0];\nh q[1];\nh q[2];\nh q[3];\nrz(-0.32181683469241623) q[0];\ncx q[1],q[0];\nrz(0.41475561152104173) q[0];\ncx q[2],q[0];\nrz(-0.07678892538159215) q[0];\ncx q[1],q[0];\nrz(0.41475561152104173) q[0];\ncx q[3],q[0];\nrz(-0.07678892538159213) q[0];\ncx q[1],q[0];\nrz(0.07776319332360893) q[0];\ncx q[2],q[0];\nrz(-0.07678892538159215) q[0];\ncx q[1],q[0];\nrz(0.41475561152104173) q[0];\ncx q[3],q[0];\nrz(-0.32181683469241623) q[1];\ncx q[2],q[1];\nrz(0.41475561152104173) q[1];\ncx q[3],q[1];\nrz(-0.07678892538159215) q[1];\ncx q[2],q[1];\nrz(0.41475561152104173) q[1];\ncx q[3],q[1];\nrz(-0.32181683469241623) q[2];\ncx q[3],q[2];\nrz(0.41475561152104173) q[2];\ncx q[3],q[2];\nrz(-0.3218168346924163) q[3];\nrx(2.648625938739568) q[0];\nrx(2.648625938739568) q[1];\nrx(2.648625938739568) q[2];\nrx(2.648625938739568) q[3];",
+    "text": "     \u250c\u2500\u2500\u2500\u2510\u00bb\nq_0: \u2524 H \u251c\u00bb\n     \u251c\u2500\u2500\u2500\u2524\u00bb\nq_1: \u2524 H \u251c\u00bb\n     \u251c\u2500\u2500\u2500\u2524\u00bb\nq_2: \u2524 H \u251c\u00bb\n     \u251c\u2500\u2500\u2500\u2524\u00bb\nq_3: \u2524 H \u251c\u00bb\n     \u2514\u2500\u2500\u2500\u2518\u00bb\n\u00ab     \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\u00bb\n\u00abq_0: \u25240                                                                                                                                                                                                      \u251c\u00bb\n\u00ab     \u2502                                                                                                                                                                                                       \u2502\u00bb\n\u00abq_1: \u25241                                                                                                                                                                                                      \u251c\u00bb\n\u00ab     \u2502  Diagonal(0.65106-0.75902j,0.99577-0.091835j,0.99577-0.091835j,1,0.99577-0.091835j,1,1,0.83535-0.54971j,0.99577-0.091835j,1,1,0.83535-0.54971j,1,0.83535-0.54971j,0.83535-0.54971j,-0.77419-0.63295j) \u2502\u00bb\n\u00abq_2: \u25242                                                                                                                                                                                                      \u251c\u00bb\n\u00ab     \u2502                                                                                                                                                                                                       \u2502\u00bb\n\u00abq_3: \u25243                                                                                                                                                                                                      \u251c\u00bb\n\u00ab     \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\u00bb\n\u00ab     \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u00abq_0: \u2524 Rx(2.6486) \u251c\n\u00ab     \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u00abq_1: \u2524 Rx(2.6486) \u251c\n\u00ab     \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u00abq_2: \u2524 Rx(2.6486) \u251c\n\u00ab     \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u00abq_3: \u2524 Rx(2.6486) \u251c\n\u00ab     \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518",
+    "depth": 3,
+    "gate_counts": {
+      "h": 4,
+      "rx": 4,
+      "diagonal": 1
+    }
+  },
+  "optimizer": {
+    "method": "COBYLA",
+    "evaluations": 29,
+    "converged": true,
+    "message": "Return from COBYLA because the trust region radius reaches its lower bound."
+  },
+  "states": [
+    {
+      "bitstring": "0000",
+      "sequence": "GAGAGAGA",
+      "properties": {
+        "length": 8,
+        "charge": -0.4425471324330503,
+        "hydropathy": 0.7,
+        "mass_da": 530.5320999999999,
+        "isoelectric_point": 5.525000190734862
+      },
+      "objective": 1.007672749026153,
+      "components": {
+        "charge": 1.4915091235392295,
+        "hydropathy": 0.01999999999999999,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -2.4425471324330505,
+      "hydropathy_distance": 0.19999999999999996,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 0,
+      "missing_required_amino_acids": [
+        "K"
+      ],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 1,
+      "feasible": false,
+      "penalized_objective": 2.9819607567518087,
+      "probability": 0.018814001062521436,
+      "count": 32,
+      "observed_frequency": 0.015625
+    },
+    {
+      "bitstring": "0001",
+      "sequence": "GKGAGAGA",
+      "properties": {
+        "length": 8,
+        "charge": 0.5549472748996638,
+        "hydropathy": -0.012499999999999983,
+        "mass_da": 587.6265000000001,
+        "isoelectric_point": 8.750052070617677
+      },
+      "objective": 0.34802956305331795,
+      "components": {
+        "charge": 0.522044344579977,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -1.4450527251003362,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 1,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.34802956305331795,
+      "probability": 0.02021441578140878,
+      "count": 40,
+      "observed_frequency": 0.01953125
+    },
+    {
+      "bitstring": "0010",
+      "sequence": "GAGKGAGA",
+      "properties": {
+        "length": 8,
+        "charge": 0.5549472748996638,
+        "hydropathy": -0.012499999999999983,
+        "mass_da": 587.6265000000001,
+        "isoelectric_point": 8.750052070617677
+      },
+      "objective": 0.34802956305331795,
+      "components": {
+        "charge": 0.522044344579977,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -1.4450527251003362,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 1,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.34802956305331795,
+      "probability": 0.02021441578140878,
+      "count": 41,
+      "observed_frequency": 0.02001953125
+    },
+    {
+      "bitstring": "0011",
+      "sequence": "GKGKGAGA",
+      "properties": {
+        "length": 8,
+        "charge": 1.552441682232378,
+        "hydropathy": -0.725,
+        "mass_da": 644.7209,
+        "isoelectric_point": 10.002737236022949
+      },
+      "objective": 0.03338474130049727,
+      "components": {
+        "charge": 0.050077111950745906,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.4475583177676219,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 2,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.03338474130049727,
+      "probability": 0.09927781475589412,
+      "count": 216,
+      "observed_frequency": 0.10546875
+    },
+    {
+      "bitstring": "0100",
+      "sequence": "GAGAGKGA",
+      "properties": {
+        "length": 8,
+        "charge": 0.5549472748996638,
+        "hydropathy": -0.012499999999999983,
+        "mass_da": 587.6265000000001,
+        "isoelectric_point": 8.750052070617677
+      },
+      "objective": 0.34802956305331795,
+      "components": {
+        "charge": 0.522044344579977,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -1.4450527251003362,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 1,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.34802956305331795,
+      "probability": 0.02021441578140878,
+      "count": 38,
+      "observed_frequency": 0.0185546875
+    },
+    {
+      "bitstring": "0101",
+      "sequence": "GKGAGKGA",
+      "properties": {
+        "length": 8,
+        "charge": 1.552441682232378,
+        "hydropathy": -0.725,
+        "mass_da": 644.7209,
+        "isoelectric_point": 10.002737236022949
+      },
+      "objective": 0.03338474130049727,
+      "components": {
+        "charge": 0.050077111950745906,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.4475583177676219,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 2,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.03338474130049727,
+      "probability": 0.09927781475589414,
+      "count": 212,
+      "observed_frequency": 0.103515625
+    },
+    {
+      "bitstring": "0110",
+      "sequence": "GAGKGKGA",
+      "properties": {
+        "length": 8,
+        "charge": 1.552441682232378,
+        "hydropathy": -0.725,
+        "mass_da": 644.7209,
+        "isoelectric_point": 10.002737236022949
+      },
+      "objective": 0.03338474130049727,
+      "components": {
+        "charge": 0.050077111950745906,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.4475583177676219,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 2,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.03338474130049727,
+      "probability": 0.09927781475589412,
+      "count": 199,
+      "observed_frequency": 0.09716796875
+    },
+    {
+      "bitstring": "0111",
+      "sequence": "GKGKGKGA",
+      "properties": {
+        "length": 8,
+        "charge": 2.5499360895650924,
+        "hydropathy": -1.4375,
+        "mass_da": 701.8153,
+        "isoelectric_point": 10.302063941955566
+      },
+      "objective": 0.05040495043435756,
+      "components": {
+        "charge": 0.07560742565153634,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": 0.5499360895650924,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 3,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 1,
+      "constraint_violation": 1,
+      "feasible": false,
+      "penalized_objective": 2.0246929581600135,
+      "probability": 0.07444076544775721,
+      "count": 173,
+      "observed_frequency": 0.08447265625
+    },
+    {
+      "bitstring": "1000",
+      "sequence": "GAGAGAGK",
+      "properties": {
+        "length": 8,
+        "charge": 0.5549472748996638,
+        "hydropathy": -0.012499999999999983,
+        "mass_da": 587.6265000000001,
+        "isoelectric_point": 8.750052070617677
+      },
+      "objective": 0.34802956305331795,
+      "components": {
+        "charge": 0.522044344579977,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -1.4450527251003362,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 1,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.34802956305331795,
+      "probability": 0.020214415781408788,
+      "count": 48,
+      "observed_frequency": 0.0234375
+    },
+    {
+      "bitstring": "1001",
+      "sequence": "GKGAGAGK",
+      "properties": {
+        "length": 8,
+        "charge": 1.552441682232378,
+        "hydropathy": -0.725,
+        "mass_da": 644.7209,
+        "isoelectric_point": 10.002737236022949
+      },
+      "objective": 0.03338474130049727,
+      "components": {
+        "charge": 0.050077111950745906,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.4475583177676219,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 2,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.03338474130049727,
+      "probability": 0.09927781475589412,
+      "count": 214,
+      "observed_frequency": 0.1044921875
+    },
+    {
+      "bitstring": "1010",
+      "sequence": "GAGKGAGK",
+      "properties": {
+        "length": 8,
+        "charge": 1.552441682232378,
+        "hydropathy": -0.725,
+        "mass_da": 644.7209,
+        "isoelectric_point": 10.002737236022949
+      },
+      "objective": 0.03338474130049727,
+      "components": {
+        "charge": 0.050077111950745906,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.4475583177676219,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 2,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.03338474130049727,
+      "probability": 0.09927781475589412,
+      "count": 183,
+      "observed_frequency": 0.08935546875
+    },
+    {
+      "bitstring": "1011",
+      "sequence": "GKGKGAGK",
+      "properties": {
+        "length": 8,
+        "charge": 2.5499360895650924,
+        "hydropathy": -1.4375,
+        "mass_da": 701.8153,
+        "isoelectric_point": 10.302063941955566
+      },
+      "objective": 0.05040495043435756,
+      "components": {
+        "charge": 0.07560742565153634,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": 0.5499360895650924,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 3,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 1,
+      "constraint_violation": 1,
+      "feasible": false,
+      "penalized_objective": 2.0246929581600135,
+      "probability": 0.07444076544775718,
+      "count": 150,
+      "observed_frequency": 0.0732421875
+    },
+    {
+      "bitstring": "1100",
+      "sequence": "GAGAGKGK",
+      "properties": {
+        "length": 8,
+        "charge": 1.552441682232378,
+        "hydropathy": -0.725,
+        "mass_da": 644.7209,
+        "isoelectric_point": 10.002737236022949
+      },
+      "objective": 0.03338474130049727,
+      "components": {
+        "charge": 0.050077111950745906,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.4475583177676219,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 2,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "penalized_objective": 0.03338474130049727,
+      "probability": 0.09927781475589419,
+      "count": 207,
+      "observed_frequency": 0.10107421875
+    },
+    {
+      "bitstring": "1101",
+      "sequence": "GKGAGKGK",
+      "properties": {
+        "length": 8,
+        "charge": 2.5499360895650924,
+        "hydropathy": -1.4375,
+        "mass_da": 701.8153,
+        "isoelectric_point": 10.302063941955566
+      },
+      "objective": 0.05040495043435756,
+      "components": {
+        "charge": 0.07560742565153634,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": 0.5499360895650924,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 3,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 1,
+      "constraint_violation": 1,
+      "feasible": false,
+      "penalized_objective": 2.0246929581600135,
+      "probability": 0.07444076544775718,
+      "count": 137,
+      "observed_frequency": 0.06689453125
+    },
+    {
+      "bitstring": "1110",
+      "sequence": "GAGKGKGK",
+      "properties": {
+        "length": 8,
+        "charge": 2.5499360895650924,
+        "hydropathy": -1.4375,
+        "mass_da": 701.8153,
+        "isoelectric_point": 10.302063941955566
+      },
+      "objective": 0.05040495043435756,
+      "components": {
+        "charge": 0.07560742565153634,
+        "hydropathy": 0.0,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": 0.5499360895650924,
+      "hydropathy_distance": 0,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 3,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 1,
+      "constraint_violation": 1,
+      "feasible": false,
+      "penalized_objective": 2.0246929581600135,
+      "probability": 0.07444076544775718,
+      "count": 147,
+      "observed_frequency": 0.07177734375
+    },
+    {
+      "bitstring": "1111",
+      "sequence": "GKGKGKGK",
+      "properties": {
+        "length": 8,
+        "charge": 3.5474304968978063,
+        "hydropathy": -2.15,
+        "mass_da": 758.9096999999999,
+        "isoelectric_point": 10.477740287780762
+      },
+      "objective": 0.5399235237882319,
+      "components": {
+        "charge": 0.5986352856823479,
+        "hydropathy": 0.21124999999999994,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": 1.5474304968978063,
+      "hydropathy_distance": 0.6499999999999999,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 4,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 2,
+      "constraint_violation": 4,
+      "feasible": false,
+      "penalized_objective": 8.437075554690855,
+      "probability": 0.0068983854854498235,
+      "count": 11,
+      "observed_frequency": 0.00537109375
+    }
+  ],
+  "elapsed_seconds": 3.8513560999999754,
+  "methods": {
+    "chemistry_interface": "backend.peptide_analysis.analyze_sequence",
+    "chemistry_version": "Biopython 1.88",
+    "charge": "Estimated charge at requested pH, Bjellqvist pKa model; e",
+    "hydropathy": "Mean Kyte-Doolittle GRAVY; dimensionless",
+    "mass": "Average isotopic mass, linear free termini; Da",
+    "objective": "[wq*((charge-target)/2)^2 + wh*distance(GRAVY,[low,high])^2 + wr*adjacent_identical_pairs/(length-1)] / (wq+wh+wr)",
+    "normalization": "Fixed 2 e charge scale, 1 GRAVY unit; no candidate-pool-dependent normalization. Objective is nonnegative and not bounded by 1.",
+    "constraints": "Length, allowed/excluded residues, fixed positions enforced by encoding. Missing required residues and excess mutations receive a dominating penalty.",
+    "penalty": "lambda = max(raw objective)-min(raw objective)+1; violation = missing_required_count + max(0,mutations-budget)^2",
+    "bit_order": "Rightmost bit is qubit 0, mapped to the first variable position. Bit 0 selects choices[0], bit 1 selects choices[1].",
+    "pI": "Reported as a descriptor only; not the target pH or optimization objective."
+  },
+  "limitations": [
+    "Proposed sequences are research candidates, not experimentally validated peptides or medicines.",
+    "Charge, pI, mass and GRAVY use the existing Biopython sequence-analysis interface for linear unmodified peptides with free termini.",
+    "pH describes the surrounding solution; target charge at that pH is not a target peptide pH or a pI target.",
+    "Composition-based objectives may tie for different residue orders; only the optional adjacent-repeat preference explicitly distinguishes local order.",
+    "The repeat term is a researcher-defined sequence-pattern preference, not a stability, folding, binding or activity prediction.",
+    "The bounded space is fully enumerated classically to construct and validate the cost and exact baseline. No quantum speedup is claimed.",
+    "Higher-order constraints are represented exactly by a diagonal cost Hamiltonian, not mislabeled as a quadratic QUBO.",
+    "QAOA uses ideal statevector simulation and simulated shot counts; no IBM hardware job is submitted.",
+    "2-50 total residues and at most eight binary variable positions are software prototype limits, not hardware capabilities."
+  ],
+  "software_versions": {
+    "qiskit": "2.6.2",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "biopython": "1.88"
+  }
+}

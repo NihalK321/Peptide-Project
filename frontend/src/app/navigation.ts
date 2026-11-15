@@ -7,6 +7,12 @@ export type NavigationItem = {
 
 export const navigationItems: NavigationItem[] = [
   {
+    to: '/sequence-design',
+    label: 'Sequence Design',
+    shortLabel: 'Sequence Design',
+    description: 'Design residue choices with QAOA',
+  },
+  {
     to: '/',
     label: 'Research Dashboard',
     shortLabel: 'Dashboard',

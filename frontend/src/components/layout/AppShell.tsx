@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react'
 import type { LucideIcon } from 'lucide-react'
 import {
-  Activity,
   Atom,
-  BarChart3,
   Beaker,
   Cpu,
   Dna,
   LayoutDashboard,
-  ListTree,
   Microscope,
-  SlidersHorizontal,
 } from 'lucide-react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { navigationItems } from '../../app/navigation'
@@ -20,15 +16,12 @@ import { StatusPill } from '../ui'
 import { cn } from '../../lib/cn'
 
 const routeIcons: Record<string, LucideIcon> = {
+  '/sequence-qpu': Cpu,
+  '/sequence-design': Dna,
   '/': LayoutDashboard,
   '/designer': Dna,
   '/optimization': Atom,
-  '/quantum-chemistry': Cpu,
   '/chemistry': Beaker,
-  '/comparison': BarChart3,
-  '/results': ListTree,
-  '/tradeoffs': SlidersHorizontal,
-  '/noise-lab': Activity,
 }
 
 type ApiConnection = {

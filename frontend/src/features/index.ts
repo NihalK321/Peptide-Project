@@ -1,4 +1,5 @@
 export { ResearchDashboard } from './dashboard/ResearchDashboard'
+export { SequenceDesign } from './sequenceDesign/SequenceDesign'
 export { PeptideDesigner } from './designer/PeptideDesigner'
 export { QuantumOptimizationEngine } from './optimization/QuantumOptimizationEngine'
 export { HeHQuantumChemistry } from './quantumChemistry/HeHQuantumChemistry'

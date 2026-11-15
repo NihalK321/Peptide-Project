@@ -1,0 +1,2 @@
+# Optional bounded large-circuit simulator; small exact mode does not require it.
+qiskit-aer>=0.18,<0.19

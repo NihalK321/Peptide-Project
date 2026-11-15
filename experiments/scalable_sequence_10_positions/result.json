@@ -1,0 +1,814 @@
+{
+  "contract_version": "2.0",
+  "provenance": "simulated_approximate",
+  "request": {
+    "length": 10,
+    "template_sequence": "GAGAGAGAGA",
+    "allowed_amino_acids": [
+      "A",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "K",
+      "L",
+      "M",
+      "N",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "V",
+      "W",
+      "Y"
+    ],
+    "excluded_amino_acids": [],
+    "required_amino_acids": [],
+    "positions": [
+      {
+        "position": 1,
+        "choices": [
+          "A",
+          "G",
+          "K",
+          "R"
+        ]
+      },
+      {
+        "position": 2,
+        "choices": [
+          "A",
+          "G",
+          "K",
+          "R"
+        ]
+      },
+      {
+        "position": 3,
+        "choices": [
+          "A",
+          "G",
+          "K",
+          "R"
+        ]
+      },
+      {
+        "position": 4,
+        "choices": [
+          "A",
+          "G",
+          "K",
+          "R"
+        ]
+      },
+      {
+        "position": 5,
+        "choices": [
+          "A",
+          "G",
+          "K",
+          "R"
+        ]
+      },
+      {
+        "position": 6,
+        "choices": [
+          "A",
+          "G",
+          "K",
+          "R"
+        ]
+      },
+      {
+        "position": 7,
+        "choices": [
+          "A",
+          "G",
+          "K",
+          "R"
+        ]
+      },
+      {
+        "position": 8,
+        "choices": [
+          "A",
+          "G",
+          "K",
+          "R"
+        ]
+      },
+      {
+        "position": 9,
+        "choices": [
+          "A",
+          "G",
+          "K",
+          "R"
+        ]
+      },
+      {
+        "position": 10,
+        "choices": [
+          "A",
+          "G",
+          "K",
+          "R"
+        ]
+      }
+    ],
+    "max_mutations": null,
+    "goals": {
+      "ph": 7.4,
+      "target_charge": 2,
+      "charge_weight": 1,
+      "hydropathy_min": 0.0,
+      "hydropathy_max": 0.0,
+      "hydropathy_weight": 0.5,
+      "adjacent_repeat_weight": 0
+    },
+    "layers": 1,
+    "max_iterations": 10,
+    "shots": 256,
+    "seed": 42,
+    "training_shots": 64,
+    "bond_dimension": 8,
+    "classical_seconds": 1,
+    "parameter_sets": [
+      [
+        1,
+        0.3
+      ],
+      [
+        2,
+        0.6
+      ],
+      [
+        3,
+        0.9
+      ]
+    ]
+  },
+  "qubits": 20,
+  "editable_positions": 10,
+  "valid_sequence_count": "1048576",
+  "encoded_state_count": "1048576",
+  "uniform_valid_probability": 1.0,
+  "blocks": [
+    {
+      "position": 1,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ],
+      "qubits": [
+        0,
+        1
+      ],
+      "width": 2,
+      "offset": 0
+    },
+    {
+      "position": 2,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ],
+      "qubits": [
+        2,
+        3
+      ],
+      "width": 2,
+      "offset": 2
+    },
+    {
+      "position": 3,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ],
+      "qubits": [
+        4,
+        5
+      ],
+      "width": 2,
+      "offset": 4
+    },
+    {
+      "position": 4,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ],
+      "qubits": [
+        6,
+        7
+      ],
+      "width": 2,
+      "offset": 6
+    },
+    {
+      "position": 5,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ],
+      "qubits": [
+        8,
+        9
+      ],
+      "width": 2,
+      "offset": 8
+    },
+    {
+      "position": 6,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ],
+      "qubits": [
+        10,
+        11
+      ],
+      "width": 2,
+      "offset": 10
+    },
+    {
+      "position": 7,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ],
+      "qubits": [
+        12,
+        13
+      ],
+      "width": 2,
+      "offset": 12
+    },
+    {
+      "position": 8,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ],
+      "qubits": [
+        14,
+        15
+      ],
+      "width": 2,
+      "offset": 14
+    },
+    {
+      "position": 9,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ],
+      "qubits": [
+        16,
+        17
+      ],
+      "width": 2,
+      "offset": 16
+    },
+    {
+      "position": 10,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ],
+      "qubits": [
+        18,
+        19
+      ],
+      "width": 2,
+      "offset": 18
+    }
+  ],
+  "cost_terms": 436,
+  "maximum_pauli_weight": 4,
+  "logical_gate_count": 1845,
+  "formulation_seconds": 0.00696280000556726,
+  "penalty": 17.26854955188195,
+  "valid_objective_upper_bound": 16.26854955188195,
+  "validation": {
+    "checked_assignments": 50,
+    "maximum_error": 3.552713678800501e-15,
+    "method": "Local Walsh transforms and algebraic Pauli products; deterministic/seeded checks, not exhaustive enumeration"
+  },
+  "limitations": [
+    "This is a chemistry-descriptor optimization experiment, not a folding, binding, or biological-activity prediction.",
+    "More qubits or a larger search space does not establish quantum speedup. Classical algorithms exploit structure rather than enumerating all sequences.",
+    "Full hardware costs include parameter search, shots, compilation, queue/wall time and QPU usage. Sampled quality must also be compared.",
+    "Dense many-qubit cost terms can require long circuits after routing; fitting within device qubit capacity does not imply useful noisy-hardware performance.",
+    "Binding mutation budgets, requirements not guaranteed by fixed residues, and hydropathy ranges crossing branches are rejected, not dropped.",
+    "Local MPS is approximate with bounded bond dimension; no certified simulation error is available. Large circuits can be exported even when local fitting is impractical."
+  ],
+  "execution_backend": "qiskit_aer_mps",
+  "parameters": [
+    -0.8756823850252131,
+    0.8535774306896544
+  ],
+  "history": [
+    {
+      "evaluation": 1,
+      "expected_penalized_cost": 3.273398568397102,
+      "feasible_frequency": 1.0
+    },
+    {
+      "evaluation": 2,
+      "expected_penalized_cost": 3.923077728884582,
+      "feasible_frequency": 1.0
+    },
+    {
+      "evaluation": 3,
+      "expected_penalized_cost": 2.9610474545852097,
+      "feasible_frequency": 1.0
+    },
+    {
+      "evaluation": 4,
+      "expected_penalized_cost": 2.502766961218814,
+      "feasible_frequency": 1.0
+    },
+    {
+      "evaluation": 5,
+      "expected_penalized_cost": 3.125458849023749,
+      "feasible_frequency": 1.0
+    },
+    {
+      "evaluation": 6,
+      "expected_penalized_cost": 2.458154309981844,
+      "feasible_frequency": 1.0
+    },
+    {
+      "evaluation": 7,
+      "expected_penalized_cost": 2.4409391654680634,
+      "feasible_frequency": 1.0
+    },
+    {
+      "evaluation": 8,
+      "expected_penalized_cost": 2.351130096969905,
+      "feasible_frequency": 1.0
+    },
+    {
+      "evaluation": 9,
+      "expected_penalized_cost": 1.9416896099124847,
+      "feasible_frequency": 1.0
+    },
+    {
+      "evaluation": 10,
+      "expected_penalized_cost": 2.7053728053583366,
+      "feasible_frequency": 1.0
+    }
+  ],
+  "summary": {
+    "best_sampled": {
+      "sequence": "AKGKAGAAAG",
+      "properties": {
+        "length": 10,
+        "charge": 1.602791112596905,
+        "hydropathy": 3.3306690738754695e-17,
+        "mass_da": 800.9033,
+        "isoelectric_point": 10.003317451477052
+      },
+      "objective": 0.0262958167053341,
+      "components": {
+        "charge": 0.03944372505800115,
+        "hydropathy": 5.546678239835239e-34,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.397208887403095,
+      "hydropathy_distance": 3.3306690738754695e-17,
+      "adjacent_repeat_count": 2,
+      "mutation_count": 8,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true,
+      "bitstring": "01000000010010011000",
+      "count": 1,
+      "observed_frequency": 0.00390625
+    },
+    "candidate_sequences": [
+      {
+        "sequence": "AKGKAGAAAG",
+        "properties": {
+          "length": 10,
+          "charge": 1.602791112596905,
+          "hydropathy": 3.3306690738754695e-17,
+          "mass_da": 800.9033,
+          "isoelectric_point": 10.003317451477052
+        },
+        "objective": 0.0262958167053341,
+        "components": {
+          "charge": 0.03944372505800115,
+          "hydropathy": 5.546678239835239e-34,
+          "adjacent_repeats": 0.0
+        },
+        "component_weight_sum": 1.5,
+        "charge_error_e": -0.397208887403095,
+        "hydropathy_distance": 3.3306690738754695e-17,
+        "adjacent_repeat_count": 2,
+        "mutation_count": 8,
+        "missing_required_amino_acids": [],
+        "mutation_budget_excess": 0,
+        "constraint_violation": 0,
+        "feasible": true,
+        "bitstring": "01000000010010011000",
+        "count": 1,
+        "observed_frequency": 0.00390625
+      },
+      {
+        "sequence": "AARAKGGGAA",
+        "properties": {
+          "length": 10,
+          "charge": 1.6052715870308174,
+          "hydropathy": -0.05999999999999998,
+          "mass_da": 828.9167,
+          "isoelectric_point": 11.001030158996581
+        },
+        "objective": 0.02716842000086159,
+        "components": {
+          "charge": 0.03895263000129239,
+          "hydropathy": 0.0017999999999999986,
+          "adjacent_repeats": 0.0
+        },
+        "component_weight_sum": 1.5,
+        "charge_error_e": -0.3947284129691826,
+        "hydropathy_distance": 0.05999999999999998,
+        "adjacent_repeat_count": 4,
+        "mutation_count": 6,
+        "missing_required_amino_acids": [],
+        "mutation_budget_excess": 0,
+        "constraint_violation": 0,
+        "feasible": true,
+        "bitstring": "00000101011000110000",
+        "count": 1,
+        "observed_frequency": 0.00390625
+      },
+      {
+        "sequence": "GRGAAAGAAK",
+        "properties": {
+          "length": 10,
+          "charge": 1.5549221566662905,
+          "hydropathy": -0.05999999999999998,
+          "mass_da": 828.9167,
+          "isoelectric_point": 11.000836753845213
+        },
+        "objective": 0.03421571443776434,
+        "components": {
+          "charge": 0.04952357165664651,
+          "hydropathy": 0.0017999999999999986,
+          "adjacent_repeats": 0.0
+        },
+        "component_weight_sum": 1.5,
+        "charge_error_e": -0.4450778433337095,
+        "hydropathy_distance": 0.05999999999999998,
+        "adjacent_repeat_count": 3,
+        "mutation_count": 4,
+        "missing_required_amino_acids": [],
+        "mutation_budget_excess": 0,
+        "constraint_violation": 0,
+        "feasible": true,
+        "bitstring": "10000001000000011101",
+        "count": 1,
+        "observed_frequency": 0.00390625
+      },
+      {
+        "sequence": "AAKGGAAARA",
+        "properties": {
+          "length": 10,
+          "charge": 1.6052715870308174,
+          "hydropathy": 0.16000000000000003,
+          "mass_da": 842.9432999999999,
+          "isoelectric_point": 11.001030158996581
+        },
+        "objective": 0.03450175333419493,
+        "components": {
+          "charge": 0.03895263000129239,
+          "hydropathy": 0.012800000000000006,
+          "adjacent_repeats": 0.0
+        },
+        "component_weight_sum": 1.5,
+        "charge_error_e": -0.3947284129691826,
+        "hydropathy_distance": 0.16000000000000003,
+        "adjacent_repeat_count": 4,
+        "mutation_count": 5,
+        "missing_required_amino_acids": [],
+        "mutation_budget_excess": 0,
+        "constraint_violation": 0,
+        "feasible": true,
+        "bitstring": "00110000000101100000",
+        "count": 1,
+        "observed_frequency": 0.00390625
+      },
+      {
+        "sequence": "RRGAAAGAAA",
+        "properties": {
+          "length": 10,
+          "charge": 1.5574026311002025,
+          "hydropathy": 0.10000000000000002,
+          "mass_da": 870.9567,
+          "isoelectric_point": 11.999967765808105
+        },
+        "objective": 0.035982071826170574,
+        "components": {
+          "charge": 0.04897310773925586,
+          "hydropathy": 0.005000000000000002,
+          "adjacent_repeats": 0.0
+        },
+        "component_weight_sum": 1.5,
+        "charge_error_e": -0.4425973688997975,
+        "hydropathy_distance": 0.10000000000000002,
+        "adjacent_repeat_count": 5,
+        "mutation_count": 4,
+        "missing_required_amino_acids": [],
+        "mutation_budget_excess": 0,
+        "constraint_violation": 0,
+        "feasible": true,
+        "bitstring": "00000001000000011111",
+        "count": 1,
+        "observed_frequency": 0.00390625
+      },
+      {
+        "sequence": "AGGKAKGAAG",
+        "properties": {
+          "length": 10,
+          "charge": 1.602791112596905,
+          "hydropathy": -0.21999999999999997,
+          "mass_da": 786.8767,
+          "isoelectric_point": 10.003317451477052
+        },
+        "objective": 0.04242915003866743,
+        "components": {
+          "charge": 0.03944372505800115,
+          "hydropathy": 0.024199999999999996,
+          "adjacent_repeats": 0.0
+        },
+        "component_weight_sum": 1.5,
+        "charge_error_e": -0.397208887403095,
+        "hydropathy_distance": 0.21999999999999997,
+        "adjacent_repeat_count": 2,
+        "mutation_count": 7,
+        "missing_required_amino_acids": [],
+        "mutation_budget_excess": 0,
+        "constraint_violation": 0,
+        "feasible": true,
+        "bitstring": "01000001100010010100",
+        "count": 1,
+        "observed_frequency": 0.00390625
+      },
+      {
+        "sequence": "GGAAAAGKGK",
+        "properties": {
+          "length": 10,
+          "charge": 1.552441682232378,
+          "hydropathy": -0.21999999999999997,
+          "mass_da": 786.8767,
+          "isoelectric_point": 10.002737236022949
+        },
+        "objective": 0.0495180746338306,
+        "components": {
+          "charge": 0.050077111950745906,
+          "hydropathy": 0.024199999999999996,
+          "adjacent_repeats": 0.0
+        },
+        "component_weight_sum": 1.5,
+        "charge_error_e": -0.4475583177676219,
+        "hydropathy_distance": 0.21999999999999997,
+        "adjacent_repeat_count": 4,
+        "mutation_count": 5,
+        "missing_required_amino_acids": [],
+        "mutation_budget_excess": 0,
+        "constraint_violation": 0,
+        "feasible": true,
+        "bitstring": "10011001000000000101",
+        "count": 1,
+        "observed_frequency": 0.00390625
+      },
+      {
+        "sequence": "KAAKAGAKAA",
+        "properties": {
+          "length": 10,
+          "charge": 2.5499360895650924,
+          "hydropathy": -0.12999999999999995,
+          "mass_da": 886.0509,
+          "isoelectric_point": 10.302063941955566
+        },
+        "objective": 0.0560382837676909,
+        "components": {
+          "charge": 0.07560742565153634,
+          "hydropathy": 0.008449999999999994,
+          "adjacent_repeats": 0.0
+        },
+        "component_weight_sum": 1.5,
+        "charge_error_e": 0.5499360895650924,
+        "hydropathy_distance": 0.12999999999999995,
+        "adjacent_repeat_count": 2,
+        "mutation_count": 8,
+        "missing_required_amino_acids": [],
+        "mutation_budget_excess": 0,
+        "constraint_violation": 0,
+        "feasible": true,
+        "bitstring": "00001000010010000010",
+        "count": 1,
+        "observed_frequency": 0.00390625
+      },
+      {
+        "sequence": "AAAKAKKAAA",
+        "properties": {
+          "length": 10,
+          "charge": 2.6002855199296193,
+          "hydropathy": 0.09000000000000005,
+          "mass_da": 900.0775000000001,
+          "isoelectric_point": 10.302321815490721
+        },
+        "objective": 0.06275711757286223,
+        "components": {
+          "charge": 0.09008567635929335,
+          "hydropathy": 0.004050000000000005,
+          "adjacent_repeats": 0.0
+        },
+        "component_weight_sum": 1.5,
+        "charge_error_e": 0.6002855199296193,
+        "hydropathy_distance": 0.09000000000000005,
+        "adjacent_repeat_count": 5,
+        "mutation_count": 7,
+        "missing_required_amino_acids": [],
+        "mutation_budget_excess": 0,
+        "constraint_violation": 0,
+        "feasible": true,
+        "bitstring": "00000010100010000000",
+        "count": 1,
+        "observed_frequency": 0.00390625
+      },
+      {
+        "sequence": "AGAKAKAAKA",
+        "properties": {
+          "length": 10,
+          "charge": 2.6002855199296193,
+          "hydropathy": -0.12999999999999995,
+          "mass_da": 886.0509,
+          "isoelectric_point": 10.302321815490721
+        },
+        "objective": 0.06569045090619556,
+        "components": {
+          "charge": 0.09008567635929335,
+          "hydropathy": 0.008449999999999994,
+          "adjacent_repeats": 0.0
+        },
+        "component_weight_sum": 1.5,
+        "charge_error_e": 0.6002855199296193,
+        "hydropathy_distance": 0.12999999999999995,
+        "adjacent_repeat_count": 1,
+        "mutation_count": 8,
+        "missing_required_amino_acids": [],
+        "mutation_budget_excess": 0,
+        "constraint_violation": 0,
+        "feasible": true,
+        "bitstring": "00100000100010000100",
+        "count": 1,
+        "observed_frequency": 0.00390625
+      }
+    ],
+    "shots": 256,
+    "feasible_shots": 256,
+    "invalid_shots": 0,
+    "observed_feasible_frequency": 1.0,
+    "sampled_expected_penalized_cost": 2.061980457531679,
+    "reference_quality": {
+      "target_objective": 0.0262958167053341,
+      "target_is_exact_optimum": false,
+      "matched_or_better_shots": 1,
+      "total_shots": 256,
+      "observed_frequency": 0.00390625,
+      "wilson_95_interval": [
+        0.0006898644160236098,
+        0.02179152424537626
+      ],
+      "interval_assumption": "Binomial independent shots; hardware drift/correlation and parameter-selection bias are not modeled."
+    }
+  },
+  "classical": {
+    "best": {
+      "sequence": "AKAGAGAKAG",
+      "properties": {
+        "length": 10,
+        "charge": 1.602791112596905,
+        "hydropathy": 3.3306690738754695e-17,
+        "mass_da": 800.9033,
+        "isoelectric_point": 10.003317451477052
+      },
+      "objective": 0.0262958167053341,
+      "components": {
+        "charge": 0.03944372505800115,
+        "hydropathy": 5.546678239835239e-34,
+        "adjacent_repeats": 0.0
+      },
+      "component_weight_sum": 1.5,
+      "charge_error_e": -0.397208887403095,
+      "hydropathy_distance": 3.3306690738754695e-17,
+      "adjacent_repeat_count": 0,
+      "mutation_count": 10,
+      "missing_required_amino_acids": [],
+      "mutation_budget_excess": 0,
+      "constraint_violation": 0,
+      "feasible": true
+    },
+    "method": "time-bounded multistart categorical coordinate descent plus two-position simulated annealing",
+    "exact_optimum_available": false,
+    "evaluations": 51589,
+    "elapsed_seconds": 1.0002393999966444,
+    "budget_seconds": 1,
+    "seed": 42,
+    "history": [
+      {
+        "evaluation": 1,
+        "seconds": 0.00021159999596420676,
+        "objective": 0.7886630526697443
+      },
+      {
+        "evaluation": 2,
+        "seconds": 0.00027629999385681003,
+        "objective": 0.6522630526697443
+      },
+      {
+        "evaluation": 10,
+        "seconds": 0.00033629999961704016,
+        "objective": 0.08188721466529579
+      },
+      {
+        "evaluation": 18,
+        "seconds": 0.00038749999657738954,
+        "objective": 0.07410175333419496
+      },
+      {
+        "evaluation": 19,
+        "seconds": 0.00039429999742424116,
+        "objective": 0.034501753334194946
+      },
+      {
+        "evaluation": 23,
+        "seconds": 0.00042039999971166253,
+        "objective": 0.027168420000861587
+      },
+      {
+        "evaluation": 40,
+        "seconds": 0.0005283999998937361,
+        "objective": 0.0262958167053341
+      }
+    ]
+  },
+  "circuit": {
+    "qasm": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[20];\nh q[0];\nh q[1];\nh q[2];\nh q[3];\nh q[4];\nh q[5];\nh q[6];\nh q[7];\nh q[8];\nh q[9];\nh q[10];\nh q[11];\nh q[12];\nh q[13];\nh q[14];\nh q[15];\nh q[16];\nh q[17];\nh q[18];\nh q[19];\nrz(0.007504721026969468) q[0];\nrz(0.07833866495139825) q[1];\ncx q[0],q[1];\nrz(0.0028976387342563442) q[1];\ncx q[0],q[1];\nrz(0.008480394338800924) q[2];\ncx q[0],q[2];\nrz(-0.00036535469864853055) q[2];\ncx q[0],q[2];\ncx q[1],q[2];\nrz(-0.001290972761319221) q[2];\ncx q[1],q[2];\ncx q[0],q[2];\ncx q[1],q[2];\nrz(-0.00020862675768867014) q[2];\ncx q[1],q[2];\ncx q[0],q[2];\nrz(0.07954856294727103) q[3];\ncx q[0],q[3];\nrz(-0.001056748077277895) q[3];\ncx q[0],q[3];\ncx q[1],q[3];\nrz(-0.013548217137467398) q[3];\ncx q[1],q[3];\ncx q[0],q[3];\ncx q[1],q[3];\nrz(-0.00048519377111286754) q[3];\ncx q[1],q[3];\ncx q[0],q[3];\ncx q[2],q[3];\nrz(0.003872729598370529) q[3];\ncx q[2],q[3];\ncx q[0],q[3];\ncx q[2],q[3];\nrz(-0.00020920920540595537) q[3];\ncx q[2],q[3];\ncx q[0],q[3];\ncx q[1],q[3];\ncx q[2],q[3];\nrz(-0.000720000902871481) q[3];\ncx q[2],q[3];\ncx q[1],q[3];\ncx q[0],q[3];\ncx q[1],q[3];\ncx q[2],q[3];\nrz(-0.000119695473199608) q[3];\ncx q[2],q[3];\ncx q[1],q[3];\ncx q[0],q[3];\nrz(0.008480394338800924) q[4];\ncx q[0],q[4];\nrz(-0.00036535469864853055) q[4];\ncx q[0],q[4];\ncx q[1],q[4];\nrz(-0.001290972761319221) q[4];\ncx q[1],q[4];\ncx q[0],q[4];\ncx q[1],q[4];\nrz(-0.00020862675768867014) q[4];\ncx q[1],q[4];\ncx q[0],q[4];\ncx q[2],q[4];\nrz(-0.00036564592250717314) q[4];\ncx q[2],q[4];\ncx q[3],q[4];\nrz(-0.0012912639851778633) q[4];\ncx q[3],q[4];\ncx q[2],q[4];\ncx q[3],q[4];\nrz(-0.00020891798154731273) q[4];\ncx q[3],q[4];\ncx q[2],q[4];\nrz(0.07954856294727103) q[5];\ncx q[0],q[5];\nrz(-0.001056748077277895) q[5];\ncx q[0],q[5];\ncx q[1],q[5];\nrz(-0.013548217137467398) q[5];\ncx q[1],q[5];\ncx q[0],q[5];\ncx q[1],q[5];\nrz(-0.00048519377111286754) q[5];\ncx q[1],q[5];\ncx q[0],q[5];\ncx q[2],q[5];\nrz(-0.0012912639851778633) q[5];\ncx q[2],q[5];\ncx q[3],q[5];\nrz(-0.013782733045367366) q[5];\ncx q[3],q[5];\ncx q[2],q[5];\ncx q[3],q[5];\nrz(-0.0007197096790128383) q[5];\ncx q[3],q[5];\ncx q[2],q[5];\ncx q[4],q[5];\nrz(0.003872729598370529) q[5];\ncx q[4],q[5];\ncx q[0],q[5];\ncx q[4],q[5];\nrz(-0.00020920920540595537) q[5];\ncx q[4],q[5];\ncx q[0],q[5];\ncx q[1],q[5];\ncx q[4],q[5];\nrz(-0.000720000902871481) q[5];\ncx q[4],q[5];\ncx q[1],q[5];\ncx q[0],q[5];\ncx q[1],q[5];\ncx q[4],q[5];\nrz(-0.000119695473199608) q[5];\ncx q[4],q[5];\ncx q[1],q[5];\ncx q[0],q[5];\ncx q[2],q[5];\ncx q[4],q[5];\nrz(-0.00020891798154731275) q[5];\ncx q[4],q[5];\ncx q[2],q[5];\ncx q[3],q[5];\ncx q[4],q[5];\nrz(-0.0007197096790128383) q[5];\ncx q[4],q[5];\ncx q[3],q[5];\ncx q[2],q[5];\ncx q[3],q[5];\ncx q[4],q[5];\nrz(-0.0001194042493409654) q[5];\ncx q[4],q[5];\ncx q[3],q[5];\ncx q[2],q[5];\nrz(0.008480394338800924) q[6];\ncx q[0],q[6];\nrz(-0.00036535469864853055) q[6];\ncx q[0],q[6];\ncx q[1],q[6];\nrz(-0.001290972761319221) q[6];\ncx q[1],q[6];\ncx q[0],q[6];\ncx q[1],q[6];\nrz(-0.00020862675768867014) q[6];\ncx q[1],q[6];\ncx q[0],q[6];\ncx q[2],q[6];\nrz(-0.00036564592250717314) q[6];\ncx q[2],q[6];\ncx q[3],q[6];\nrz(-0.0012912639851778633) q[6];\ncx q[3],q[6];\ncx q[2],q[6];\ncx q[3],q[6];\nrz(-0.00020891798154731273) q[6];\ncx q[3],q[6];\ncx q[2],q[6];\ncx q[4],q[6];\nrz(-0.00036564592250717314) q[6];\ncx q[4],q[6];\ncx q[5],q[6];\nrz(-0.0012912639851778633) q[6];\ncx q[5],q[6];\ncx q[4],q[6];\ncx q[5],q[6];\nrz(-0.00020891798154731273) q[6];\ncx q[5],q[6];\ncx q[4],q[6];\nrz(0.07954856294727103) q[7];\ncx q[0],q[7];\nrz(-0.001056748077277895) q[7];\ncx q[0],q[7];\ncx q[1],q[7];\nrz(-0.013548217137467398) q[7];\ncx q[1],q[7];\ncx q[0],q[7];\ncx q[1],q[7];\nrz(-0.00048519377111286754) q[7];\ncx q[1],q[7];\ncx q[0],q[7];\ncx q[2],q[7];\nrz(-0.0012912639851778633) q[7];\ncx q[2],q[7];\ncx q[3],q[7];\nrz(-0.013782733045367366) q[7];\ncx q[3],q[7];\ncx q[2],q[7];\ncx q[3],q[7];\nrz(-0.0007197096790128383) q[7];\ncx q[3],q[7];\ncx q[2],q[7];\ncx q[4],q[7];\nrz(-0.0012912639851778633) q[7];\ncx q[4],q[7];\ncx q[5],q[7];\nrz(-0.013782733045367366) q[7];\ncx q[5],q[7];\ncx q[4],q[7];\ncx q[5],q[7];\nrz(-0.0007197096790128383) q[7];\ncx q[5],q[7];\ncx q[4],q[7];\ncx q[6],q[7];\nrz(0.003872729598370529) q[7];\ncx q[6],q[7];\ncx q[0],q[7];\ncx q[6],q[7];\nrz(-0.00020920920540595537) q[7];\ncx q[6],q[7];\ncx q[0],q[7];\ncx q[1],q[7];\ncx q[6],q[7];\nrz(-0.000720000902871481) q[7];\ncx q[6],q[7];\ncx q[1],q[7];\ncx q[0],q[7];\ncx q[1],q[7];\ncx q[6],q[7];\nrz(-0.000119695473199608) q[7];\ncx q[6],q[7];\ncx q[1],q[7];\ncx q[0],q[7];\ncx q[2],q[7];\ncx q[6],q[7];\nrz(-0.00020891798154731275) q[7];\ncx q[6],q[7];\ncx q[2],q[7];\ncx q[3],q[7];\ncx q[6],q[7];\nrz(-0.0007197096790128383) q[7];\ncx q[6],q[7];\ncx q[3],q[7];\ncx q[2],q[7];\ncx q[3],q[7];\ncx q[6],q[7];\nrz(-0.0001194042493409654) q[7];\ncx q[6],q[7];\ncx q[3],q[7];\ncx q[2],q[7];\ncx q[4],q[7];\ncx q[6],q[7];\nrz(-0.00020891798154731275) q[7];\ncx q[6],q[7];\ncx q[4],q[7];\ncx q[5],q[7];\ncx q[6],q[7];\nrz(-0.0007197096790128383) q[7];\ncx q[6],q[7];\ncx q[5],q[7];\ncx q[4],q[7];\ncx q[5],q[7];\ncx q[6],q[7];\nrz(-0.0001194042493409654) q[7];\ncx q[6],q[7];\ncx q[5],q[7];\ncx q[4],q[7];\nrz(0.008480394338800924) q[8];\ncx q[0],q[8];\nrz(-0.00036535469864853055) q[8];\ncx q[0],q[8];\ncx q[1],q[8];\nrz(-0.001290972761319221) q[8];\ncx q[1],q[8];\ncx q[0],q[8];\ncx q[1],q[8];\nrz(-0.00020862675768867014) q[8];\ncx q[1],q[8];\ncx q[0],q[8];\ncx q[2],q[8];\nrz(-0.00036564592250717314) q[8];\ncx q[2],q[8];\ncx q[3],q[8];\nrz(-0.0012912639851778633) q[8];\ncx q[3],q[8];\ncx q[2],q[8];\ncx q[3],q[8];\nrz(-0.00020891798154731273) q[8];\ncx q[3],q[8];\ncx q[2],q[8];\ncx q[4],q[8];\nrz(-0.00036564592250717314) q[8];\ncx q[4],q[8];\ncx q[5],q[8];\nrz(-0.0012912639851778633) q[8];\ncx q[5],q[8];\ncx q[4],q[8];\ncx q[5],q[8];\nrz(-0.00020891798154731273) q[8];\ncx q[5],q[8];\ncx q[4],q[8];\ncx q[6],q[8];\nrz(-0.00036564592250717314) q[8];\ncx q[6],q[8];\ncx q[7],q[8];\nrz(-0.0012912639851778633) q[8];\ncx q[7],q[8];\ncx q[6],q[8];\ncx q[7],q[8];\nrz(-0.00020891798154731273) q[8];\ncx q[7],q[8];\ncx q[6],q[8];\nrz(0.07954856294727103) q[9];\ncx q[0],q[9];\nrz(-0.001056748077277895) q[9];\ncx q[0],q[9];\ncx q[1],q[9];\nrz(-0.013548217137467398) q[9];\ncx q[1],q[9];\ncx q[0],q[9];\ncx q[1],q[9];\nrz(-0.00048519377111286754) q[9];\ncx q[1],q[9];\ncx q[0],q[9];\ncx q[2],q[9];\nrz(-0.0012912639851778633) q[9];\ncx q[2],q[9];\ncx q[3],q[9];\nrz(-0.013782733045367366) q[9];\ncx q[3],q[9];\ncx q[2],q[9];\ncx q[3],q[9];\nrz(-0.0007197096790128383) q[9];\ncx q[3],q[9];\ncx q[2],q[9];\ncx q[4],q[9];\nrz(-0.0012912639851778633) q[9];\ncx q[4],q[9];\ncx q[5],q[9];\nrz(-0.013782733045367366) q[9];\ncx q[5],q[9];\ncx q[4],q[9];\ncx q[5],q[9];\nrz(-0.0007197096790128383) q[9];\ncx q[5],q[9];\ncx q[4],q[9];\ncx q[6],q[9];\nrz(-0.0012912639851778633) q[9];\ncx q[6],q[9];\ncx q[7],q[9];\nrz(-0.013782733045367366) q[9];\ncx q[7],q[9];\ncx q[6],q[9];\ncx q[7],q[9];\nrz(-0.0007197096790128383) q[9];\ncx q[7],q[9];\ncx q[6],q[9];\ncx q[8],q[9];\nrz(0.003872729598370529) q[9];\ncx q[8],q[9];\ncx q[0],q[9];\ncx q[8],q[9];\nrz(-0.00020920920540595537) q[9];\ncx q[8],q[9];\ncx q[0],q[9];\ncx q[1],q[9];\ncx q[8],q[9];\nrz(-0.000720000902871481) q[9];\ncx q[8],q[9];\ncx q[1],q[9];\ncx q[0],q[9];\ncx q[1],q[9];\ncx q[8],q[9];\nrz(-0.000119695473199608) q[9];\ncx q[8],q[9];\ncx q[1],q[9];\ncx q[0],q[9];\ncx q[2],q[9];\ncx q[8],q[9];\nrz(-0.00020891798154731275) q[9];\ncx q[8],q[9];\ncx q[2],q[9];\ncx q[3],q[9];\ncx q[8],q[9];\nrz(-0.0007197096790128383) q[9];\ncx q[8],q[9];\ncx q[3],q[9];\ncx q[2],q[9];\ncx q[3],q[9];\ncx q[8],q[9];\nrz(-0.0001194042493409654) q[9];\ncx q[8],q[9];\ncx q[3],q[9];\ncx q[2],q[9];\ncx q[4],q[9];\ncx q[8],q[9];\nrz(-0.00020891798154731275) q[9];\ncx q[8],q[9];\ncx q[4],q[9];\ncx q[5],q[9];\ncx q[8],q[9];\nrz(-0.0007197096790128383) q[9];\ncx q[8],q[9];\ncx q[5],q[9];\ncx q[4],q[9];\ncx q[5],q[9];\ncx q[8],q[9];\nrz(-0.0001194042493409654) q[9];\ncx q[8],q[9];\ncx q[5],q[9];\ncx q[4],q[9];\ncx q[6],q[9];\ncx q[8],q[9];\nrz(-0.00020891798154731275) q[9];\ncx q[8],q[9];\ncx q[6],q[9];\ncx q[7],q[9];\ncx q[8],q[9];\nrz(-0.0007197096790128383) q[9];\ncx q[8],q[9];\ncx q[7],q[9];\ncx q[6],q[9];\ncx q[7],q[9];\ncx q[8],q[9];\nrz(-0.0001194042493409654) q[9];\ncx q[8],q[9];\ncx q[7],q[9];\ncx q[6],q[9];\nrz(0.008480394338800924) q[10];\ncx q[0],q[10];\nrz(-0.00036535469864853055) q[10];\ncx q[0],q[10];\ncx q[1],q[10];\nrz(-0.001290972761319221) q[10];\ncx q[1],q[10];\ncx q[0],q[10];\ncx q[1],q[10];\nrz(-0.00020862675768867014) q[10];\ncx q[1],q[10];\ncx q[0],q[10];\ncx q[2],q[10];\nrz(-0.00036564592250717314) q[10];\ncx q[2],q[10];\ncx q[3],q[10];\nrz(-0.0012912639851778633) q[10];\ncx q[3],q[10];\ncx q[2],q[10];\ncx q[3],q[10];\nrz(-0.00020891798154731273) q[10];\ncx q[3],q[10];\ncx q[2],q[10];\ncx q[4],q[10];\nrz(-0.00036564592250717314) q[10];\ncx q[4],q[10];\ncx q[5],q[10];\nrz(-0.0012912639851778633) q[10];\ncx q[5],q[10];\ncx q[4],q[10];\ncx q[5],q[10];\nrz(-0.00020891798154731273) q[10];\ncx q[5],q[10];\ncx q[4],q[10];\ncx q[6],q[10];\nrz(-0.00036564592250717314) q[10];\ncx q[6],q[10];\ncx q[7],q[10];\nrz(-0.0012912639851778633) q[10];\ncx q[7],q[10];\ncx q[6],q[10];\ncx q[7],q[10];\nrz(-0.00020891798154731273) q[10];\ncx q[7],q[10];\ncx q[6],q[10];\ncx q[8],q[10];\nrz(-0.00036564592250717314) q[10];\ncx q[8],q[10];\ncx q[9],q[10];\nrz(-0.0012912639851778633) q[10];\ncx q[9],q[10];\ncx q[8],q[10];\ncx q[9],q[10];\nrz(-0.00020891798154731273) q[10];\ncx q[9],q[10];\ncx q[8],q[10];\nrz(0.07954856294727103) q[11];\ncx q[0],q[11];\nrz(-0.001056748077277895) q[11];\ncx q[0],q[11];\ncx q[1],q[11];\nrz(-0.013548217137467398) q[11];\ncx q[1],q[11];\ncx q[0],q[11];\ncx q[1],q[11];\nrz(-0.00048519377111286754) q[11];\ncx q[1],q[11];\ncx q[0],q[11];\ncx q[2],q[11];\nrz(-0.0012912639851778633) q[11];\ncx q[2],q[11];\ncx q[3],q[11];\nrz(-0.013782733045367366) q[11];\ncx q[3],q[11];\ncx q[2],q[11];\ncx q[3],q[11];\nrz(-0.0007197096790128383) q[11];\ncx q[3],q[11];\ncx q[2],q[11];\ncx q[4],q[11];\nrz(-0.0012912639851778633) q[11];\ncx q[4],q[11];\ncx q[5],q[11];\nrz(-0.013782733045367366) q[11];\ncx q[5],q[11];\ncx q[4],q[11];\ncx q[5],q[11];\nrz(-0.0007197096790128383) q[11];\ncx q[5],q[11];\ncx q[4],q[11];\ncx q[6],q[11];\nrz(-0.0012912639851778633) q[11];\ncx q[6],q[11];\ncx q[7],q[11];\nrz(-0.013782733045367366) q[11];\ncx q[7],q[11];\ncx q[6],q[11];\ncx q[7],q[11];\nrz(-0.0007197096790128383) q[11];\ncx q[7],q[11];\ncx q[6],q[11];\ncx q[8],q[11];\nrz(-0.0012912639851778633) q[11];\ncx q[8],q[11];\ncx q[9],q[11];\nrz(-0.013782733045367366) q[11];\ncx q[9],q[11];\ncx q[8],q[11];\ncx q[9],q[11];\nrz(-0.0007197096790128383) q[11];\ncx q[9],q[11];\ncx q[8],q[11];\ncx q[10],q[11];\nrz(0.003872729598370529) q[11];\ncx q[10],q[11];\ncx q[0],q[11];\ncx q[10],q[11];\nrz(-0.00020920920540595537) q[11];\ncx q[10],q[11];\ncx q[0],q[11];\ncx q[1],q[11];\ncx q[10],q[11];\nrz(-0.000720000902871481) q[11];\ncx q[10],q[11];\ncx q[1],q[11];\ncx q[0],q[11];\ncx q[1],q[11];\ncx q[10],q[11];\nrz(-0.000119695473199608) q[11];\ncx q[10],q[11];\ncx q[1],q[11];\ncx q[0],q[11];\ncx q[2],q[11];\ncx q[10],q[11];\nrz(-0.00020891798154731275) q[11];\ncx q[10],q[11];\ncx q[2],q[11];\ncx q[3],q[11];\ncx q[10],q[11];\nrz(-0.0007197096790128383) q[11];\ncx q[10],q[11];\ncx q[3],q[11];\ncx q[2],q[11];\ncx q[3],q[11];\ncx q[10],q[11];\nrz(-0.0001194042493409654) q[11];\ncx q[10],q[11];\ncx q[3],q[11];\ncx q[2],q[11];\ncx q[4],q[11];\ncx q[10],q[11];\nrz(-0.00020891798154731275) q[11];\ncx q[10],q[11];\ncx q[4],q[11];\ncx q[5],q[11];\ncx q[10],q[11];\nrz(-0.0007197096790128383) q[11];\ncx q[10],q[11];\ncx q[5],q[11];\ncx q[4],q[11];\ncx q[5],q[11];\ncx q[10],q[11];\nrz(-0.0001194042493409654) q[11];\ncx q[10],q[11];\ncx q[5],q[11];\ncx q[4],q[11];\ncx q[6],q[11];\ncx q[10],q[11];\nrz(-0.00020891798154731275) q[11];\ncx q[10],q[11];\ncx q[6],q[11];\ncx q[7],q[11];\ncx q[10],q[11];\nrz(-0.0007197096790128383) q[11];\ncx q[10],q[11];\ncx q[7],q[11];\ncx q[6],q[11];\ncx q[7],q[11];\ncx q[10],q[11];\nrz(-0.0001194042493409654) q[11];\ncx q[10],q[11];\ncx q[7],q[11];\ncx q[6],q[11];\ncx q[8],q[11];\ncx q[10],q[11];\nrz(-0.00020891798154731275) q[11];\ncx q[10],q[11];\ncx q[8],q[11];\ncx q[9],q[11];\ncx q[10],q[11];\nrz(-0.0007197096790128383) q[11];\ncx q[10],q[11];\ncx q[9],q[11];\ncx q[8],q[11];\ncx q[9],q[11];\ncx q[10],q[11];\nrz(-0.0001194042493409654) q[11];\ncx q[10],q[11];\ncx q[9],q[11];\ncx q[8],q[11];\nrz(0.008480394338800924) q[12];\ncx q[0],q[12];\nrz(-0.00036535469864853055) q[12];\ncx q[0],q[12];\ncx q[1],q[12];\nrz(-0.001290972761319221) q[12];\ncx q[1],q[12];\ncx q[0],q[12];\ncx q[1],q[12];\nrz(-0.00020862675768867014) q[12];\ncx q[1],q[12];\ncx q[0],q[12];\ncx q[2],q[12];\nrz(-0.00036564592250717314) q[12];\ncx q[2],q[12];\ncx q[3],q[12];\nrz(-0.0012912639851778633) q[12];\ncx q[3],q[12];\ncx q[2],q[12];\ncx q[3],q[12];\nrz(-0.00020891798154731273) q[12];\ncx q[3],q[12];\ncx q[2],q[12];\ncx q[4],q[12];\nrz(-0.00036564592250717314) q[12];\ncx q[4],q[12];\ncx q[5],q[12];\nrz(-0.0012912639851778633) q[12];\ncx q[5],q[12];\ncx q[4],q[12];\ncx q[5],q[12];\nrz(-0.00020891798154731273) q[12];\ncx q[5],q[12];\ncx q[4],q[12];\ncx q[6],q[12];\nrz(-0.00036564592250717314) q[12];\ncx q[6],q[12];\ncx q[7],q[12];\nrz(-0.0012912639851778633) q[12];\ncx q[7],q[12];\ncx q[6],q[12];\ncx q[7],q[12];\nrz(-0.00020891798154731273) q[12];\ncx q[7],q[12];\ncx q[6],q[12];\ncx q[8],q[12];\nrz(-0.00036564592250717314) q[12];\ncx q[8],q[12];\ncx q[9],q[12];\nrz(-0.0012912639851778633) q[12];\ncx q[9],q[12];\ncx q[8],q[12];\ncx q[9],q[12];\nrz(-0.00020891798154731273) q[12];\ncx q[9],q[12];\ncx q[8],q[12];\ncx q[10],q[12];\nrz(-0.00036564592250717314) q[12];\ncx q[10],q[12];\ncx q[11],q[12];\nrz(-0.0012912639851778633) q[12];\ncx q[11],q[12];\ncx q[10],q[12];\ncx q[11],q[12];\nrz(-0.00020891798154731273) q[12];\ncx q[11],q[12];\ncx q[10],q[12];\nrz(0.07954856294727103) q[13];\ncx q[0],q[13];\nrz(-0.001056748077277895) q[13];\ncx q[0],q[13];\ncx q[1],q[13];\nrz(-0.013548217137467398) q[13];\ncx q[1],q[13];\ncx q[0],q[13];\ncx q[1],q[13];\nrz(-0.00048519377111286754) q[13];\ncx q[1],q[13];\ncx q[0],q[13];\ncx q[2],q[13];\nrz(-0.0012912639851778633) q[13];\ncx q[2],q[13];\ncx q[3],q[13];\nrz(-0.013782733045367366) q[13];\ncx q[3],q[13];\ncx q[2],q[13];\ncx q[3],q[13];\nrz(-0.0007197096790128383) q[13];\ncx q[3],q[13];\ncx q[2],q[13];\ncx q[4],q[13];\nrz(-0.0012912639851778633) q[13];\ncx q[4],q[13];\ncx q[5],q[13];\nrz(-0.013782733045367366) q[13];\ncx q[5],q[13];\ncx q[4],q[13];\ncx q[5],q[13];\nrz(-0.0007197096790128383) q[13];\ncx q[5],q[13];\ncx q[4],q[13];\ncx q[6],q[13];\nrz(-0.0012912639851778633) q[13];\ncx q[6],q[13];\ncx q[7],q[13];\nrz(-0.013782733045367366) q[13];\ncx q[7],q[13];\ncx q[6],q[13];\ncx q[7],q[13];\nrz(-0.0007197096790128383) q[13];\ncx q[7],q[13];\ncx q[6],q[13];\ncx q[8],q[13];\nrz(-0.0012912639851778633) q[13];\ncx q[8],q[13];\ncx q[9],q[13];\nrz(-0.013782733045367366) q[13];\ncx q[9],q[13];\ncx q[8],q[13];\ncx q[9],q[13];\nrz(-0.0007197096790128383) q[13];\ncx q[9],q[13];\ncx q[8],q[13];\ncx q[10],q[13];\nrz(-0.0012912639851778633) q[13];\ncx q[10],q[13];\ncx q[11],q[13];\nrz(-0.013782733045367366) q[13];\ncx q[11],q[13];\ncx q[10],q[13];\ncx q[11],q[13];\nrz(-0.0007197096790128383) q[13];\ncx q[11],q[13];\ncx q[10],q[13];\ncx q[12],q[13];\nrz(0.003872729598370529) q[13];\ncx q[12],q[13];\ncx q[0],q[13];\ncx q[12],q[13];\nrz(-0.00020920920540595537) q[13];\ncx q[12],q[13];\ncx q[0],q[13];\ncx q[1],q[13];\ncx q[12],q[13];\nrz(-0.000720000902871481) q[13];\ncx q[12],q[13];\ncx q[1],q[13];\ncx q[0],q[13];\ncx q[1],q[13];\ncx q[12],q[13];\nrz(-0.000119695473199608) q[13];\ncx q[12],q[13];\ncx q[1],q[13];\ncx q[0],q[13];\ncx q[2],q[13];\ncx q[12],q[13];\nrz(-0.00020891798154731275) q[13];\ncx q[12],q[13];\ncx q[2],q[13];\ncx q[3],q[13];\ncx q[12],q[13];\nrz(-0.0007197096790128383) q[13];\ncx q[12],q[13];\ncx q[3],q[13];\ncx q[2],q[13];\ncx q[3],q[13];\ncx q[12],q[13];\nrz(-0.0001194042493409654) q[13];\ncx q[12],q[13];\ncx q[3],q[13];\ncx q[2],q[13];\ncx q[4],q[13];\ncx q[12],q[13];\nrz(-0.00020891798154731275) q[13];\ncx q[12],q[13];\ncx q[4],q[13];\ncx q[5],q[13];\ncx q[12],q[13];\nrz(-0.0007197096790128383) q[13];\ncx q[12],q[13];\ncx q[5],q[13];\ncx q[4],q[13];\ncx q[5],q[13];\ncx q[12],q[13];\nrz(-0.0001194042493409654) q[13];\ncx q[12],q[13];\ncx q[5],q[13];\ncx q[4],q[13];\ncx q[6],q[13];\ncx q[12],q[13];\nrz(-0.00020891798154731275) q[13];\ncx q[12],q[13];\ncx q[6],q[13];\ncx q[7],q[13];\ncx q[12],q[13];\nrz(-0.0007197096790128383) q[13];\ncx q[12],q[13];\ncx q[7],q[13];\ncx q[6],q[13];\ncx q[7],q[13];\ncx q[12],q[13];\nrz(-0.0001194042493409654) q[13];\ncx q[12],q[13];\ncx q[7],q[13];\ncx q[6],q[13];\ncx q[8],q[13];\ncx q[12],q[13];\nrz(-0.00020891798154731275) q[13];\ncx q[12],q[13];\ncx q[8],q[13];\ncx q[9],q[13];\ncx q[12],q[13];\nrz(-0.0007197096790128383) q[13];\ncx q[12],q[13];\ncx q[9],q[13];\ncx q[8],q[13];\ncx q[9],q[13];\ncx q[12],q[13];\nrz(-0.0001194042493409654) q[13];\ncx q[12],q[13];\ncx q[9],q[13];\ncx q[8],q[13];\ncx q[10],q[13];\ncx q[12],q[13];\nrz(-0.00020891798154731275) q[13];\ncx q[12],q[13];\ncx q[10],q[13];\ncx q[11],q[13];\ncx q[12],q[13];\nrz(-0.0007197096790128383) q[13];\ncx q[12],q[13];\ncx q[11],q[13];\ncx q[10],q[13];\ncx q[11],q[13];\ncx q[12],q[13];\nrz(-0.0001194042493409654) q[13];\ncx q[12],q[13];\ncx q[11],q[13];\ncx q[10],q[13];\nrz(0.008480394338800924) q[14];\ncx q[0],q[14];\nrz(-0.00036535469864853055) q[14];\ncx q[0],q[14];\ncx q[1],q[14];\nrz(-0.001290972761319221) q[14];\ncx q[1],q[14];\ncx q[0],q[14];\ncx q[1],q[14];\nrz(-0.00020862675768867014) q[14];\ncx q[1],q[14];\ncx q[0],q[14];\ncx q[2],q[14];\nrz(-0.00036564592250717314) q[14];\ncx q[2],q[14];\ncx q[3],q[14];\nrz(-0.0012912639851778633) q[14];\ncx q[3],q[14];\ncx q[2],q[14];\ncx q[3],q[14];\nrz(-0.00020891798154731273) q[14];\ncx q[3],q[14];\ncx q[2],q[14];\ncx q[4],q[14];\nrz(-0.00036564592250717314) q[14];\ncx q[4],q[14];\ncx q[5],q[14];\nrz(-0.0012912639851778633) q[14];\ncx q[5],q[14];\ncx q[4],q[14];\ncx q[5],q[14];\nrz(-0.00020891798154731273) q[14];\ncx q[5],q[14];\ncx q[4],q[14];\ncx q[6],q[14];\nrz(-0.00036564592250717314) q[14];\ncx q[6],q[14];\ncx q[7],q[14];\nrz(-0.0012912639851778633) q[14];\ncx q[7],q[14];\ncx q[6],q[14];\ncx q[7],q[14];\nrz(-0.00020891798154731273) q[14];\ncx q[7],q[14];\ncx q[6],q[14];\ncx q[8],q[14];\nrz(-0.00036564592250717314) q[14];\ncx q[8],q[14];\ncx q[9],q[14];\nrz(-0.0012912639851778633) q[14];\ncx q[9],q[14];\ncx q[8],q[14];\ncx q[9],q[14];\nrz(-0.00020891798154731273) q[14];\ncx q[9],q[14];\ncx q[8],q[14];\ncx q[10],q[14];\nrz(-0.00036564592250717314) q[14];\ncx q[10],q[14];\ncx q[11],q[14];\nrz(-0.0012912639851778633) q[14];\ncx q[11],q[14];\ncx q[10],q[14];\ncx q[11],q[14];\nrz(-0.00020891798154731273) q[14];\ncx q[11],q[14];\ncx q[10],q[14];\ncx q[12],q[14];\nrz(-0.00036564592250717314) q[14];\ncx q[12],q[14];\ncx q[13],q[14];\nrz(-0.0012912639851778633) q[14];\ncx q[13],q[14];\ncx q[12],q[14];\ncx q[13],q[14];\nrz(-0.00020891798154731273) q[14];\ncx q[13],q[14];\ncx q[12],q[14];\nrz(0.07954856294727103) q[15];\ncx q[0],q[15];\nrz(-0.001056748077277895) q[15];\ncx q[0],q[15];\ncx q[1],q[15];\nrz(-0.013548217137467398) q[15];\ncx q[1],q[15];\ncx q[0],q[15];\ncx q[1],q[15];\nrz(-0.00048519377111286754) q[15];\ncx q[1],q[15];\ncx q[0],q[15];\ncx q[2],q[15];\nrz(-0.0012912639851778633) q[15];\ncx q[2],q[15];\ncx q[3],q[15];\nrz(-0.013782733045367366) q[15];\ncx q[3],q[15];\ncx q[2],q[15];\ncx q[3],q[15];\nrz(-0.0007197096790128383) q[15];\ncx q[3],q[15];\ncx q[2],q[15];\ncx q[4],q[15];\nrz(-0.0012912639851778633) q[15];\ncx q[4],q[15];\ncx q[5],q[15];\nrz(-0.013782733045367366) q[15];\ncx q[5],q[15];\ncx q[4],q[15];\ncx q[5],q[15];\nrz(-0.0007197096790128383) q[15];\ncx q[5],q[15];\ncx q[4],q[15];\ncx q[6],q[15];\nrz(-0.0012912639851778633) q[15];\ncx q[6],q[15];\ncx q[7],q[15];\nrz(-0.013782733045367366) q[15];\ncx q[7],q[15];\ncx q[6],q[15];\ncx q[7],q[15];\nrz(-0.0007197096790128383) q[15];\ncx q[7],q[15];\ncx q[6],q[15];\ncx q[8],q[15];\nrz(-0.0012912639851778633) q[15];\ncx q[8],q[15];\ncx q[9],q[15];\nrz(-0.013782733045367366) q[15];\ncx q[9],q[15];\ncx q[8],q[15];\ncx q[9],q[15];\nrz(-0.0007197096790128383) q[15];\ncx q[9],q[15];\ncx q[8],q[15];\ncx q[10],q[15];\nrz(-0.0012912639851778633) q[15];\ncx q[10],q[15];\ncx q[11],q[15];\nrz(-0.013782733045367366) q[15];\ncx q[11],q[15];\ncx q[10],q[15];\ncx q[11],q[15];\nrz(-0.0007197096790128383) q[15];\ncx q[11],q[15];\ncx q[10],q[15];\ncx q[12],q[15];\nrz(-0.0012912639851778633) q[15];\ncx q[12],q[15];\ncx q[13],q[15];\nrz(-0.013782733045367366) q[15];\ncx q[13],q[15];\ncx q[12],q[15];\ncx q[13],q[15];\nrz(-0.0007197096790128383) q[15];\ncx q[13],q[15];\ncx q[12],q[15];\ncx q[14],q[15];\nrz(0.003872729598370529) q[15];\ncx q[14],q[15];\ncx q[0],q[15];\ncx q[14],q[15];\nrz(-0.00020920920540595537) q[15];\ncx q[14],q[15];\ncx q[0],q[15];\ncx q[1],q[15];\ncx q[14],q[15];\nrz(-0.000720000902871481) q[15];\ncx q[14],q[15];\ncx q[1],q[15];\ncx q[0],q[15];\ncx q[1],q[15];\ncx q[14],q[15];\nrz(-0.000119695473199608) q[15];\ncx q[14],q[15];\ncx q[1],q[15];\ncx q[0],q[15];\ncx q[2],q[15];\ncx q[14],q[15];\nrz(-0.00020891798154731275) q[15];\ncx q[14],q[15];\ncx q[2],q[15];\ncx q[3],q[15];\ncx q[14],q[15];\nrz(-0.0007197096790128383) q[15];\ncx q[14],q[15];\ncx q[3],q[15];\ncx q[2],q[15];\ncx q[3],q[15];\ncx q[14],q[15];\nrz(-0.0001194042493409654) q[15];\ncx q[14],q[15];\ncx q[3],q[15];\ncx q[2],q[15];\ncx q[4],q[15];\ncx q[14],q[15];\nrz(-0.00020891798154731275) q[15];\ncx q[14],q[15];\ncx q[4],q[15];\ncx q[5],q[15];\ncx q[14],q[15];\nrz(-0.0007197096790128383) q[15];\ncx q[14],q[15];\ncx q[5],q[15];\ncx q[4],q[15];\ncx q[5],q[15];\ncx q[14],q[15];\nrz(-0.0001194042493409654) q[15];\ncx q[14],q[15];\ncx q[5],q[15];\ncx q[4],q[15];\ncx q[6],q[15];\ncx q[14],q[15];\nrz(-0.00020891798154731275) q[15];\ncx q[14],q[15];\ncx q[6],q[15];\ncx q[7],q[15];\ncx q[14],q[15];\nrz(-0.0007197096790128383) q[15];\ncx q[14],q[15];\ncx q[7],q[15];\ncx q[6],q[15];\ncx q[7],q[15];\ncx q[14],q[15];\nrz(-0.0001194042493409654) q[15];\ncx q[14],q[15];\ncx q[7],q[15];\ncx q[6],q[15];\ncx q[8],q[15];\ncx q[14],q[15];\nrz(-0.00020891798154731275) q[15];\ncx q[14],q[15];\ncx q[8],q[15];\ncx q[9],q[15];\ncx q[14],q[15];\nrz(-0.0007197096790128383) q[15];\ncx q[14],q[15];\ncx q[9],q[15];\ncx q[8],q[15];\ncx q[9],q[15];\ncx q[14],q[15];\nrz(-0.0001194042493409654) q[15];\ncx q[14],q[15];\ncx q[9],q[15];\ncx q[8],q[15];\ncx q[10],q[15];\ncx q[14],q[15];\nrz(-0.00020891798154731275) q[15];\ncx q[14],q[15];\ncx q[10],q[15];\ncx q[11],q[15];\ncx q[14],q[15];\nrz(-0.0007197096790128383) q[15];\ncx q[14],q[15];\ncx q[11],q[15];\ncx q[10],q[15];\ncx q[11],q[15];\ncx q[14],q[15];\nrz(-0.0001194042493409654) q[15];\ncx q[14],q[15];\ncx q[11],q[15];\ncx q[10],q[15];\ncx q[12],q[15];\ncx q[14],q[15];\nrz(-0.00020891798154731275) q[15];\ncx q[14],q[15];\ncx q[12],q[15];\ncx q[13],q[15];\ncx q[14],q[15];\nrz(-0.0007197096790128383) q[15];\ncx q[14],q[15];\ncx q[13],q[15];\ncx q[12],q[15];\ncx q[13],q[15];\ncx q[14],q[15];\nrz(-0.0001194042493409654) q[15];\ncx q[14],q[15];\ncx q[13],q[15];\ncx q[12],q[15];\nrz(0.008480394338800924) q[16];\ncx q[0],q[16];\nrz(-0.00036535469864853055) q[16];\ncx q[0],q[16];\ncx q[1],q[16];\nrz(-0.001290972761319221) q[16];\ncx q[1],q[16];\ncx q[0],q[16];\ncx q[1],q[16];\nrz(-0.00020862675768867014) q[16];\ncx q[1],q[16];\ncx q[0],q[16];\ncx q[2],q[16];\nrz(-0.00036564592250717314) q[16];\ncx q[2],q[16];\ncx q[3],q[16];\nrz(-0.0012912639851778633) q[16];\ncx q[3],q[16];\ncx q[2],q[16];\ncx q[3],q[16];\nrz(-0.00020891798154731273) q[16];\ncx q[3],q[16];\ncx q[2],q[16];\ncx q[4],q[16];\nrz(-0.00036564592250717314) q[16];\ncx q[4],q[16];\ncx q[5],q[16];\nrz(-0.0012912639851778633) q[16];\ncx q[5],q[16];\ncx q[4],q[16];\ncx q[5],q[16];\nrz(-0.00020891798154731273) q[16];\ncx q[5],q[16];\ncx q[4],q[16];\ncx q[6],q[16];\nrz(-0.00036564592250717314) q[16];\ncx q[6],q[16];\ncx q[7],q[16];\nrz(-0.0012912639851778633) q[16];\ncx q[7],q[16];\ncx q[6],q[16];\ncx q[7],q[16];\nrz(-0.00020891798154731273) q[16];\ncx q[7],q[16];\ncx q[6],q[16];\ncx q[8],q[16];\nrz(-0.00036564592250717314) q[16];\ncx q[8],q[16];\ncx q[9],q[16];\nrz(-0.0012912639851778633) q[16];\ncx q[9],q[16];\ncx q[8],q[16];\ncx q[9],q[16];\nrz(-0.00020891798154731273) q[16];\ncx q[9],q[16];\ncx q[8],q[16];\ncx q[10],q[16];\nrz(-0.00036564592250717314) q[16];\ncx q[10],q[16];\ncx q[11],q[16];\nrz(-0.0012912639851778633) q[16];\ncx q[11],q[16];\ncx q[10],q[16];\ncx q[11],q[16];\nrz(-0.00020891798154731273) q[16];\ncx q[11],q[16];\ncx q[10],q[16];\ncx q[12],q[16];\nrz(-0.00036564592250717314) q[16];\ncx q[12],q[16];\ncx q[13],q[16];\nrz(-0.0012912639851778633) q[16];\ncx q[13],q[16];\ncx q[12],q[16];\ncx q[13],q[16];\nrz(-0.00020891798154731273) q[16];\ncx q[13],q[16];\ncx q[12],q[16];\ncx q[14],q[16];\nrz(-0.00036564592250717314) q[16];\ncx q[14],q[16];\ncx q[15],q[16];\nrz(-0.0012912639851778633) q[16];\ncx q[15],q[16];\ncx q[14],q[16];\ncx q[15],q[16];\nrz(-0.00020891798154731273) q[16];\ncx q[15],q[16];\ncx q[14],q[16];\nrz(0.07954856294727103) q[17];\ncx q[0],q[17];\nrz(-0.001056748077277895) q[17];\ncx q[0],q[17];\ncx q[1],q[17];\nrz(-0.013548217137467398) q[17];\ncx q[1],q[17];\ncx q[0],q[17];\ncx q[1],q[17];\nrz(-0.00048519377111286754) q[17];\ncx q[1],q[17];\ncx q[0],q[17];\ncx q[2],q[17];\nrz(-0.0012912639851778633) q[17];\ncx q[2],q[17];\ncx q[3],q[17];\nrz(-0.013782733045367366) q[17];\ncx q[3],q[17];\ncx q[2],q[17];\ncx q[3],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[3],q[17];\ncx q[2],q[17];\ncx q[4],q[17];\nrz(-0.0012912639851778633) q[17];\ncx q[4],q[17];\ncx q[5],q[17];\nrz(-0.013782733045367366) q[17];\ncx q[5],q[17];\ncx q[4],q[17];\ncx q[5],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[5],q[17];\ncx q[4],q[17];\ncx q[6],q[17];\nrz(-0.0012912639851778633) q[17];\ncx q[6],q[17];\ncx q[7],q[17];\nrz(-0.013782733045367366) q[17];\ncx q[7],q[17];\ncx q[6],q[17];\ncx q[7],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[7],q[17];\ncx q[6],q[17];\ncx q[8],q[17];\nrz(-0.0012912639851778633) q[17];\ncx q[8],q[17];\ncx q[9],q[17];\nrz(-0.013782733045367366) q[17];\ncx q[9],q[17];\ncx q[8],q[17];\ncx q[9],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[9],q[17];\ncx q[8],q[17];\ncx q[10],q[17];\nrz(-0.0012912639851778633) q[17];\ncx q[10],q[17];\ncx q[11],q[17];\nrz(-0.013782733045367366) q[17];\ncx q[11],q[17];\ncx q[10],q[17];\ncx q[11],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[11],q[17];\ncx q[10],q[17];\ncx q[12],q[17];\nrz(-0.0012912639851778633) q[17];\ncx q[12],q[17];\ncx q[13],q[17];\nrz(-0.013782733045367366) q[17];\ncx q[13],q[17];\ncx q[12],q[17];\ncx q[13],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[13],q[17];\ncx q[12],q[17];\ncx q[14],q[17];\nrz(-0.0012912639851778633) q[17];\ncx q[14],q[17];\ncx q[15],q[17];\nrz(-0.013782733045367366) q[17];\ncx q[15],q[17];\ncx q[14],q[17];\ncx q[15],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[15],q[17];\ncx q[14],q[17];\ncx q[16],q[17];\nrz(0.003872729598370529) q[17];\ncx q[16],q[17];\ncx q[0],q[17];\ncx q[16],q[17];\nrz(-0.00020920920540595537) q[17];\ncx q[16],q[17];\ncx q[0],q[17];\ncx q[1],q[17];\ncx q[16],q[17];\nrz(-0.000720000902871481) q[17];\ncx q[16],q[17];\ncx q[1],q[17];\ncx q[0],q[17];\ncx q[1],q[17];\ncx q[16],q[17];\nrz(-0.000119695473199608) q[17];\ncx q[16],q[17];\ncx q[1],q[17];\ncx q[0],q[17];\ncx q[2],q[17];\ncx q[16],q[17];\nrz(-0.00020891798154731275) q[17];\ncx q[16],q[17];\ncx q[2],q[17];\ncx q[3],q[17];\ncx q[16],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[16],q[17];\ncx q[3],q[17];\ncx q[2],q[17];\ncx q[3],q[17];\ncx q[16],q[17];\nrz(-0.0001194042493409654) q[17];\ncx q[16],q[17];\ncx q[3],q[17];\ncx q[2],q[17];\ncx q[4],q[17];\ncx q[16],q[17];\nrz(-0.00020891798154731275) q[17];\ncx q[16],q[17];\ncx q[4],q[17];\ncx q[5],q[17];\ncx q[16],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[16],q[17];\ncx q[5],q[17];\ncx q[4],q[17];\ncx q[5],q[17];\ncx q[16],q[17];\nrz(-0.0001194042493409654) q[17];\ncx q[16],q[17];\ncx q[5],q[17];\ncx q[4],q[17];\ncx q[6],q[17];\ncx q[16],q[17];\nrz(-0.00020891798154731275) q[17];\ncx q[16],q[17];\ncx q[6],q[17];\ncx q[7],q[17];\ncx q[16],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[16],q[17];\ncx q[7],q[17];\ncx q[6],q[17];\ncx q[7],q[17];\ncx q[16],q[17];\nrz(-0.0001194042493409654) q[17];\ncx q[16],q[17];\ncx q[7],q[17];\ncx q[6],q[17];\ncx q[8],q[17];\ncx q[16],q[17];\nrz(-0.00020891798154731275) q[17];\ncx q[16],q[17];\ncx q[8],q[17];\ncx q[9],q[17];\ncx q[16],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[16],q[17];\ncx q[9],q[17];\ncx q[8],q[17];\ncx q[9],q[17];\ncx q[16],q[17];\nrz(-0.0001194042493409654) q[17];\ncx q[16],q[17];\ncx q[9],q[17];\ncx q[8],q[17];\ncx q[10],q[17];\ncx q[16],q[17];\nrz(-0.00020891798154731275) q[17];\ncx q[16],q[17];\ncx q[10],q[17];\ncx q[11],q[17];\ncx q[16],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[16],q[17];\ncx q[11],q[17];\ncx q[10],q[17];\ncx q[11],q[17];\ncx q[16],q[17];\nrz(-0.0001194042493409654) q[17];\ncx q[16],q[17];\ncx q[11],q[17];\ncx q[10],q[17];\ncx q[12],q[17];\ncx q[16],q[17];\nrz(-0.00020891798154731275) q[17];\ncx q[16],q[17];\ncx q[12],q[17];\ncx q[13],q[17];\ncx q[16],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[16],q[17];\ncx q[13],q[17];\ncx q[12],q[17];\ncx q[13],q[17];\ncx q[16],q[17];\nrz(-0.0001194042493409654) q[17];\ncx q[16],q[17];\ncx q[13],q[17];\ncx q[12],q[17];\ncx q[14],q[17];\ncx q[16],q[17];\nrz(-0.00020891798154731275) q[17];\ncx q[16],q[17];\ncx q[14],q[17];\ncx q[15],q[17];\ncx q[16],q[17];\nrz(-0.0007197096790128383) q[17];\ncx q[16],q[17];\ncx q[15],q[17];\ncx q[14],q[17];\ncx q[15],q[17];\ncx q[16],q[17];\nrz(-0.0001194042493409654) q[17];\ncx q[16],q[17];\ncx q[15],q[17];\ncx q[14],q[17];\nrz(0.008480394338800924) q[18];\ncx q[0],q[18];\nrz(-0.00036535469864853055) q[18];\ncx q[0],q[18];\ncx q[1],q[18];\nrz(-0.001290972761319221) q[18];\ncx q[1],q[18];\ncx q[0],q[18];\ncx q[1],q[18];\nrz(-0.00020862675768867014) q[18];\ncx q[1],q[18];\ncx q[0],q[18];\ncx q[2],q[18];\nrz(-0.00036564592250717314) q[18];\ncx q[2],q[18];\ncx q[3],q[18];\nrz(-0.0012912639851778633) q[18];\ncx q[3],q[18];\ncx q[2],q[18];\ncx q[3],q[18];\nrz(-0.00020891798154731273) q[18];\ncx q[3],q[18];\ncx q[2],q[18];\ncx q[4],q[18];\nrz(-0.00036564592250717314) q[18];\ncx q[4],q[18];\ncx q[5],q[18];\nrz(-0.0012912639851778633) q[18];\ncx q[5],q[18];\ncx q[4],q[18];\ncx q[5],q[18];\nrz(-0.00020891798154731273) q[18];\ncx q[5],q[18];\ncx q[4],q[18];\ncx q[6],q[18];\nrz(-0.00036564592250717314) q[18];\ncx q[6],q[18];\ncx q[7],q[18];\nrz(-0.0012912639851778633) q[18];\ncx q[7],q[18];\ncx q[6],q[18];\ncx q[7],q[18];\nrz(-0.00020891798154731273) q[18];\ncx q[7],q[18];\ncx q[6],q[18];\ncx q[8],q[18];\nrz(-0.00036564592250717314) q[18];\ncx q[8],q[18];\ncx q[9],q[18];\nrz(-0.0012912639851778633) q[18];\ncx q[9],q[18];\ncx q[8],q[18];\ncx q[9],q[18];\nrz(-0.00020891798154731273) q[18];\ncx q[9],q[18];\ncx q[8],q[18];\ncx q[10],q[18];\nrz(-0.00036564592250717314) q[18];\ncx q[10],q[18];\ncx q[11],q[18];\nrz(-0.0012912639851778633) q[18];\ncx q[11],q[18];\ncx q[10],q[18];\ncx q[11],q[18];\nrz(-0.00020891798154731273) q[18];\ncx q[11],q[18];\ncx q[10],q[18];\ncx q[12],q[18];\nrz(-0.00036564592250717314) q[18];\ncx q[12],q[18];\ncx q[13],q[18];\nrz(-0.0012912639851778633) q[18];\ncx q[13],q[18];\ncx q[12],q[18];\ncx q[13],q[18];\nrz(-0.00020891798154731273) q[18];\ncx q[13],q[18];\ncx q[12],q[18];\ncx q[14],q[18];\nrz(-0.00036564592250717314) q[18];\ncx q[14],q[18];\ncx q[15],q[18];\nrz(-0.0012912639851778633) q[18];\ncx q[15],q[18];\ncx q[14],q[18];\ncx q[15],q[18];\nrz(-0.00020891798154731273) q[18];\ncx q[15],q[18];\ncx q[14],q[18];\ncx q[16],q[18];\nrz(-0.00036564592250717314) q[18];\ncx q[16],q[18];\ncx q[17],q[18];\nrz(-0.0012912639851778633) q[18];\ncx q[17],q[18];\ncx q[16],q[18];\ncx q[17],q[18];\nrz(-0.00020891798154731273) q[18];\ncx q[17],q[18];\ncx q[16],q[18];\nrz(0.07954856294727103) q[19];\ncx q[0],q[19];\nrz(-0.001056748077277895) q[19];\ncx q[0],q[19];\ncx q[1],q[19];\nrz(-0.013548217137467398) q[19];\ncx q[1],q[19];\ncx q[0],q[19];\ncx q[1],q[19];\nrz(-0.00048519377111286754) q[19];\ncx q[1],q[19];\ncx q[0],q[19];\ncx q[2],q[19];\nrz(-0.0012912639851778633) q[19];\ncx q[2],q[19];\ncx q[3],q[19];\nrz(-0.013782733045367366) q[19];\ncx q[3],q[19];\ncx q[2],q[19];\ncx q[3],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[3],q[19];\ncx q[2],q[19];\ncx q[4],q[19];\nrz(-0.0012912639851778633) q[19];\ncx q[4],q[19];\ncx q[5],q[19];\nrz(-0.013782733045367366) q[19];\ncx q[5],q[19];\ncx q[4],q[19];\ncx q[5],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[5],q[19];\ncx q[4],q[19];\ncx q[6],q[19];\nrz(-0.0012912639851778633) q[19];\ncx q[6],q[19];\ncx q[7],q[19];\nrz(-0.013782733045367366) q[19];\ncx q[7],q[19];\ncx q[6],q[19];\ncx q[7],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[7],q[19];\ncx q[6],q[19];\ncx q[8],q[19];\nrz(-0.0012912639851778633) q[19];\ncx q[8],q[19];\ncx q[9],q[19];\nrz(-0.013782733045367366) q[19];\ncx q[9],q[19];\ncx q[8],q[19];\ncx q[9],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[9],q[19];\ncx q[8],q[19];\ncx q[10],q[19];\nrz(-0.0012912639851778633) q[19];\ncx q[10],q[19];\ncx q[11],q[19];\nrz(-0.013782733045367366) q[19];\ncx q[11],q[19];\ncx q[10],q[19];\ncx q[11],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[11],q[19];\ncx q[10],q[19];\ncx q[12],q[19];\nrz(-0.0012912639851778633) q[19];\ncx q[12],q[19];\ncx q[13],q[19];\nrz(-0.013782733045367366) q[19];\ncx q[13],q[19];\ncx q[12],q[19];\ncx q[13],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[13],q[19];\ncx q[12],q[19];\ncx q[14],q[19];\nrz(-0.0012912639851778633) q[19];\ncx q[14],q[19];\ncx q[15],q[19];\nrz(-0.013782733045367366) q[19];\ncx q[15],q[19];\ncx q[14],q[19];\ncx q[15],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[15],q[19];\ncx q[14],q[19];\ncx q[16],q[19];\nrz(-0.0012912639851778633) q[19];\ncx q[16],q[19];\ncx q[17],q[19];\nrz(-0.013782733045367366) q[19];\ncx q[17],q[19];\ncx q[16],q[19];\ncx q[17],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[17],q[19];\ncx q[16],q[19];\ncx q[18],q[19];\nrz(0.003872729598370529) q[19];\ncx q[18],q[19];\ncx q[0],q[19];\ncx q[18],q[19];\nrz(-0.00020920920540595537) q[19];\ncx q[18],q[19];\ncx q[0],q[19];\ncx q[1],q[19];\ncx q[18],q[19];\nrz(-0.000720000902871481) q[19];\ncx q[18],q[19];\ncx q[1],q[19];\ncx q[0],q[19];\ncx q[1],q[19];\ncx q[18],q[19];\nrz(-0.000119695473199608) q[19];\ncx q[18],q[19];\ncx q[1],q[19];\ncx q[0],q[19];\ncx q[2],q[19];\ncx q[18],q[19];\nrz(-0.00020891798154731275) q[19];\ncx q[18],q[19];\ncx q[2],q[19];\ncx q[3],q[19];\ncx q[18],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[18],q[19];\ncx q[3],q[19];\ncx q[2],q[19];\ncx q[3],q[19];\ncx q[18],q[19];\nrz(-0.0001194042493409654) q[19];\ncx q[18],q[19];\ncx q[3],q[19];\ncx q[2],q[19];\ncx q[4],q[19];\ncx q[18],q[19];\nrz(-0.00020891798154731275) q[19];\ncx q[18],q[19];\ncx q[4],q[19];\ncx q[5],q[19];\ncx q[18],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[18],q[19];\ncx q[5],q[19];\ncx q[4],q[19];\ncx q[5],q[19];\ncx q[18],q[19];\nrz(-0.0001194042493409654) q[19];\ncx q[18],q[19];\ncx q[5],q[19];\ncx q[4],q[19];\ncx q[6],q[19];\ncx q[18],q[19];\nrz(-0.00020891798154731275) q[19];\ncx q[18],q[19];\ncx q[6],q[19];\ncx q[7],q[19];\ncx q[18],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[18],q[19];\ncx q[7],q[19];\ncx q[6],q[19];\ncx q[7],q[19];\ncx q[18],q[19];\nrz(-0.0001194042493409654) q[19];\ncx q[18],q[19];\ncx q[7],q[19];\ncx q[6],q[19];\ncx q[8],q[19];\ncx q[18],q[19];\nrz(-0.00020891798154731275) q[19];\ncx q[18],q[19];\ncx q[8],q[19];\ncx q[9],q[19];\ncx q[18],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[18],q[19];\ncx q[9],q[19];\ncx q[8],q[19];\ncx q[9],q[19];\ncx q[18],q[19];\nrz(-0.0001194042493409654) q[19];\ncx q[18],q[19];\ncx q[9],q[19];\ncx q[8],q[19];\ncx q[10],q[19];\ncx q[18],q[19];\nrz(-0.00020891798154731275) q[19];\ncx q[18],q[19];\ncx q[10],q[19];\ncx q[11],q[19];\ncx q[18],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[18],q[19];\ncx q[11],q[19];\ncx q[10],q[19];\ncx q[11],q[19];\ncx q[18],q[19];\nrz(-0.0001194042493409654) q[19];\ncx q[18],q[19];\ncx q[11],q[19];\ncx q[10],q[19];\ncx q[12],q[19];\ncx q[18],q[19];\nrz(-0.00020891798154731275) q[19];\ncx q[18],q[19];\ncx q[12],q[19];\ncx q[13],q[19];\ncx q[18],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[18],q[19];\ncx q[13],q[19];\ncx q[12],q[19];\ncx q[13],q[19];\ncx q[18],q[19];\nrz(-0.0001194042493409654) q[19];\ncx q[18],q[19];\ncx q[13],q[19];\ncx q[12],q[19];\ncx q[14],q[19];\ncx q[18],q[19];\nrz(-0.00020891798154731275) q[19];\ncx q[18],q[19];\ncx q[14],q[19];\ncx q[15],q[19];\ncx q[18],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[18],q[19];\ncx q[15],q[19];\ncx q[14],q[19];\ncx q[15],q[19];\ncx q[18],q[19];\nrz(-0.0001194042493409654) q[19];\ncx q[18],q[19];\ncx q[15],q[19];\ncx q[14],q[19];\ncx q[16],q[19];\ncx q[18],q[19];\nrz(-0.00020891798154731275) q[19];\ncx q[18],q[19];\ncx q[16],q[19];\ncx q[17],q[19];\ncx q[18],q[19];\nrz(-0.0007197096790128383) q[19];\ncx q[18],q[19];\ncx q[17],q[19];\ncx q[16],q[19];\ncx q[17],q[19];\ncx q[18],q[19];\nrz(-0.0001194042493409654) q[19];\ncx q[18],q[19];\ncx q[17],q[19];\ncx q[16],q[19];\nrx(1.7071548613793088) q[0];\nrx(1.7071548613793088) q[1];\nrx(1.7071548613793088) q[2];\nrx(1.7071548613793088) q[3];\nrx(1.7071548613793088) q[4];\nrx(1.7071548613793088) q[5];\nrx(1.7071548613793088) q[6];\nrx(1.7071548613793088) q[7];\nrx(1.7071548613793088) q[8];\nrx(1.7071548613793088) q[9];\nrx(1.7071548613793088) q[10];\nrx(1.7071548613793088) q[11];\nrx(1.7071548613793088) q[12];\nrx(1.7071548613793088) q[13];\nrx(1.7071548613793088) q[14];\nrx(1.7071548613793088) q[15];\nrx(1.7071548613793088) q[16];\nrx(1.7071548613793088) q[17];\nrx(1.7071548613793088) q[18];\nrx(1.7071548613793088) q[19];",
+    "depth": 1084,
+    "gate_counts": {
+      "cx": 1370,
+      "rz": 435,
+      "h": 20,
+      "rx": 20
+    }
+  },
+  "quantum_workflow_seconds": 2.438793399989663,
+  "optimizer_evaluations": 10,
+  "optimizer": {
+    "method": "COBYLA",
+    "converged": false,
+    "message": "Return from COBYLA because the objective function has been evaluated MAXFUN times."
+  },
+  "simulator": {
+    "method": "matrix_product_state",
+    "max_bond_dimension": 8,
+    "truncation_threshold": 1e-10,
+    "training_shots": 64,
+    "seed": 42,
+    "certified_error_bound": null
+  },
+  "comparison": "Local quantum simulation and classical search used different budgets. Compare objective quality and time together; no speedup ratio is inferred.",
+  "elapsed_seconds": 3.485796199995093
+}

@@ -1,0 +1,29 @@
+{
+  "length": 50,
+  "template_sequence": null,
+  "allowed_amino_acids": [
+    "A",
+    "K"
+  ],
+  "excluded_amino_acids": [],
+  "required_amino_acids": [],
+  "positions": [],
+  "max_mutations": null,
+  "goals": {
+    "ph": 7.4,
+    "target_charge": 2.0,
+    "charge_weight": 1.0,
+    "hydropathy_min": 0.0,
+    "hydropathy_max": 0.0,
+    "hydropathy_weight": 0.5,
+    "adjacent_repeat_weight": 0.0
+  },
+  "layers": 1,
+  "max_iterations": 10,
+  "shots": 256,
+  "seed": 42,
+  "mps_bond_dimension": 16,
+  "training_shots": 64,
+  "initial_gamma": 1.0,
+  "initial_beta": 0.5
+}

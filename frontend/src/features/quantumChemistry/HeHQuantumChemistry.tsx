@@ -1,6 +1,8 @@
+import { HardwareExecutionControl } from '../shared/HardwareExecution'
+import { useHardwareExecution } from '../shared/useHardwareExecution'
 import { useEffect, useMemo, useState } from 'react'
 import { Braces, CircuitBoard, FlaskConical, Info, Orbit } from 'lucide-react'
-import { EmptyState, MetricCard, Panel, SectionHeading, StatusPill } from '../../components/ui'
+import { Button, EmptyState, MetricCard, Panel, SectionHeading, StatusPill } from '../../components/ui'
 import { loadVerifiedHehExperiment } from '../../services/quantumChemistry'
 import { createUnavailableHehExperiment } from '../../types/quantumChemistry'
 import type { HeHExperiment, HeHEnergyPoint } from '../../types/quantumChemistry'
@@ -32,6 +34,8 @@ function formatEnergy(value: number | null): string {
 
 /** Quantum chemistry is intentionally separate from the peptide QAOA workflow. */
 export function HeHQuantumChemistry({ experiment: suppliedExperiment }: { experiment?: HeHExperiment }) {
+  const hardware = useHardwareExecution('heh')
+  const [hardwareError, setHardwareError] = useState('')
   const [bundledExperiment, setBundledExperiment] = useState<HeHExperiment | null>(null)
   const [artifactError, setArtifactError] = useState<string | null>(null)
   const [bondDistance, setBondDistance] = useState(1.0)
@@ -98,6 +102,9 @@ export function HeHQuantumChemistry({ experiment: suppliedExperiment }: { experi
         eyebrow="Quantum chemistry workspace"
         title="Quantum Chemistry — HeH+"
       />
+
+      <HardwareExecutionControl execution={hardware} />
+      <div className="space-y-2"><Button disabled={!hardware.enabled || hardware.busy} onClick={() => { setHardwareError(''); void hardware.run('heh', { bond_distance_angstrom: bondDistance, maxiter: 60 }).catch((reason: unknown) => setHardwareError(reason instanceof Error ? reason.message : 'HeH+ hardware run failed.')) }}>Run selected geometry on IBM QPU</Button><p className="text-xs text-slate-600">The checkbox enables a new hardware energy measurement at the selected bond distance, using locally optimized VQE parameters. Saved local scan charts below remain local simulation data; they are not relabeled as hardware.</p>{hardwareError && <p role="alert" className="text-sm text-red-800">{hardwareError}</p>}</div>
 
       <Panel className="border-[#D7E7E9] bg-[#F8FAFC] p-4" role="note">
         <div className="flex items-start gap-3">

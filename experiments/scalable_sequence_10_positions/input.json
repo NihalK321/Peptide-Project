@@ -1,0 +1,151 @@
+{
+  "length": 10,
+  "template_sequence": "GAGAGAGAGA",
+  "allowed_amino_acids": [
+    "A",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "K",
+    "L",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "V",
+    "W",
+    "Y"
+  ],
+  "excluded_amino_acids": [],
+  "required_amino_acids": [],
+  "positions": [
+    {
+      "position": 1,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ]
+    },
+    {
+      "position": 2,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ]
+    },
+    {
+      "position": 3,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ]
+    },
+    {
+      "position": 4,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ]
+    },
+    {
+      "position": 5,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ]
+    },
+    {
+      "position": 6,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ]
+    },
+    {
+      "position": 7,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ]
+    },
+    {
+      "position": 8,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ]
+    },
+    {
+      "position": 9,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ]
+    },
+    {
+      "position": 10,
+      "choices": [
+        "A",
+        "G",
+        "K",
+        "R"
+      ]
+    }
+  ],
+  "max_mutations": null,
+  "goals": {
+    "ph": 7.4,
+    "target_charge": 2,
+    "charge_weight": 1,
+    "hydropathy_min": 0.0,
+    "hydropathy_max": 0.0,
+    "hydropathy_weight": 0.5,
+    "adjacent_repeat_weight": 0
+  },
+  "layers": 1,
+  "max_iterations": 10,
+  "shots": 256,
+  "seed": 42,
+  "training_shots": 64,
+  "bond_dimension": 8,
+  "classical_seconds": 1,
+  "parameter_sets": [
+    [
+      1,
+      0.3
+    ],
+    [
+      2,
+      0.6
+    ],
+    [
+      3,
+      0.9
+    ]
+  ]
+}

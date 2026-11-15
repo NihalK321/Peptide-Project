@@ -1,5 +1,37 @@
 # React + TypeScript + Vite
 
+## New peptide sequence-design workflow
+
+Open **Sequence Design** (`/sequence-design`), the first navigation item.
+All existing library, blend, chemistry, results, and VQE pages remain available.
+
+Use an existing template and choose which positions can vary, or select a length
+and specify fixed/variable residues. Apply changed templates/lengths before using
+the position editor. Each variable position has two distinct choices; this
+prototype supports up to eight variable positions within a 2-50-residue chain.
+For 9-50 variable positions, select the new bounded MPS or circuit-preparation
+execution mode, or click **Load 50-qubit example**. Large mode has stricter
+quadratic-objective constraints and shows a classical heuristic rather than a
+claimed exact optimum. Its CPU simulation timings are not QPU speedup figures;
+see [large-circuit documentation](../backend/sequence_design/LARGE_CIRCUITS.md).
+Allowed residues are not required to appear; list required residues separately.
+
+Set solution pH, target estimated charge, hydropathy range, and optional mutation
+budget and adjacent-repeat design preference. **Validate and preview** calculates
+the restricted space and template descriptors without executing QAOA. **Run
+Sequence QAOA** performs actual local Qiskit simulation through the new versioned
+backend endpoints. The page shows observed feasible candidate sequences, raw
+scores, exact reference, gap, counts, fitted circuit and history, model limits,
+and JSON/QASM exports. It can request an RDKit 2D connectivity drawing of the
+proposed sequence; this is not a 3D fold. Original 3D tools remain on Molecular
+Analysis. Valid submitted inputs and results are saved in this browser when
+storage is available. Changed inputs mark prior results as snapshots.
+
+Start the same FastAPI and Vite servers as below; no new dependency is required.
+No IBM QPU is contacted. See
+[`backend/sequence_design/README.md`](../backend/sequence_design/README.md)
+for the exact cost, constraints, encoding and scientific limits.
+
 ## Live blend optimization
 
 Start FastAPI from the repository root with
@@ -101,3 +133,22 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+
+
+Sequence Design also offers **Multi-choice sequence design** (the default for a
+new browser). Click **Load 20-amino-acid example**, or select that execution method,
+then check up to two editable positions. Choose each position's allowed amino
+acids using its checkboxes; **Select all globally allowed** applies the current
+global allowed/excluded alphabet to that position. Fixed positions retain their
+fixed residue. Two positions with all 20 choices use 10 qubits and represent 400
+valid sequences in 1,024 binary states. Unused codes receive a cost penalty and
+cannot become proposed peptides. Validate, then run QAOA; results include an exact
+classical reference and the circuit download. Existing binary and 50-qubit modes
+are still available through the execution-method selector. This mode uses local
+ideal simulation, not IBM hardware, and does not claim a quantum speedup.
+
+
+The Sequence Design page links to **Scalable QPU Lab** at `/sequence-qpu`. It supports ten editable sites, up to twenty amino acids each, an algebraic cost compiler, categorical classical search, bounded local MPS fitting, and explicit IBM Runtime preparation/submission/status/recovery. See [backend setup and limits](../backend/sequence_design/SCALABLE_QPU.md). Nothing submits automatically or consumes hardware runtime during local fitting.
+
+
+Active quantum workflows share a **Use IBM quantum computer (QPU)** checkbox. After one-time server account setup, enter a backend name, check the box and press the page Run button. Settings are reused across pages. Supported routes are sequence, scalable sequence, blend, torsion-grid and selected-geometry HeH+ energy estimation. Existing small solvers use local parameter fitting followed by hardware verification; this is not all-hardware adaptive training. Checking the box alone never submits. Quick jobs use `/api/v1/hardware/run`; recoverable UUIDs are saved before networking. Demo-only comparison/noise pages remain fixtures. See [setup and execution boundaries](../backend/sequence_design/SCALABLE_QPU.md).

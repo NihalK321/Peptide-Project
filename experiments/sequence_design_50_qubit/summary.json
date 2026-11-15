@@ -1,0 +1,15 @@
+{
+  "qubits": 50,
+  "status": "completed",
+  "execution_backend": "qiskit_aer_mps",
+  "timings": {
+    "formulation_seconds": 0.009309100001701154,
+    "qaoa_simulation_fit_and_sampling_seconds": 2.3895794000054593,
+    "classical_heuristic_seconds": 0.005713799997465685,
+    "circuit_export_seconds": 0.1558909000013955,
+    "comparison_context": "Both solvers ran classically on this computer. Different evaluation budgets and solution quality; this is not a QPU-versus-classical speedup measurement."
+  },
+  "sampled_minus_heuristic_objective": 21.3727461718549,
+  "exact_optimum_available": false,
+  "shots": 256
+}

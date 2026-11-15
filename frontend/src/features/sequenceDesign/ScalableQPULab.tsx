@@ -1,3 +1,5 @@
+import { HardwareExecutionControl } from '../shared/HardwareExecution'
+import { useHardwareExecution } from '../shared/useHardwareExecution'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, MetricCard, Panel, SectionHeading } from '../../components/ui'
@@ -16,6 +18,7 @@ const initial: ScalableRequest = {
 const codes = (text: string) => [...text.toUpperCase().replace(/[\s,]/g, '')]
 
 export function ScalableQPULab() {
+  const hardware = useHardwareExecution('scalable')
   const [input, setInput] = useState(initial)
   const [template, setTemplate] = useState(initial.template_sequence)
   const [preview, setPreview] = useState<ScalablePreview | null>(null)
@@ -73,6 +76,7 @@ export function ScalableQPULab() {
     <SectionHeading eyebrow="Scalable sequence experiment" title="Scalable QPU Lab" description="Compile position-based costs without enumerating every peptide. Run a bounded local experiment, or explicitly submit a parameter sweep to IBM hardware." />
     <Link to="/sequence-design" className="text-sm text-blue-800 underline">Return to the exact sequence designer and existing modes</Link>
     <Panel className="p-4 text-sm leading-6">Ten editable positions can each offer up to 20 amino acids, using up to 50 qubits. Search-space size alone is not a speedup. The full alphabet creates a long circuit; inspect gates and device routing before committing QPU runtime. Objectives remain estimated charge, hydropathy and an optional adjacent-repeat preference.</Panel>
+    <HardwareExecutionControl execution={hardware} disabled={!!busy} />
     <fieldset disabled={!!busy} className="min-w-0 space-y-5">
       <Panel className="space-y-4 p-5"><h2 className="text-lg font-semibold">1. Set the sequence space</h2>
         <div className="flex flex-wrap gap-3"><Button variant="secondary" onClick={() => preset('AGKR')}>10 positions × 4 choices</Button><Button variant="secondary" onClick={() => preset(residueCodes)}>10 positions × 20 choices</Button></div>
@@ -92,9 +96,9 @@ export function ScalableQPULab() {
         ] as const).map((field) => <label key={field.key} className="research-label">{field.label}<input aria-label={field.label} className="research-input mt-1" type="number" min={field.min} max={field.max} step={.1} value={input.goals[field.key]} onChange={(event) => update({ ...input, goals: { ...input.goals, [field.key]: Number(event.target.value), ...(field.key === 'hydropathy_min' ? { hydropathy_max: Number(event.target.value) } : {}) } })} /></label>)}</div>
         <div className="grid gap-4 md:grid-cols-3">{numberFields.map((field) => <label key={field.key} className="research-label">{field.label}<input aria-label={field.label} className="research-input mt-1" type="number" min={field.min} max={field.max} step={field.step} value={input[field.key]} onChange={(event) => update({ ...input, [field.key]: Number(event.target.value) })} /></label>)}</div>
         <p className="text-xs text-slate-600">This page uses one QAOA layer. Local fitting uses COBYLA. Hardware uses the explicit angle sets below, not an adaptive training loop. The classical comparison uses categorical multistart descent and simulated annealing, or an exact reference for at most 4,096 sequences.</p>
-        <div className="flex flex-wrap gap-3"><Button variant="secondary" onClick={() => void action('Compiling scalable cost', async () => setPreview(await scalableSequence.preview(checkedInput())))}>Preview scalable cost</Button><Button onClick={() => void action('Running local QAOA and classical search', async () => setRun(await scalableSequence.run(checkedInput())))}>Run bounded local comparison</Button><Button variant="secondary" onClick={() => void action('Exporting circuit and running classical baseline', async () => setRun(await scalableSequence.export(checkedInput())))}>Export circuit + classical baseline</Button></div>
+        <div className="flex flex-wrap gap-3"><Button variant="secondary" onClick={() => void action('Compiling scalable cost', async () => setPreview(await scalableSequence.preview(checkedInput())))}>Preview scalable cost</Button><Button onClick={() => void action('Running local QAOA and classical search', async () => { if (hardware.enabled) await hardware.run('scalable', checkedInput()); else setRun(await scalableSequence.run(checkedInput())) })}>{hardware.enabled ? 'Run Scalable QAOA on IBM QPU' : 'Run bounded local comparison'}</Button><Button variant="secondary" onClick={() => void action('Exporting circuit and running classical baseline', async () => setRun(await scalableSequence.export(checkedInput())))}>Export circuit + classical baseline</Button></div>
       </Panel>
-      <Panel className="space-y-4 p-5"><h2 className="text-lg font-semibold">3. IBM hardware: prepare, inspect, submit</h2>
+      <Panel className="space-y-4 p-5"><h2 className="text-lg font-semibold">3. Advanced IBM workflow: prepare and inspect separately</h2>
         <p className="text-sm leading-6">The backend must have Qiskit Runtime credentials configured and <code>PEPPERQ_ENABLE_QPU=1</code>. Credentials never go into this webpage. Preparation connects read-only and transpiles for your chosen device; it does not submit a workload. A separate submit action consumes account runtime.</p>
         <div className="grid gap-4 md:grid-cols-2"><label className="research-label">IBM backend name<input aria-label="IBM backend name" className="research-input mt-1" placeholder="An operational backend available to your account" value={backend} onChange={(event) => { setBackend(event.target.value); setConfirmation(false) }} /></label><label className="research-label">Job execution cap (seconds)<input aria-label="Job execution cap (seconds)" className="research-input mt-1" type="number" min={10} max={180} step={1} value={cap} onChange={(event) => { setCap(Number(event.target.value)); setConfirmation(false) }} /></label></div>
         <p className="text-xs text-slate-600">The execution cap is not an estimate of usage or remaining allowance. This prototype rejects preparations above 15,000 logical gates or routed depth/two-qubit count above 20,000. Reduce choices if the circuit is too large.</p>

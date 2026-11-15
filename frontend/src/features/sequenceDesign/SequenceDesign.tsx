@@ -1,3 +1,5 @@
+import { HardwareExecutionControl } from '../shared/HardwareExecution'
+import { useHardwareExecution } from '../shared/useHardwareExecution'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Dna, LoaderCircle, Play, ScanSearch } from 'lucide-react'
@@ -82,6 +84,7 @@ function makeRequest(draft: Draft, templateInput: string): SequenceRequest {
 }
 
 export function SequenceDesign() {
+  const hardware = useHardwareExecution('sequence-design')
   const [draft, setDraft] = useState(() => draftFrom(loadInput(), loadMode()))
   const [templateInput, setTemplateInput] = useState(() => draft.template)
   const [preview, setPreview] = useState<SequencePreview | null>(null)
@@ -96,7 +99,7 @@ export function SequenceDesign() {
   const qubitCount = draft.positions.reduce((total, row) => total + (row.variable ? (isMulti ? Math.ceil(Math.log2(Math.max(1, (row.choices ?? [...residueCodes]).length))) : 1) : 0), 0)
   const validSequenceCount = draft.positions.reduce((total, row) => total * (row.variable ? (isMulti ? (row.choices ?? [...residueCodes]).length : 2) : 1), 1)
   let currentResult = false
-  try { currentResult = result !== null && requestSignature(result.request) === requestSignature(makeRequest(draft, templateInput))
+  try { currentResult = !hardware.enabled && result !== null && requestSignature(result.request) === requestSignature(makeRequest(draft, templateInput))
     && ('exact_optimum_available' in result ? (result.status === 'circuit_prepared' ? 'export' : 'mps') : result.encoding ? 'multi' : 'exact') === draft.executionMode } catch { /* Unapplied input is a different draft. */ }
 
   function change(update: (previous: Draft) => Draft) {
@@ -129,6 +132,9 @@ export function SequenceDesign() {
       setBusy(kind)
       if (kind === 'preview') {
         setPreview(await (isMulti ? sequenceDesign.previewMulti(request) : isSmall ? sequenceDesign.preview(request) : sequenceDesign.previewLarge(request)))
+      } else if (hardware.enabled) {
+        await hardware.run(isMulti ? 'sequence_multi' : isSmall ? 'sequence' : 'sequence_large', request)
+        setNote('IBM hardware job submitted. Refresh its status in the execution-target panel. Any saved local result below remains a separate snapshot.')
       } else {
         const response = await (isMulti ? sequenceDesign.optimizeMulti(request) : isSmall ? sequenceDesign.optimize(request) : draft.executionMode === 'mps' ? sequenceDesign.optimizeLarge(request) : sequenceDesign.exportLarge(request))
         setResult(response)
@@ -152,8 +158,9 @@ export function SequenceDesign() {
   return <div className="space-y-5">
     <Link className="block rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm font-semibold text-blue-900 underline" to="/sequence-qpu">Open Scalable QPU Lab: up to 10 editable positions, 20 choices per position, classical comparison and explicit IBM hardware submission</Link>
     <SectionHeading eyebrow="New research workflow" title="Peptide Sequence Design" description="Design a single peptide by choosing residues at selected positions. Compare QAOA with an exact classical reference for small instances, or a classical heuristic for large circuits." action={<StatusPill tone="blue">Position-based sequence optimization</StatusPill>} />
-    <div className="flex flex-wrap gap-4 text-xs text-[#65717D]"><Link className="text-blue-800 underline" to="/designer">Existing peptide library and blend designer</Link><Link className="text-blue-800 underline" to="/optimization">Existing blend optimization</Link><Link className="text-blue-800 underline" to="/quantum-chemistry">Separate HeH+ quantum chemistry</Link></div>
-    <Panel className="border-blue-200 bg-blue-50/40 p-4 text-sm leading-6">Choose multi-choice design (up to 20 amino acids at each of two editable positions, up to 10 qubits), binary exact small-instance simulation (up to 8 qubits) or analytical large circuits (up to 50 qubits). Large local runs use bounded approximate MPS simulation; circuit preparation alone does not execute a quantum job. Larger circuits are not proof of quantum advantage. No IBM QPU allowance is consumed.</Panel>
+    <div className="flex flex-wrap gap-4 text-xs text-[#65717D]"><Link className="text-blue-800 underline" to="/designer">Existing peptide library and blend designer</Link><Link className="text-blue-800 underline" to="/optimization">Existing blend optimization</Link></div>
+    <Panel className="border-blue-200 bg-blue-50/40 p-4 text-sm leading-6">Choose multi-choice design (up to 20 amino acids at each of two editable positions, up to 10 qubits), binary exact small-instance simulation (up to 8 qubits) or analytical large circuits (up to 50 qubits). Large local runs use bounded approximate MPS simulation; circuit preparation alone does not execute a quantum job. Larger circuits are not proof of quantum advantage. Local modes consume no IBM QPU allowance. The IBM QPU checkbox below sends circuit measurements to hardware when you click Run.</Panel>
+    <HardwareExecutionControl execution={hardware} disabled={busy !== null} />
     <form onSubmit={(event) => { event.preventDefault(); void submit('optimize') }} className="space-y-5">
       <fieldset className="min-w-0 space-y-5" disabled={busy !== null}>
         <Panel className="space-y-4 p-5"><div className="flex items-center gap-2"><Dna className="text-blue-700" size={20} /><h2 className="text-lg font-semibold">1. Define the sequence space</h2></div>
@@ -185,7 +192,7 @@ export function SequenceDesign() {
         </Panel>
         <Panel className="space-y-4 p-5"><h2 className="text-lg font-semibold">4. Validate and run QAOA</h2><div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{([{ key: 'layers', label: 'QAOA layers', min: 1, max: !isSmall && variableCount > 20 ? 1 : 2 }, { key: 'max_iterations', label: 'Objective evaluation budget', min: 10, max: isSmall ? 120 : 30 }, { key: 'shots', label: 'Simulated shots', min: 128, max: 8192 }, { key: 'seed', label: 'Random seed', min: 0, max: 2147483647 }] as const).map((field) => <label className="research-label" key={field.key}>{field.label}<input className="research-input mt-1" type="number" required min={field.min} max={field.max} step={1} value={Number.isFinite(draft[field.key]) ? draft[field.key] : ''} onChange={(event) => change((previous) => ({ ...previous, [field.key]: event.target.value === '' ? Number.NaN : Number(event.target.value) }))} /></label>)}</div>
           {!isSmall && <div className="grid gap-4 sm:grid-cols-2"><label className="research-label">MPS maximum bond dimension<select aria-label="MPS maximum bond dimension" className="research-select mt-1" value={draft.bondDimension} onChange={(event) => change((previous) => ({ ...previous, bondDimension: Number(event.target.value) }))}><option value={8}>8 · lower compute cost, more truncation risk</option><option value={16}>16 · default bounded simulation</option><option value={32}>32 · higher compute cost</option></select></label><label className="research-label">Training shots per evaluation<input className="research-input mt-1" type="number" required min={64} max={256} step={1} value={draft.trainingShots} onChange={(event) => change((previous) => ({ ...previous, trainingShots: Number(event.target.value) }))} /></label></div>}
-          <div className="flex flex-wrap gap-3"><Button variant="secondary" onClick={() => void submit('preview')}><ScanSearch size={15} /> Validate and preview</Button><Button type="submit" disabled={variableCount === 0}><Play size={15} /> {draft.executionMode === 'export' ? 'Prepare Sequence Circuit' : 'Run Sequence QAOA'}</Button><Button variant="ghost" onClick={() => { change(() => draftFrom(sample)); setTemplateInput(sample.template_sequence!) }}>Load demonstration input</Button></div>
+          <div className="flex flex-wrap gap-3"><Button variant="secondary" onClick={() => void submit('preview')}><ScanSearch size={15} /> Validate and preview</Button><Button type="submit" disabled={variableCount === 0}><Play size={15} /> {hardware.enabled ? 'Run Sequence on IBM QPU' : draft.executionMode === 'export' ? 'Prepare Sequence Circuit' : 'Run Sequence QAOA'}</Button><Button variant="ghost" onClick={() => { change(() => draftFrom(sample)); setTemplateInput(sample.template_sequence!) }}>Load demonstration input</Button></div>
           <p className="text-xs text-[#65717D]">Preview works for fully fixed sequences. Runs require at least one editable position. Nothing runs automatically when you change a field. Last successfully submitted inputs and the latest result are saved in this browser when storage is available.</p>
         </Panel>
       </fieldset>

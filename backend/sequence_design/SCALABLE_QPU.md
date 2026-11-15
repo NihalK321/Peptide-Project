@@ -1,5 +1,65 @@
 # Scalable sequence QAOA and explicit IBM hardware jobs
 
+## Quick checkbox workflow across the app
+
+Active quantum workflows now have **Use IBM quantum computer (QPU)**:
+
+- Sequence Design: binary exact, multi-choice, and large binary modes.
+- Scalable QPU Lab: the specified bounded angle sweep.
+- Blend Optimization: whole-peptide subset QAOA.
+- Molecular Analysis / Structure Stats: the short-peptide torsion-grid QAOA.
+- HeH+ Quantum Chemistry: an energy estimate at the selected geometry.
+
+Configure the backend IBM account once using the instructions below. Check the
+box, enter a backend name once, then press that page's **Run** button. Backend
+name, hardware shots and execution cap are reused across pages. Checking the
+box itself never connects or submits. Clicking Run explicitly consumes runtime;
+the quick route performs preparation and submission without the advanced
+prepare/confirm steps. The earlier advanced workflow remains available in QPU Lab.
+
+Small sequence, blend and torsion solvers fit parameters using their existing
+local ideal simulator, then send the fitted circuit for hardware measurements.
+This is a hardware verification of local fitting, **not all-hardware adaptive
+QAOA training**. Large binary mode measures user-specified initial angles;
+scalable mode measures the displayed angle sets. Chemistry, geometry generation,
+classical baselines and parameter optimization remain CPU work.
+
+HeH+ runs the existing local VQE to fit the UCCSD state, builds the same
+Hamiltonian and measures its electronic energy with Runtime **EstimatorV2**.
+The observable is transformed using the transpiled circuit's physical layout.
+Total energy includes the same nuclear repulsion; reported uncertainty is
+retained. This requires the optional Qiskit Nature/Algorithms/PySCF dependencies
+from `backend/quantum_chemistry/requirements.txt`; PySCF may require Linux/WSL.
+It measures one selected geometry, not an adaptive hardware VQE/PES scan. Saved
+local scan charts are left unchanged and retain their simulation labels.
+
+Sampler workflows report hardware counts, feasible samples, objective values
+and actual job usage. Ideal probabilities are not relabeled as hardware
+probabilities. If every sample is infeasible, no classical answer is substituted.
+Hardware shots apply per Sampler circuit; for Estimator they are the requested
+shots per measurement basis, not a promise of total job shots or account usage.
+
+Every quick run saves a recovery UUID before sending the request. Use
+**Refresh / recover hardware run** on that page after interruption or restart.
+Quick-run records live in ignored `.cache/pepperq-hardware/`. Retrying the same
+UUID is idempotent, with an atomic per-ID claim to prevent duplicate submissions
+across API workers. If the submission response is uncertain, inspect IBM
+workloads before starting a *new* run; a fresh UUID deliberately means a new job.
+Cancellation is explicit. No backend connection or hardware workload is started
+when importing modules, loading a page, checking the checkbox or refreshing a
+saved local chart. Status refresh retrieves only an existing job.
+
+Comparison and Noise Study currently display fixtures and have no executable
+quantum experiment. The checkbox does not turn those fixtures into calculations.
+Ordinary Python functions, molecular drawings and database lookups remain local.
+
+Quick-route API: `POST /api/v1/hardware/run` with `workflow`, `settings`,
+`backend_name`, `shots`, `max_execution_seconds`, a UUID `request_id`, and
+`use_qpu: true`. Status and cancellation use `/api/v1/hardware/jobs/{request_id}`
+and `/api/v1/hardware/jobs/{request_id}/cancel`. Credentials are server-side only.
+
+Estimator reference: [IBM Estimator inputs and outputs](https://quantum.cloud.ibm.com/docs/en/guides/estimator-input-output).
+
 Open **Sequence Design → Open Scalable QPU Lab**, or visit
 `http://localhost:5173/sequence-qpu` with the frontend and backend running.
 All earlier sequence, blend and HeH+ pages remain available.

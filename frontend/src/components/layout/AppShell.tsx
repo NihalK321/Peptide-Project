@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react'
 import type { LucideIcon } from 'lucide-react'
 import {
-  Activity,
   Atom,
-  BarChart3,
   Beaker,
   Cpu,
   Dna,
   LayoutDashboard,
-  ListTree,
   Microscope,
-  SlidersHorizontal,
 } from 'lucide-react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { navigationItems } from '../../app/navigation'
@@ -25,12 +21,7 @@ const routeIcons: Record<string, LucideIcon> = {
   '/': LayoutDashboard,
   '/designer': Dna,
   '/optimization': Atom,
-  '/quantum-chemistry': Cpu,
   '/chemistry': Beaker,
-  '/comparison': BarChart3,
-  '/results': ListTree,
-  '/tradeoffs': SlidersHorizontal,
-  '/noise-lab': Activity,
 }
 
 type ApiConnection = {

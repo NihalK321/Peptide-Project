@@ -1,3 +1,5 @@
+import { HardwareExecutionControl } from '../shared/HardwareExecution'
+import { useHardwareExecution } from '../shared/useHardwareExecution'
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { Link } from 'react-router-dom'
@@ -24,6 +26,7 @@ function combinations(n: number, k: number) {
 }
 
 export function QuantumOptimizationEngine() {
+  const hardware = useHardwareExecution('blend')
   const draft = useBlendWorkspace()
   const { pool, goals, execution, blendSize } = draft
   const [result, setResult] = useState<BlendResult | null>(loadLatestBlend)
@@ -31,7 +34,7 @@ export function QuantumOptimizationEngine() {
   const [error, setError] = useState<string | null>(null)
   const [note, setNote] = useState('')
   const problem = validateBlendWorkspace(draft)
-  const resultMatches = result ? matchingBlendResult(result, draft) : false
+  const resultMatches = result && !hardware.enabled ? matchingBlendResult(result, draft) : false
 
   async function run(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -39,6 +42,11 @@ export function QuantumOptimizationEngine() {
     if (problem) { setError(problem); return }
     setBusy(true); setError(null); setNote('')
     try {
+      if (hardware.enabled) {
+        await hardware.run('blend', { ...goals, candidate_ids: pool.map((candidate) => candidate.id), blend_size: blendSize, ...execution })
+        setNote('IBM hardware job submitted. Refresh its status above; saved local results remain separate snapshots.')
+        return
+      }
       const response = await blendResearch.optimize(goals, pool.map((candidate) => candidate.id), blendSize, execution)
       setResult(response)
       setNote(saveLatestBlend(response)
@@ -55,6 +63,7 @@ export function QuantumOptimizationEngine() {
         description="Run the existing Qiskit optimizer on the candidate pool and chemical goals selected in Peptide Designer. Compare the sampled blend with the exact optimum under the same objective."
         action={<StatusPill tone={busy ? 'amber' : pool.length ? 'blue' : 'slate'}>{busy ? 'Simulation running' : pool.length ? 'Candidate draft loaded' : 'Choose candidates first'}</StatusPill>} />
       <Link className="inline-flex items-center gap-2 text-sm font-semibold text-blue-800 underline" to="/designer"><ArrowLeft size={15} /> Edit candidates and chemical goals</Link>
+      <HardwareExecutionControl execution={hardware} disabled={busy} />
       {!pool.length ? <EmptyState title="No candidate pool yet" detail="Open Peptide Designer, set chemical targets, and choose eight supported peptides manually or with Auto-shortlist 8. Then continue here to run QAOA." action={<Link className="font-semibold text-blue-800 underline" to="/designer">Choose peptides in Designer</Link>} /> : (
         <>
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -74,7 +83,7 @@ export function QuantumOptimizationEngine() {
           </Panel>
           <Panel className="space-y-4 p-5">
             <div className="flex items-center gap-2"><Cpu className="text-blue-700" size={20} /><h2 className="text-lg font-semibold">QAOA run configuration</h2></div>
-            <p className="text-sm leading-6 text-[#65717D]">Execution uses your local Python backend and an ideal statevector simulator, followed by simulated measurement shots. IBM hardware is not connected and no QPU allowance is consumed.</p>
+            <p className="text-sm leading-6 text-[#65717D]">Execution uses your local Python backend and an ideal statevector simulator, followed by simulated measurement shots. The IBM QPU checkbox sends final circuit measurements to hardware after local parameter fitting; unchecked runs consume no QPU allowance.</p>
             <form onSubmit={(event) => void run(event)} className="space-y-4">
               <fieldset className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4" disabled={busy}>
                 <legend className="sr-only">Execution settings</legend>
@@ -83,7 +92,7 @@ export function QuantumOptimizationEngine() {
                   onChange={(event) => { setError(null); setNote(''); updateBlendWorkspace((previous) => ({ ...previous, execution: { ...previous.execution, [field.key]: event.target.value === '' ? Number.NaN : Number(event.target.value) } })) }} /></label>)}
               </fieldset>
               {problem && <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900" role="status">{problem}</p>}
-              <div className="flex flex-wrap items-center gap-3"><Button type="submit" disabled={busy || problem !== null}>{busy ? <LoaderCircle className="animate-spin" size={16} /> : <Play size={16} />}{busy ? 'Running QAOA simulation…' : 'Run Quantum Optimization'}</Button>
+              <div className="flex flex-wrap items-center gap-3"><Button type="submit" disabled={busy || problem !== null}>{busy ? <LoaderCircle className="animate-spin" size={16} /> : <Play size={16} />}{busy ? 'Preparing quantum run...' : hardware.enabled ? 'Run Blend on IBM QPU' : 'Run Quantum Optimization'}</Button>
                 <span className="text-xs text-[#65717D]">{isWorkspacePersisted() ? 'Draft saved in this browser.' : 'Draft is available for this visit; browser storage is unavailable.'}</span></div>
               {busy && <p className="text-sm text-blue-800" role="status">Calculating chemical scores, fitting the QAOA circuit, and sampling outcomes…</p>}
             </form>

@@ -149,3 +149,6 @@ ideal simulation, not IBM hardware, and does not claim a quantum speedup.
 
 
 The Sequence Design page links to **Scalable QPU Lab** at `/sequence-qpu`. It supports ten editable sites, up to twenty amino acids each, an algebraic cost compiler, categorical classical search, bounded local MPS fitting, and explicit IBM Runtime preparation/submission/status/recovery. See [backend setup and limits](../backend/sequence_design/SCALABLE_QPU.md). Nothing submits automatically or consumes hardware runtime during local fitting.
+
+
+Active quantum workflows share a **Use IBM quantum computer (QPU)** checkbox. After one-time server account setup, enter a backend name, check the box and press the page Run button. Settings are reused across pages. Supported routes are sequence, scalable sequence, blend, torsion-grid and selected-geometry HeH+ energy estimation. Existing small solvers use local parameter fitting followed by hardware verification; this is not all-hardware adaptive training. Checking the box alone never submits. Quick jobs use `/api/v1/hardware/run`; recoverable UUIDs are saved before networking. Demo-only comparison/noise pages remain fixtures. See [setup and execution boundaries](../backend/sequence_design/SCALABLE_QPU.md).

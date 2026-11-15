@@ -1,3 +1,5 @@
+import { HardwareExecutionControl } from '../shared/HardwareExecution'
+import { useHardwareExecution } from '../shared/useHardwareExecution'
 import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
 import { LoaderCircle, RefreshCw } from 'lucide-react'
@@ -7,6 +9,7 @@ import type { GeneratedStructure } from '../../services/molecularStructure'
 import { MolecularStructureViewer } from './MolecularStructureViewer'
 
 export function GeneratedMolecularStructure() {
+  const hardware = useHardwareExecution('torsion')
   const [sequence, setSequence] = useState('GAGA')
   const [request, setRequest] = useState({ sequence: 'GAGA', revision: 0 })
   const [result, setResult] = useState<GeneratedStructure | null>(null)
@@ -40,6 +43,10 @@ export function GeneratedMolecularStructure() {
       return
     }
     setInputError(null)
+    if (hardware.enabled) {
+      void hardware.run('torsion', { sequence: normalized, method: 'qaoa', torsion_count: 3, layers: 1, max_iterations: 30, seed: 42 }).catch((reason: unknown) => setInputError(reason instanceof Error ? reason.message : 'Hardware torsion run failed.'))
+      return
+    }
     setSequence(normalized)
     setLoading(true)
     setResult(null)
@@ -49,6 +56,8 @@ export function GeneratedMolecularStructure() {
 
   return (
     <div className="space-y-4">
+      <HardwareExecutionControl execution={hardware} disabled={loading || hardware.busy} />
+      {hardware.enabled && <p className="text-xs text-slate-600">Generate now submits the peptide torsion QAOA circuit to IBM after local fitting. The 3D viewer remains a separately calculated classical conformer; hardware measurements and chosen angles appear above.</p>}
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
           <h3 className="text-base font-semibold text-[#28323C]">Structure stats</h3>
@@ -70,9 +79,9 @@ export function GeneratedMolecularStructure() {
             placeholder="GAGA" value={sequence}
           />
         </label>
-        <Button disabled={loading} type="submit" variant="secondary">
+        <Button disabled={loading || hardware.busy} type="submit" variant="secondary">
           {loading ? <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" /> : <RefreshCw className="h-4 w-4" aria-hidden="true" />}
-          {loading ? 'Generating' : 'Show structure'}
+          {loading ? 'Generating' : hardware.enabled ? 'Run torsion circuit on IBM QPU' : 'Show structure'}
         </Button>
       </form>
       {inputError && <p className="text-sm text-red-700" id="structure-sequence-error" role="alert">{inputError}</p>}

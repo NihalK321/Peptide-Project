@@ -1,0 +1,205 @@
+{
+  "spec": {
+    "length": 8,
+    "zero_residue": "L",
+    "one_residue": "K",
+    "required_ones": 3,
+    "helix_angle_degrees": 100.0,
+    "hydropathy_scale": "Kyte-Doolittle (1982)"
+  },
+  "all_binary_states": 256,
+  "feasible_sequences": 56,
+  "best_feasible": {
+    "sequence": "LKKLLKLL",
+    "bits": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "hydrophobic_moment_squared": 6.553418619067462,
+    "chemistry_objective": -6.553418619067462
+  },
+  "top_five": [
+    {
+      "sequence": "LKKLLKLL",
+      "bits": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "hydrophobic_moment_squared": 6.553418619067462,
+      "chemistry_objective": -6.553418619067462
+    },
+    {
+      "sequence": "LLKLLKKL",
+      "bits": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "hydrophobic_moment_squared": 6.553418619067462,
+      "chemistry_objective": -6.553418619067462
+    },
+    {
+      "sequence": "LKLLKKLL",
+      "bits": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "hydrophobic_moment_squared": 5.395779231390544,
+      "chemistry_objective": -5.395779231390544
+    },
+    {
+      "sequence": "LLKKLLKL",
+      "bits": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "hydrophobic_moment_squared": 5.3957792313905415,
+      "chemistry_objective": -5.3957792313905415
+    },
+    {
+      "sequence": "KLLKLLLK",
+      "bits": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "hydrophobic_moment_squared": 5.020525054222201,
+      "chemistry_objective": -5.020525054222201
+    }
+  ],
+  "max_quadratic_identity_error": 1.7763568394002505e-15,
+  "note": "No quantum execution; exact classical benchmark for chemistry-only score",
+  "chemistry_quadratic": {
+    "constant": -0.15885989810381682,
+    "linear": [
+      -0.17081080245419944,
+      -1.1888217950395141,
+      -1.5908657351706288,
+      -0.4332263474937127,
+      -0.4332263474937133,
+      -1.5908657351706292,
+      -1.188821795039513,
+      -0.17081080245419922
+    ],
+    "pairwise_upper_triangle": [
+      [
+        0.0,
+        0.32173751418350927,
+        1.7410742339498908,
+        -0.9264062500000001,
+        -1.4193367197663813,
+        1.4193367197663818,
+        0.9264062499999995,
+        -1.7410742339498906
+      ],
+      [
+        0.0,
+        0.0,
+        0.3217375141835092,
+        1.7410742339498906,
+        -0.9264062499999994,
+        -1.4193367197663809,
+        1.4193367197663815,
+        0.92640625
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.3217375141835097,
+        1.7410742339498904,
+        -0.9264062500000008,
+        -1.419336719766381,
+        1.4193367197663813
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3217375141835087,
+        1.7410742339498904,
+        -0.9264062499999999,
+        -1.4193367197663815
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3217375141835105,
+        1.7410742339498904,
+        -0.92640625
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.32173751418350893,
+        1.7410742339498908
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3217375141835087
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "convention": "constant + sum_i linear[i]*x_i + sum_i<j pairwise[i][j]*x_i*x_j",
+    "objective": "minimize -weight*hydrophobic_moment_squared",
+    "weight": 1.0,
+    "position_indexing": "0-based N-terminal to C-terminal"
+  }
+}
